@@ -15,10 +15,15 @@ import {NgxSelectModule} from 'ngx-select-ex';
 import {BsDatepickerModule} from 'ngx-bootstrap';
 import { FileUploadModule } from 'ng2-file-upload';
 
+
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { deLocale } from 'ngx-bootstrap/locale';
 import {MediainputComponent} from './mediainput/mediainput.component';
 import {SafeUrlPipe} from './service/safe-url.pipe';
+import {CommonModule} from '@angular/common';
+import { MyCalendarComponent } from './calendar/calendar.component';
+import {FullCalendarModule} from 'ng-fullcalendar';
+
 defineLocale('de', deLocale);
 
 
@@ -35,6 +40,7 @@ export function tokenGetter() {
     LogoutComponent,
     MediainputComponent,
     SafeUrlPipe,
+    MyCalendarComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +48,10 @@ export function tokenGetter() {
     HttpClientModule,
     FormsModule,
     FileUploadModule,
+    CommonModule,
+    FormsModule,
+    BrowserModule,
+    FullCalendarModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
