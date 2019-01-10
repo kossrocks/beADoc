@@ -22,7 +22,6 @@ export class ActorFormComponent implements OnInit, OnDestroy {
   constructor(private actorService: ActorService, private route: ActivatedRoute, private router: Router,
               private movieService: MovieService, private socketMessageService: SocketMessageService) {
   }
-  //deleteme
 
   ngOnInit() {
 
