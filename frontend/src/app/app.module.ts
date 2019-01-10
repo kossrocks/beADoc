@@ -19,11 +19,16 @@ import { defineLocale } from 'ngx-bootstrap/chronos';
 import { deLocale } from 'ngx-bootstrap/locale';
 import {MediainputComponent} from './mediainput/mediainput.component';
 import {SafeUrlPipe} from './service/safe-url.pipe';
+
+import { MedicineComponent } from './medicine/medicine.component';
+import { MedicineFormComponent } from './medicine-form/medicine-form.component';
+
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 import { AppointmentFormComponent } from './appointment-form/appointment-form.component';
 import {CommonModule} from '@angular/common';
 import { MyCalendarComponent } from './calendar/calendar.component';
 import {FullCalendarModule} from 'ng-fullcalendar';
+
 
 
 
@@ -43,9 +48,14 @@ export function tokenGetter() {
     LogoutComponent,
     MediainputComponent,
     SafeUrlPipe,
+
+    MedicineComponent,
+    MedicineFormComponent,
+
     MyCalendarComponent,
     AppointmentListComponent,
     AppointmentFormComponent,
+
   ],
   imports: [
     BrowserModule,
