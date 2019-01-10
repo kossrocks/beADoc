@@ -31,6 +31,9 @@ public class Appointment {
     @JsonIgnore
     private long version;
 
+    public Appointment() {
+    }
+
     public Appointment(Date appointmentDate, long appointmentTime) {
         LocalDate localDate = appointmentDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         this.id = ((localDate.getYear()*100000000)+(localDate.getMonthValue()*1000000)+(localDate.getDayOfMonth()*10000)+appointmentTime);

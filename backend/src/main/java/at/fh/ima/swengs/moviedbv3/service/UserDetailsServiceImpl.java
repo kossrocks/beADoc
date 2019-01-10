@@ -1,9 +1,6 @@
 package at.fh.ima.swengs.moviedbv3.service;
 
-import at.fh.ima.swengs.moviedbv3.model.ActorRepository;
-import at.fh.ima.swengs.moviedbv3.model.Movie;
-import at.fh.ima.swengs.moviedbv3.model.MovieRepository;
-import at.fh.ima.swengs.moviedbv3.model.UserRepository;
+import at.fh.ima.swengs.moviedbv3.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -18,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Service("userDetailsService")   // It has to be annotated with @Service.
@@ -31,6 +29,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     private MovieRepository movieRepository;
+
+    @Autowired
+    private AppointmentRepository appointmentRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -78,6 +79,19 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 movies.add(movie);
             });
             movieRepository.saveAll(movies);
+        }
+
+        if(appointmentRepository.count() == 0) {
+            at.fh.ima.swengs.moviedbv3.model.Appointment appointmentFixed = new at.fh.ima.swengs.moviedbv3.model.Appointment(new Date(), 1234);
+            appointmentFixed.setFixed(true);
+            appointmentFixed.setPatient(userRepository.findByUsername("tester"));
+            appointmentRepository.save(appointmentFixed);
+
+            at.fh.ima.swengs.moviedbv3.model.Appointment appointmentNotFixed = new at.fh.ima.swengs.moviedbv3.model.Appointment(new Date(), 1864);
+            appointmentNotFixed.setFixed(false);
+            appointmentNotFixed.setPatient(userRepository.findByUsername("tester"));
+            appointmentRepository.save(appointmentNotFixed);
+
         }
 
     }

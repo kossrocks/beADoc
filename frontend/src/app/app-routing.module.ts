@@ -4,13 +4,16 @@ import {ActorFormComponent} from './actor-form/actor-form.component';
 import {ActorListComponent} from './actor-list/actor-list.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './auth.guard';
+import {AppointmentPatientFormComponent} from './appointment-patient-form/appointment-patient-form.component';
+import {AppointmentPatientListComponent} from './appointment-patient-list/appointment-patient-list.component';
+import {AppointmentDoctorListComponent} from './appointment-doctor-list/appointment-doctor-list.component';
+
 
 import {MedicineComponent} from './medicine/medicine.component';
 import {MedicineFormComponent} from './medicine-form/medicine-form.component';
 
-import {AppointmentFormComponent} from './appointment-form/appointment-form.component';
-import {AppointmentListComponent} from './appointment-list/appointment-list.component';
 import {MyCalendarComponent} from './calendar/calendar.component';
+
 
 
 const routes: Routes = [
@@ -42,10 +45,13 @@ const routes: Routes = [
     path: 'login', component: LoginComponent
   },
   {
-    path: 'appointment-form', component: AppointmentFormComponent, canActivate: [AuthGuard]
+    path: 'appointment-patient-form', component: AppointmentPatientFormComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'appointment-list', component: AppointmentListComponent, canActivate: [AuthGuard]
+    path: 'appointment-patient-list', component: AppointmentPatientListComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'appointment-doctor-list', component: AppointmentDoctorListComponent, canActivate: [AuthGuard]
   },
 
   {
