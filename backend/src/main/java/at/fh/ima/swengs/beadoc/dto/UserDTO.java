@@ -1,6 +1,7 @@
 package at.fh.ima.swengs.beadoc.dto;
 
 import at.fh.ima.swengs.beadoc.model.Gender;
+import at.fh.ima.swengs.beadoc.model.Media;
 
 import java.util.Date;
 import java.util.Set;
@@ -16,12 +17,27 @@ public class UserDTO {
   private Date dayOfBirth;
   private Set<Long> appointments;
   private Set<Long> medicines;
-  private Long profilePicture;
-  private Set<Long> medicinePictures;
   private boolean admin;
   private boolean employee;
   private boolean active;
   private Gender gender;
+  private Set<Media> pictures;
+
+  public String geteMail() {
+    return eMail;
+  }
+
+  public void seteMail(String eMail) {
+    this.eMail = eMail;
+  }
+
+  public Set<Media> getPictures() {
+    return pictures;
+  }
+
+  public void setPictures(Set<Media> pictures) {
+    this.pictures = pictures;
+  }
 
   public long getId() {
     return id;
@@ -93,22 +109,6 @@ public class UserDTO {
 
   public void setMedicines(Set<Long> medicines) {
     this.medicines = medicines;
-  }
-
-  public Long getProfilePicture() {
-    return profilePicture;
-  }
-
-  public void setProfilePicture(Long profilePicture) {
-    this.profilePicture = profilePicture;
-  }
-
-  public Set<Long> getMedicinePictures() {
-    return medicinePictures;
-  }
-
-  public void setMedicinePictures(Set<Long> medicinePictures) {
-    this.medicinePictures = medicinePictures;
   }
 
   public boolean isAdmin() {

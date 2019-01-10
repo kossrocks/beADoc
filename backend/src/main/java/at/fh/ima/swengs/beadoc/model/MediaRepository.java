@@ -6,6 +6,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource()
-public interface DocumentRepository extends PagingAndSortingRepository<Document,Long>, JpaRepository<Document, Long>, CrudRepository<Document, Long> {
+public interface MediaRepository extends PagingAndSortingRepository<Media, Long>, JpaRepository<Media, Long>, CrudRepository<Media, Long> {
 
 }

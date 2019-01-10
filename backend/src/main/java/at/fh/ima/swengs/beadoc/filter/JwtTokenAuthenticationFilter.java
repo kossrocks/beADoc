@@ -1,7 +1,7 @@
-package at.fh.ima.swengs.beadoc.filter;
+package at.fh.ima.swengs.moviedbv3.filter;
 
 
-import at.fh.ima.swengs.beadoc.JwtConfig;
+import at.fh.ima.swengs.moviedbv3.JwtConfig;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -31,9 +31,10 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
 
         // 1. get the authentication header. Tokens are supposed to be passed in the authentication header
         String header = request.getHeader(jwtConfig.getHeader());
+        boolean isWebsocketRequest = request.getRequestURI().startsWith("/websocket");
 
         // 2. validate the header and check the prefix
-        if (header == null || !header.startsWith(jwtConfig.getPrefix())) {
+        if (!isWebsocketRequest && (header == null || !header.startsWith(jwtConfig.getPrefix()))) {
             chain.doFilter(request, response);        // If not valid, go to the next filter.
             return;
         }
@@ -45,7 +46,7 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
         // And If user tried to access without access token, then he won't be authenticated and an exception will be thrown.
 
         // 3. Get the token
-        String token = header.replace(jwtConfig.getPrefix(), "");
+        String token = isWebsocketRequest ? request.getParameter("access_token") : header.replace(jwtConfig.getPrefix(), "");
 
         try {    // exceptions might be thrown in creating the claims if for example the token is expired
 

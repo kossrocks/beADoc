@@ -20,8 +20,7 @@ public class Medicine {
 
     private String name;
 
-    @OneToOne
-    private Document picture;
+
 
     @ManyToMany
     private Set<User> consumers;
@@ -45,14 +44,6 @@ public class Medicine {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Document getPicture() {
-        return picture;
-    }
-
-    public void setPicture(Document picture) {
-        this.picture = picture;
     }
 
     public Set<User> getConsumers() {

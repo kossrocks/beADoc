@@ -38,12 +38,11 @@ public class UserFacade {
     entity.setDayOfBirth(dto.getDayOfBirth());
     entity.setAppointments(appointmentService.getAppointments(dto.getAppointments()));
     entity.setMedicines(medicineService.getMedicines(dto.getMedicines()));
-    entity.setProfilePicture(documentService.getDocument(dto.getProfilePicture()));
-    entity.setMedicinePictures(documentService.getDocuments(dto.getMedicinePictures()));
     entity.setAdmin(dto.isAdmin());
     entity.setEmployee(dto.isEmployee());
     entity.setActive(dto.isActive());
     entity.setGender(dto.getGender());
+    entity.setPictures(dto.getPictures());
 
   }
 
@@ -60,16 +59,11 @@ public class UserFacade {
     if (entity.getMedicines() != null) {
       dto.setMedicines(entity.getMedicines().stream().map((m) -> m.getId()).collect(Collectors.toSet()));
     }
-    if (entity.getProfilePicture() != null) {
-      dto.setProfilePicture(entity.getProfilePicture().getId());
-    }
-    if (entity.getMedicinePictures() != null) {
-      dto.setMedicinePictures(entity.getMedicinePictures().stream().map((mp) -> mp.getId()).collect(Collectors.toSet()));
-    }
     dto.setAdmin(entity.isAdmin());
     dto.setEmployee(entity.isEmployee());
     dto.setActive(entity.isActive());
     dto.setGender(entity.getGender());
+    dto.setPictures(entity.getPictures());
   }
 
   public UserDTO update(Long id, UserDTO dto) {

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -38,11 +39,17 @@ public class User {
   @ManyToMany(mappedBy = "consumers")
   private Set<Medicine> medicines;
 
-  @OneToOne
-  private Document profilePicture;
+  @ManyToMany
+  @JoinTable(name =
+    "movies_pictures"
+    ,
+    joinColumns = @JoinColumn(name =
+      "movie_id"),
+    inverseJoinColumns = @JoinColumn(name =
+      "pictures_id"))
+  private Set<Media> pictures = new HashSet<>();
 
-  @OneToMany(mappedBy = "uploadedBy")
-  private Set<Document> medicinePictures;
+
 
   private boolean admin;
   private boolean employee;
@@ -71,20 +78,20 @@ public class User {
     this.medicines = medicines;
   }
 
-  public Document getProfilePicture() {
-    return profilePicture;
+  public String geteMail() {
+    return eMail;
   }
 
-  public void setProfilePicture(Document profilePicture) {
-    this.profilePicture = profilePicture;
+  public void seteMail(String eMail) {
+    this.eMail = eMail;
   }
 
-  public Set<Document> getMedicinePictures() {
-    return medicinePictures;
+  public Set<Media> getPictures() {
+    return pictures;
   }
 
-  public void setMedicinePictures(Set<Document> medicinePictures) {
-    this.medicinePictures = medicinePictures;
+  public void setPictures(Set<Media> pictures) {
+    this.pictures = pictures;
   }
 
   public long getId() {

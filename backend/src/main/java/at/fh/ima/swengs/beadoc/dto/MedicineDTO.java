@@ -6,7 +6,6 @@ public class MedicineDTO {
 
     private long id;
     private String name;
-    private long picture;
     private Set<Long> consumers;
     private String dosage;
     private Set<String> sideEffects;
@@ -25,14 +24,6 @@ public class MedicineDTO {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public long getPicture() {
-        return picture;
-    }
-
-    public void setPicture(long picture) {
-        this.picture = picture;
     }
 
     public Set<Long> getConsumers() {

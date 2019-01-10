@@ -1,7 +1,5 @@
 package at.fh.ima.swengs.beadoc.service;
 
-import at.fh.ima.swengs.beadoc.model.Document;
-import at.fh.ima.swengs.beadoc.model.DocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
