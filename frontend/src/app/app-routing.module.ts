@@ -8,6 +8,14 @@ import {AppointmentPatientFormComponent} from './appointment-patient-form/appoin
 import {AppointmentPatientListComponent} from './appointment-patient-list/appointment-patient-list.component';
 import {AppointmentDoctorListComponent} from './appointment-doctor-list/appointment-doctor-list.component';
 
+
+import {MedicineComponent} from './medicine/medicine.component';
+import {MedicineFormComponent} from './medicine-form/medicine-form.component';
+
+import {MyCalendarComponent} from './calendar/calendar.component';
+
+
+
 const routes: Routes = [
   {
     path: '', redirectTo: '/actor-list', pathMatch: 'full'
@@ -21,6 +29,18 @@ const routes: Routes = [
   {
     path: 'actor-list', component: ActorListComponent, canActivate: [AuthGuard]
   },
+
+  ///////////////////////////////////////////////////////////////////////////
+  {
+    path: 'medicine', component: MedicineComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'medicine-form', component: MedicineFormComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'medicine-form/:id', component: MedicineFormComponent, canActivate: [AuthGuard]
+  },
+  ///////////////////////////////////////////////////////////////////////////
   {
     path: 'login', component: LoginComponent
   },
@@ -32,6 +52,10 @@ const routes: Routes = [
   },
   {
     path: 'appointment-doctor-list', component: AppointmentDoctorListComponent, canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'calendar', component: MyCalendarComponent, canActivate: [AuthGuard]
   },
 ];
 

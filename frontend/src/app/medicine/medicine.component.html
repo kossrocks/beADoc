@@ -1,0 +1,7 @@
+<div *ngFor="let medicine of medicines">
+  {{medicine.name}}
+  <a [routerLink]="'/medicine-form/' + medicine.id">Edit</a> <button type="button" (click)="deleteMedicine(medicine)">Delete</button>
+</div>
+<button type="button" (click)="createMedicine()">
+  Create medicine
+</button>

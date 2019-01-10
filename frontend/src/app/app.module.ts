@@ -19,9 +19,23 @@ import { defineLocale } from 'ngx-bootstrap/chronos';
 import { deLocale } from 'ngx-bootstrap/locale';
 import {MediainputComponent} from './mediainput/mediainput.component';
 import {SafeUrlPipe} from './service/safe-url.pipe';
+
 import { AppointmentDoctorListComponent } from './appointment-doctor-list/appointment-doctor-list.component';
 import { AppointmentPatientFormComponent } from './appointment-patient-form/appointment-patient-form.component';
 import { AppointmentPatientListComponent } from './appointment-patient-list/appointment-patient-list.component';
+
+
+import { MedicineComponent } from './medicine/medicine.component';
+import { MedicineFormComponent } from './medicine-form/medicine-form.component';
+
+import {CommonModule} from '@angular/common';
+import { MyCalendarComponent } from './calendar/calendar.component';
+import {FullCalendarModule} from 'ng-fullcalendar';
+
+
+
+
+
 defineLocale('de', deLocale);
 
 
@@ -38,9 +52,18 @@ export function tokenGetter() {
     LogoutComponent,
     MediainputComponent,
     SafeUrlPipe,
+
     AppointmentDoctorListComponent,
     AppointmentPatientFormComponent,
     AppointmentPatientListComponent,
+
+
+    MedicineComponent,
+    MedicineFormComponent,
+
+    MyCalendarComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -48,6 +71,10 @@ export function tokenGetter() {
     HttpClientModule,
     FormsModule,
     FileUploadModule,
+    CommonModule,
+    FormsModule,
+    BrowserModule,
+    FullCalendarModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
