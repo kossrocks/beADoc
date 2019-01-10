@@ -4,6 +4,8 @@ import {ActorFormComponent} from './actor-form/actor-form.component';
 import {ActorListComponent} from './actor-list/actor-list.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './auth.guard';
+import {AppointmentFormComponent} from './appointment-form/appointment-form.component';
+import {AppointmentListComponent} from './appointment-list/appointment-list.component';
 
 const routes: Routes = [
   {
@@ -20,6 +22,12 @@ const routes: Routes = [
   },
   {
     path: 'login', component: LoginComponent
+  },
+  {
+    path: 'appointment-form', component: AppointmentFormComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'appointment-list', component: AppointmentListComponent, canActivate: [AuthGuard]
   },
 ];
 
