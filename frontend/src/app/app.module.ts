@@ -19,6 +19,8 @@ import { defineLocale } from 'ngx-bootstrap/chronos';
 import { deLocale } from 'ngx-bootstrap/locale';
 import {MediainputComponent} from './mediainput/mediainput.component';
 import {SafeUrlPipe} from './service/safe-url.pipe';
+import { MedicineComponent } from './medicine/medicine.component';
+import { MedicineFormComponent } from './medicine-form/medicine-form.component';
 defineLocale('de', deLocale);
 
 
@@ -35,6 +37,8 @@ export function tokenGetter() {
     LogoutComponent,
     MediainputComponent,
     SafeUrlPipe,
+    MedicineComponent,
+    MedicineFormComponent,
   ],
   imports: [
     BrowserModule,
