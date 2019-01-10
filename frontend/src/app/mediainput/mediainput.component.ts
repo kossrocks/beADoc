@@ -11,7 +11,7 @@ export interface IMedia {
   contentType?: string;
   size?: number;
 }
-
+//frtontend
 @Component({
   selector: 'app-mediainput',
   templateUrl: './mediainput.component.html',
