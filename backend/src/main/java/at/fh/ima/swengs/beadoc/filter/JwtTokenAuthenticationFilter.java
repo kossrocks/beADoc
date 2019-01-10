@@ -1,7 +1,7 @@
-package at.fh.ima.swengs.moviedbv3.filter;
+package at.fh.ima.swengs.beadoc.filter;
 
 
-import at.fh.ima.swengs.moviedbv3.JwtConfig;
+import at.fh.ima.swengs.beadoc.JwtConfig;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

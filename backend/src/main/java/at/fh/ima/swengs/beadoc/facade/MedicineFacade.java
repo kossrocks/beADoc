@@ -2,7 +2,6 @@ package at.fh.ima.swengs.beadoc.facade;
 
 import at.fh.ima.swengs.beadoc.dto.MedicineDTO;
 import at.fh.ima.swengs.beadoc.model.Medicine;
-import at.fh.ima.swengs.beadoc.service.DocumentService;
 import at.fh.ima.swengs.beadoc.service.MedicineService;
 import at.fh.ima.swengs.beadoc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +20,6 @@ public class MedicineFacade {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private DocumentService documentService;
 
     void mapDtoToEntity(MedicineDTO dto, Medicine entity) {
         entity.setName(dto.getName());
