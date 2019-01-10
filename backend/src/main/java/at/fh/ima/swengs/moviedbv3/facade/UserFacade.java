@@ -1,10 +1,10 @@
-package at.fh.ima.swengs.beadoc.facade;
+package at.fh.ima.swengs.moviedbv3.facade;
 
-import at.fh.ima.swengs.beadoc.dto.UserDTO;
-import at.fh.ima.swengs.beadoc.model.User;
-import at.fh.ima.swengs.beadoc.service.AppointmentService;
-import at.fh.ima.swengs.beadoc.service.MedicineService;
-import at.fh.ima.swengs.beadoc.service.UserService;
+import at.fh.ima.swengs.moviedbv3.dto.UserDTO;
+import at.fh.ima.swengs.moviedbv3.model.User;
+import at.fh.ima.swengs.moviedbv3.service.AppointmentService;
+import at.fh.ima.swengs.moviedbv3.service.MedicineService;
+import at.fh.ima.swengs.moviedbv3.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

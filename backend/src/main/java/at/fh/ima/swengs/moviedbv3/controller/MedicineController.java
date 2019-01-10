@@ -1,7 +1,7 @@
-package at.fh.ima.swengs.beadoc.controller;
+package at.fh.ima.swengs.moviedbv3.controller;
 
-import at.fh.ima.swengs.beadoc.dto.MedicineDTO;
-import at.fh.ima.swengs.beadoc.facade.MedicineFacade;
+import at.fh.ima.swengs.moviedbv3.dto.MedicineDTO;
+import at.fh.ima.swengs.moviedbv3.facade.MedicineFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

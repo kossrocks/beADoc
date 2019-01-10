@@ -1,64 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="abda6088-d933-4efd-9318-999b12ba27f6" name="Default Changelist" comment="updated frontend">
+    <list default="true" id="abda6088-d933-4efd-9318-999b12ba27f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/backend/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/backend/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/BeadocApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/JwtConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/RestConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/WebsocketConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/WebsocketSecurityConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/controller/ActorController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/controller/AppointmentController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/controller/MediaController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/controller/MedicineController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/controller/Message.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/controller/MessageController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/controller/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/dto/ActorDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/dto/AppointmentDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/dto/MedicineDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/dto/UserDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/facade/ActorFacade.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/facade/AppointmentFacade.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/facade/MedicineFacade.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/facade/UserFacade.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/filter/JwtTokenAuthenticationFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/filter/JwtUsernameAndPasswordAuthenticationFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/model/Actor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/model/ActorRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/model/Appointment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/model/AppointmentRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/model/BloodType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/model/BloodTypeRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/model/Gender.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/model/Genre.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/model/GenreRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/model/Media.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/model/MediaRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/model/Medicine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/model/MedicineRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/model/Movie.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/model/MovieRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/model/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/model/UserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/model/Zodiac.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/service/ActorService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/service/AppointmentService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/service/BloodTypeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/service/MediaService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/service/MedicineService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/service/MovieService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/service/UserDetailsServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/beadoc/service/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/test/java/at/fh/ima/swengs/beadoc/BeadocApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/AppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/AppointmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/MedicineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/MedicineController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/dto/AppointmentDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/dto/AppointmentDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/dto/MedicineDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/dto/MedicineDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/dto/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/facade/AppointmentFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/facade/AppointmentFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/facade/MedicineFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/facade/MedicineFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/facade/UserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/facade/UserFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/Appointment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/AppointmentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/AppointmentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/BloodType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/BloodTypeRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/Medicine.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/Medicine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/MedicineRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/MedicineRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/Zodiac.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/Zodiac.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/AppointmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/AppointmentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/BloodTypeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/MedicineService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/MedicineService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/UserService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -96,12 +61,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="txt" value="27" />
+          <entry key="txt" value="34" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="27" />
+          <entry key="PLAIN_TEXT" value="34" />
         </counts>
       </usages-collector>
     </session>
@@ -124,10 +89,9 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1912" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="1913" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -224,6 +188,20 @@
               <item name="swengs" type="462c0819:PsiDirectoryNode" />
               <item name="moviedbv3" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="beadoc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="beadoc" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="at" type="462c0819:PsiDirectoryNode" />
+              <item name="fh" type="462c0819:PsiDirectoryNode" />
+              <item name="ima" type="462c0819:PsiDirectoryNode" />
+              <item name="swengs" type="462c0819:PsiDirectoryNode" />
+              <item name="moviedbv3" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -233,7 +211,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
@@ -261,7 +239,7 @@
       <workItem from="1547050607956" duration="195000" />
       <workItem from="1547113563615" duration="232000" />
       <workItem from="1547113805697" duration="692000" />
-      <workItem from="1547118464350" duration="1173000" />
+      <workItem from="1547118464350" duration="1944000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1547050768393</created>
@@ -298,11 +276,18 @@
       <option name="project" value="LOCAL" />
       <updated>1547119591225</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="updated backend">
+      <created>1547120060893</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1547120060893</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2498000" />
+    <option name="totallyTimeSpent" value="3269000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -343,6 +328,7 @@
     <MESSAGE value="test" />
     <MESSAGE value="delete app" />
     <MESSAGE value="updated frontend" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated frontend" />
+    <MESSAGE value="updated backend" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated backend" />
   </component>
 </project>

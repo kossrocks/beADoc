@@ -1,7 +1,7 @@
-package at.fh.ima.swengs.beadoc.service;
+package at.fh.ima.swengs.moviedbv3.service;
 
-import at.fh.ima.swengs.beadoc.model.Medicine;
-import at.fh.ima.swengs.beadoc.model.MedicineRepository;
+import at.fh.ima.swengs.moviedbv3.model.Medicine;
+import at.fh.ima.swengs.moviedbv3.model.MedicineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

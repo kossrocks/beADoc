@@ -1,7 +1,7 @@
-package at.fh.ima.swengs.beadoc.service;
+package at.fh.ima.swengs.moviedbv3.service;
 
-import at.fh.ima.swengs.beadoc.model.User;
-import at.fh.ima.swengs.beadoc.model.UserRepository;
+import at.fh.ima.swengs.moviedbv3.model.User;
+import at.fh.ima.swengs.moviedbv3.model.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
-package at.fh.ima.swengs.beadoc.dto;
+package at.fh.ima.swengs.moviedbv3.dto;
 
-import at.fh.ima.swengs.beadoc.model.Gender;
-import at.fh.ima.swengs.beadoc.model.Media;
+import at.fh.ima.swengs.moviedbv3.model.Gender;
+import at.fh.ima.swengs.moviedbv3.model.Media;
 
 import java.util.Date;
 import java.util.Set;

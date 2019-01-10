@@ -1,4 +1,4 @@
-package at.fh.ima.swengs.beadoc.dto;
+package at.fh.ima.swengs.moviedbv3.dto;
 
 import java.util.Set;
 

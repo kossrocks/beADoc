@@ -1,4 +1,4 @@
-package at.fh.ima.swengs.beadoc.model;
+package at.fh.ima.swengs.moviedbv3.model;
 
 public enum Zodiac {
 

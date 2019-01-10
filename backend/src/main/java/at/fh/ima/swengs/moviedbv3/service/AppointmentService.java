@@ -1,7 +1,7 @@
-package at.fh.ima.swengs.beadoc.service;
+package at.fh.ima.swengs.moviedbv3.service;
 
-import at.fh.ima.swengs.beadoc.model.Appointment;
-import at.fh.ima.swengs.beadoc.model.AppointmentRepository;
+import at.fh.ima.swengs.moviedbv3.model.Appointment;
+import at.fh.ima.swengs.moviedbv3.model.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

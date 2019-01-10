@@ -1,4 +1,4 @@
-package at.fh.ima.swengs.beadoc.model;
+package at.fh.ima.swengs.moviedbv3.model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;

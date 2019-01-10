@@ -1,4 +1,4 @@
-package at.fh.ima.swengs.beadoc.model;
+package at.fh.ima.swengs.moviedbv3.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
