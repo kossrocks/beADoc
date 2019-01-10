@@ -49,8 +49,6 @@ public class User {
       "pictures_id"))
   private Set<Media> pictures = new HashSet<>();
 
-
-
   private boolean admin;
   private boolean employee;
   private boolean active;
