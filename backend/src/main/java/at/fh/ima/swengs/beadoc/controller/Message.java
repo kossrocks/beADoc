@@ -1,4 +1,4 @@
-package at.fh.ima.swengs.moviedbv3.controller;
+package at.fh.ima.swengs.beadoc.controller;
 
 public class Message {
 

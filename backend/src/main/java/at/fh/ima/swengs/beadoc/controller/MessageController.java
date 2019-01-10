@@ -1,4 +1,4 @@
-package at.fh.ima.swengs.moviedbv3.controller;
+package at.fh.ima.swengs.beadoc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;

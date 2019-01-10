@@ -13,17 +13,17 @@ public class MedicineController {
     @Autowired
     private MedicineFacade medicineFacade;
 
-    @GetMapping("/dto/actors/{id}")
+    @GetMapping("/dto/medicines/{id}")
     MedicineDTO getById(@PathVariable Long id) {
         return medicineFacade.getById(id);
     }
 
-    @PostMapping("/dto/actors")
+    @PostMapping("/dto/medicines")
     MedicineDTO create(@RequestBody @Valid MedicineDTO dto) {
         return medicineFacade.create(dto);
     }
 
-    @PutMapping("/dto/actors/{id}")
+    @PutMapping("/dto/medicines/{id}")
     MedicineDTO update(@RequestBody @Valid MedicineDTO dto, @PathVariable Long id) {
         return medicineFacade.update(id, dto);
     }

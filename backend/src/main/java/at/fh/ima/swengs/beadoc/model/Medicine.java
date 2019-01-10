@@ -20,14 +20,12 @@ public class Medicine {
 
     private String name;
 
-
-
     @ManyToMany
     private Set<User> consumers;
 
     private String dosage;
 
-    private Set<String> sideEffects;
+    private String sideEffects;
 
     @Version
     @JsonIgnore
@@ -62,15 +60,15 @@ public class Medicine {
         this.dosage = dosage;
     }
 
-    public Set<String> getSideEffects() {
-        return sideEffects;
-    }
+  public String getSideEffects() {
+    return sideEffects;
+  }
 
-    public void setSideEffects(Set<String> sideEffects) {
-        this.sideEffects = sideEffects;
-    }
+  public void setSideEffects(String sideEffects) {
+    this.sideEffects = sideEffects;
+  }
 
-    @Override
+  @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

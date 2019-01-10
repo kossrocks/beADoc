@@ -8,7 +8,7 @@ public class MedicineDTO {
     private String name;
     private Set<Long> consumers;
     private String dosage;
-    private Set<String> sideEffects;
+    private String sideEffects;
 
     public long getId() {
         return id;
@@ -42,11 +42,11 @@ public class MedicineDTO {
         this.dosage = dosage;
     }
 
-    public Set<String> getSideEffects() {
-        return sideEffects;
-    }
+  public String getSideEffects() {
+    return sideEffects;
+  }
 
-    public void setSideEffects(Set<String> sideEffects) {
-        this.sideEffects = sideEffects;
-    }
+  public void setSideEffects(String sideEffects) {
+    this.sideEffects = sideEffects;
+  }
 }
