@@ -1,0 +1,11 @@
+<br>
+<h1>Welcome</h1>
+<div *ngIf='isAdmin'>
+  <p> ADMIN PANEL</p>
+</div>
+
+<div *ngIf='isEmployee'>
+  <p>EMPLOYEE PANEL</p>
+</div>
+
+<div *ngIf='!isAdmin && !isEmployee'></div>

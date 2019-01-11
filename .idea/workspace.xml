@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-
     <list default="true" id="abda6088-d933-4efd-9318-999b12ba27f6" name="Default Changelist" comment="" />
-
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,15 +179,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/frontend/node_modules" />
-  </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
       <path value="$PROJECT_DIR$/frontend/package.json" />
     </packageJsonPaths>
   </component>
-
   <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="1912" />
     <option name="y" value="-8" />
@@ -204,6 +198,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -243,7 +238,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="actor-form" type="462c0819:PsiDirectoryNode" />
-
             </path>
           </expand>
           <select />
@@ -253,7 +247,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
@@ -285,7 +280,6 @@
       <workItem from="1547113805697" duration="692000" />
 
       <workItem from="1547118464350" duration="2657000" />
-
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1547050768393</created>
@@ -426,6 +420,35 @@
 
         </state>
       </provider>
+    </entry>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/UserDetailsServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/MovieService.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/MedicineService.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/MediaService.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/AppointmentService.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/ActorService.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/ActorController.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/AppointmentController.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/MediaController.java">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
