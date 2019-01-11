@@ -4,6 +4,7 @@ import {map} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {Subject} from 'rxjs';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {User} from '../api/user';
 
 @Injectable({
   providedIn: 'root'
@@ -50,4 +51,28 @@ export class UserService {
     this.router.navigate(['/login']);
   }
 
+
+  getById(id: string) {
+    return this.http.get('/api/dto/users/' + id);
+  }
+
+  getAll() {
+    return this.http.get('/api/users').pipe(
+      map((response: any) => {
+        return response._embedded.users;
+      })
+    );
+  }
+
+  delete(user) {
+    return this.http.delete('/api/users/' + user.id);
+  }
+
+  update(user: User) {
+    return this.http.put('/api/dto/medicines/' + user.id, user);
+  }
+
+  create(user: User) {
+    return this.http.post('/api/dto/users', user);
+  }
 }
