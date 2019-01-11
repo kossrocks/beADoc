@@ -16,12 +16,22 @@ export class MyCalendarComponent implements OnInit {
     this.calendarOptions = {
       editable: true,
       eventLimit: false,
+      selectable: true,
+      nowIndicator: true,
+      locale: 'en',
+      timeFormat: 'H:mm',
       header: {
         left: 'prev,next today',
         center: 'title',
         right: 'month,agendaWeek,agendaDay,listMonth'
       },
-      events: []
+      events: [
+        {
+          title: 'Test Event',
+          start: '2019-01-11T12:00:00.000',
+          end: '2019-01-11T13:00:00.000'
+        }
+      ]
     };
   }
 
