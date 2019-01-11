@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {CalendarComponent } from 'ng-fullcalendar';
-import {Options} from 'fullcalendar';
+import { CalendarComponent } from 'ng-fullcalendar';
+import { Options } from 'fullcalendar';
 
 @Component({
   selector: 'app-calendar',
