@@ -9,8 +9,8 @@ export interface User {
   password: string;
   eMail?: string;
   dayOfBirth?: Date;
-  appointments?: Set<Appointment>;
-  medicines?: Set<Medicine>;
+  appointments?: Array<any>;
+  medicines?: Array<any>;
   admin?: boolean;
   employee?: boolean;
   active?: boolean;
