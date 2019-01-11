@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../api/user';
 import {UserService} from '../service/user.service';
 
@@ -12,17 +12,25 @@ import {UserService} from '../service/user.service';
 export class UserListComponent implements OnInit {
 
   users: Array<User>;
+  headElements = ['Username', 'Name', 'LastName', 'eMail', 'isEmployee', 'isAdmin'];
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
 
-    this.userService.getAll()
-      .subscribe((users: any) => {
-        this.users = users;
-      });
-
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id === 'employees') {
+      this.userService.getAllEmployees()
+        .subscribe((users: any) => {
+          this.users = users;
+        });
+    } else if (id === 'patients') {
+      this.userService.getAllPatients()
+        .subscribe((users: any) => {
+          this.users = users;
+        });
+    }
   }
 
   deleteUser(user: User) {
@@ -37,5 +45,4 @@ export class UserListComponent implements OnInit {
   createUser() {
     this.router.navigate(['/user-form']);
   }
-
 }

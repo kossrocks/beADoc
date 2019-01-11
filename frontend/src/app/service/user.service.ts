@@ -64,6 +64,34 @@ export class UserService {
     );
   }
 
+  getAllEmployees() {
+    return this.http.get('/api/users').pipe(
+      map((response: any) => {
+        const employees: Array<User> = [];
+        for (const user of response._embedded.users) {
+          if (user.admin || user.employee) {
+            employees.unshift(user);
+          }
+        }
+        return employees;
+      })
+    );
+  }
+
+  getAllPatients() {
+    return this.http.get('/api/users').pipe(
+      map((response: any) => {
+        const patients: Array<User> = [];
+        for (const user of response._embedded.users) {
+          if (!user.admin && !user.employee) {
+            patients.unshift(user);
+          }
+        }
+        return patients;
+      })
+    );
+  }
+
   delete(user) {
     return this.http.delete('/api/users/' + user.id);
   }

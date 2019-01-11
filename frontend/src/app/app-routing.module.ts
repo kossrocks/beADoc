@@ -38,6 +38,9 @@ const routes: Routes = [
     path: 'user-list', component: UserListComponent, canActivate: [AuthGuard]
   },
   {
+    path: 'user-list/:id', component: UserListComponent, canActivate: [AuthGuard]
+  },
+  {
     path: 'user-form', component: UserFormComponent, canActivate: [AuthGuard]
   },
   {
