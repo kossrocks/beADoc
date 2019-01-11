@@ -14,6 +14,8 @@ import {MedicineComponent} from './medicine/medicine.component';
 import {MedicineFormComponent} from './medicine-form/medicine-form.component';
 
 import {MyCalendarComponent} from './calendar/calendar.component';
+import {UserListComponent} from './user-list/user-list.component';
+import {UserFormComponent} from './user-form/user-form.component';
 
 
 
@@ -33,7 +35,16 @@ const routes: Routes = [
 
   ///////////////////////////////////////////////////////////////////////////
   {
-    path: 'medicine', component: MedicineComponent, canActivate: [AuthGuard]
+    path: 'user-list', component: UserListComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'user-form', component: UserFormComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'user-form/:id', component: UserFormComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'medicine-list', component: MedicineComponent, canActivate: [AuthGuard]
   },
   {
     path: 'medicine-form', component: MedicineFormComponent, canActivate: [AuthGuard]
