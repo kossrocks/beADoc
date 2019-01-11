@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {ActorFormComponent} from './actor-form/actor-form.component';
+import {MainpageComponent} from './mainpage/mainpage.component';
 import {ActorListComponent} from './actor-list/actor-list.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './auth.guard';
@@ -20,7 +21,7 @@ import {UserFormComponent} from './user-form/user-form.component';
 
 const routes: Routes = [
   {
-    path: '', redirectTo: '/actor-list', pathMatch: 'full'
+    path: '', redirectTo: '/home', pathMatch: 'full'
   },
   {
     path: 'actor-form', component: ActorFormComponent, canActivate: [AuthGuard]
@@ -54,6 +55,9 @@ const routes: Routes = [
   ///////////////////////////////////////////////////////////////////////////
   {
     path: 'login', component: LoginComponent
+  },
+  {
+    path: 'home', component: MainpageComponent, canActivate: [AuthGuard]
   },
   {
     path: 'appointment-patient-form', component: AppointmentPatientFormComponent, canActivate: [AuthGuard]
