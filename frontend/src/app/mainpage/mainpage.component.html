@@ -1,7 +1,9 @@
 <br>
 <h1>Welcome {{name}}</h1>
 <div *ngIf='isEmployee'>
-  <a href="/Employees">
+  <p *ngIf='isAdmin'> ADMIN PANEL</p>
+  <p *ngIf='isEmployee && !isAdmin' > EMPLOYEE PANEL</p>
+  <a href="/">
     <button>Employees</button>
   </a>
   <a href="/medicine-list">
@@ -13,7 +15,16 @@
   <a href="/user-list">
     <button>Users</button>
   </a>
+  <button type="button" (click)="editUser()">
+    Edit Profile
+  </button>
 </div>
 <div *ngIf='!isAdmin && !isEmployee'>
   <p> USER PANEL</p>
+  <a href='"/user-form/%id" + ' >
+    <button>Questionnaire</button>
+  </a>
+  <button type="button" (click)="editUser()">
+    Edit Profile
+  </button>
 </div>
