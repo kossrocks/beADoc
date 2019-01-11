@@ -1,6 +1,7 @@
 package at.fh.ima.swengs.moviedbv3.dto;
 
 import java.util.Date;
+import java.util.Set;
 
 public class AppointmentDTO {
 
@@ -9,8 +10,26 @@ public class AppointmentDTO {
     private long appointmentTime;
     private boolean fixed;
     private long patient;
+    private boolean soon;
+    private String preferences;
 
-    public long getId() {
+  public boolean isSoon() {
+    return soon;
+  }
+
+  public void setSoon(boolean soon) {
+    this.soon = soon;
+  }
+
+  public String getPreferences() {
+    return preferences;
+  }
+
+  public void setPreferences(String preferences) {
+    this.preferences = preferences;
+  }
+
+  public long getId() {
         return id;
     }
 
