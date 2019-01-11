@@ -4,6 +4,7 @@ import {Options} from 'fullcalendar';
 import {AppointmentService} from '../service/appointment.service';
 import {Appointment} from '../api/appointment';
 import {UserService} from '../service/user.service';
+import {User} from '../api/user';
 
 @Component({
   selector: 'app-calendar',
@@ -21,6 +22,7 @@ export class MyCalendarComponent implements OnInit {
   ];
 
   appointments: Array<Appointment>;
+  users:Array<User>;
 
   calendarOptions: Options;
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
@@ -88,6 +90,11 @@ export class MyCalendarComponent implements OnInit {
         }
       });
 
+
+    this.userService.getAll()
+      .subscribe((appointments: any) => {
+        this.users = appointments;
+      });
 
 
 

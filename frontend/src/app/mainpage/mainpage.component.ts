@@ -41,7 +41,7 @@ export class MainpageComponent implements OnInit {
       });
     this.id = this.users[0].id;
       for (const user of this.users) {
-      if (user.username.match(this.name)) {
+      if (user.username === this.name) {
       this.id = user.id;
      }
     }
