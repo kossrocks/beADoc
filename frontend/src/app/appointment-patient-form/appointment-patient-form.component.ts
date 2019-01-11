@@ -33,9 +33,4 @@ export class AppointmentPatientFormComponent implements OnInit {
     this.router.navigate(['/appointment-patient-list']);
   }
 
-  fixAppointment() {
-    const appointment = this.appointmentForm.value;
-    this.appointmentService.update(appointment);
-  }
-
 }

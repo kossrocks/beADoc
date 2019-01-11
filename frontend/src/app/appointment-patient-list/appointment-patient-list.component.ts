@@ -11,7 +11,9 @@ import {Appointment} from '../api/appointment';
 export class AppointmentPatientListComponent implements OnInit {
 
   appointments: Array<Appointment>;
+  appointment: Appointment;
   username: string;
+  checkboxAppointment = false;
 
   constructor(private appointmentService: AppointmentService, private router: Router) { }
 
@@ -36,5 +38,29 @@ export class AppointmentPatientListComponent implements OnInit {
   goBackHome() {
     this.router.navigate(['/home']);
   }
+
+  navigateToList() {
+    this.router.navigate(['/appointment-patient-list']);
+  }
+
+  fixAppointment(id) {
+
+    this.appointmentService.getById(id)
+      .subscribe((appointment: any) => {
+        this.appointment = appointment;
+      });
+
+    this.appointment.fixed = true;
+
+    this.appointmentService.update(this.appointment)
+      .subscribe((response) => {
+      alert('appointment fixed');
+      location.reload();
+    });
+
+  }
+  /*
+   this.router.navigate(['appointment-patient-list']);
+  */
 
 }

@@ -1,15 +1,28 @@
 <div *ngFor="let appointment of appointments">
-  <div *ngIf='username == appointment.patient.username'>
-    {{appointment.id}} , {{appointment.appointmentDate}} {{appointment.appointmentTime}} {{appointment.fixed}} {{appointment.patient.username}} <button *ngIf="appointment.fixed==false" type="button" (click)="fixAppointment()">Fix Appointment</button>
+  <div id="test">
+    {{appointment.id}} , {{appointment.appointmentDate}} {{appointment.appointmentTime}} {{appointment.fixed}} <form (ngSubmit)="fixAppointment(appointment.id)"><button type="submit">Fix</button></form>
   </div>
 </div>
 
+
 <button type="button" (click)="createAppointment()">
-  Create new Appointment
+  Ask for Appointment
 </button>
 
 <button type="button" (click)="goBackHome()">
   Back
 </button>
 
+<!--
 
+*ngIf='username == appointment.patient.username'
+<button *ngIf="appointment.fixed==false" type="button" (click)="fixAppointment(appointment)">Fix Appointment</button>
+
+
+<div *ngFor="let appointment of appointments">
+  <div id="test">
+    {{appointment.id}} , {{appointment.appointmentDate}} {{appointment.appointmentTime}} {{appointment.fixed}}
+    <button  (click)="fixAppointment(appointment.id)">Fix Appointment</button>
+  </div>
+</div>
+-->
