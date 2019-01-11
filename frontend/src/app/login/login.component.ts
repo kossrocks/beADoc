@@ -28,5 +28,6 @@ export class LoginComponent implements OnInit {
       }, (error) => {
         alert('wrong username or password');
       });
+      localStorage.setItem('username', this.user.username);
   }
 }
