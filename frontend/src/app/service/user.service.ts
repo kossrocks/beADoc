@@ -69,7 +69,7 @@ export class UserService {
   }
 
   update(user: User) {
-    return this.http.put('/api/dto/medicines/' + user.id, user);
+    return this.http.put('/api/dto/users/' + user.id, user);
   }
 
   create(user: User) {

@@ -21,7 +21,7 @@ public class AppointmentService {
 
     public Set<Appointment> getAppointments(Set<Long> dtos){
       Set<Appointment> entities = new HashSet<>();
-      dtos.forEach((dto)->entities.add(appointmentRepository.findById(dto).get()));
+      if(entities == null || !entities.isEmpty()) dtos.forEach((dto)->entities.add(appointmentRepository.findById(dto).get()));
       return entities;
     }
 }
