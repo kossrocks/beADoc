@@ -3,6 +3,9 @@
   <div *ngIf='isAdmin'>
     {{appointment.id}} , {{appointment.appointmentDate}} {{appointment.appointmentTime}} {{appointment.fixed}} <button *ngIf="appointment.fixed==false" type="button" (click)="fixAppointment()">Fix Appointment</button>
   </div>
+  <div *ngIf='isEmployee'>
+    {{appointment.id}} , {{appointment.appointmentDate}} {{appointment.appointmentTime}} {{appointment.fixed}}
+  </div>
 </div>
 
 <button type="button" (click)="createAppointment()">
