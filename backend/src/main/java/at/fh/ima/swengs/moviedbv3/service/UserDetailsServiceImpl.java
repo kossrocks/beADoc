@@ -99,6 +99,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             appointmentNotFixed.setPatient(userRepository.findByUsername("tester"));
             appointmentRepository.save(appointmentNotFixed);
 
+            at.fh.ima.swengs.moviedbv3.model.Appointment appointmentOtherUser = new at.fh.ima.swengs.moviedbv3.model.Appointment(new Date(), 987);
+            appointmentOtherUser.setFixed(true);
+            appointmentOtherUser.setPatient(userRepository.findByUsername("admin"));
+            appointmentRepository.save(appointmentOtherUser);
         }
 
     }

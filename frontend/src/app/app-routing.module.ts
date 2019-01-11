@@ -36,6 +36,15 @@ const routes: Routes = [
     path: 'appointment-doctor-list', component: AppointmentDoctorListComponent, canActivate: [AuthGuard, EmployeeGuard]
   },
   {
+    path: 'user-form', component: UserFormComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'user-form/:id', component: UserFormComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'medicine-list', component: MedicineComponent, canActivate: [AuthGuard]
+  },
+  {
     path: 'appointment-patient-list', component: AppointmentPatientListComponent, canActivate: [AuthGuard, EmployeeGuard]
   },
   {
