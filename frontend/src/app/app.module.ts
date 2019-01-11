@@ -53,11 +53,8 @@ export function tokenGetter() {
     AppointmentDoctorListComponent,
     AppointmentPatientFormComponent,
     AppointmentPatientListComponent,
-
-
     MedicineComponent,
     MedicineFormComponent,
-
     MyCalendarComponent,
   ],
   imports: [
