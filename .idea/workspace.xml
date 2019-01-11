@@ -1,30 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="abda6088-d933-4efd-9318-999b12ba27f6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/AppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/AppointmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/MedicineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/MedicineController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/dto/AppointmentDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/dto/AppointmentDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/dto/MedicineDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/dto/MedicineDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/facade/AppointmentFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/facade/AppointmentFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/facade/MedicineFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/facade/MedicineFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/facade/UserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/facade/UserFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/Appointment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/AppointmentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/AppointmentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/BloodType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/BloodTypeRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/Medicine.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/Medicine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/MedicineRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/MedicineRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/Zodiac.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/model/Zodiac.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/AppointmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/AppointmentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/BloodTypeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/MedicineService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/MedicineService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/UserService.java" afterDir="false" />
-    </list>
+    <list default="true" id="abda6088-d933-4efd-9318-999b12ba27f6" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +47,74 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="1122294592">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="9" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="9" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/UserDetailsServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/MovieService.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/MedicineService.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/MediaService.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/AppointmentService.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/ActorService.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/ActorController.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/AppointmentController.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/MediaController.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -80,18 +125,16 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/frontend/node_modules" />
-  </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
       <path value="$PROJECT_DIR$/frontend/package.json" />
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1913" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -99,7 +142,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -200,18 +243,19 @@
               <item name="ima" type="462c0819:PsiDirectoryNode" />
               <item name="swengs" type="462c0819:PsiDirectoryNode" />
               <item name="moviedbv3" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
@@ -240,6 +284,7 @@
       <workItem from="1547113563615" duration="232000" />
       <workItem from="1547113805697" duration="692000" />
       <workItem from="1547118464350" duration="1944000" />
+      <workItem from="1547124048712" duration="667000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1547050768393</created>
@@ -287,12 +332,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3269000" />
+    <option name="totallyTimeSpent" value="3936000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26226014" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26492536" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -330,5 +375,34 @@
     <MESSAGE value="updated frontend" />
     <MESSAGE value="updated backend" />
     <option name="LAST_COMMIT_MESSAGE" value="updated backend" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/UserDetailsServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/MovieService.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/MedicineService.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/MediaService.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/AppointmentService.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/service/ActorService.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/ActorController.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/AppointmentController.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/at/fh/ima/swengs/moviedbv3/controller/MediaController.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
   </component>
 </project>

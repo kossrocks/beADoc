@@ -40,8 +40,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
                 // Remember that Spring needs roles to be in this format: "ROLE_" + userRole (i.e. "ROLE_ADMIN")
                 // So, we need to set it to that format, so we can verify and compare roles (i.e. hasRole("ADMIN")).
-                List<GrantedAuthority> grantedAuthorities = AuthorityUtils
-                        .commaSeparatedStringToAuthorityList(user.isAdmin() ? "ROLE_ADMIN" : "ROLE_USER");
+                //List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList(user.isAdmin() ? "ROLE_ADMIN" : "ROLE_USER");
+
+                List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList(roleDistinguish(user));
 
                 // The "User" class is provided by Spring and represents a model class for user to be returned by UserDetailsService
                 // And used by auth manager to verify and check user authentication.
@@ -51,6 +52,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         // If user not found. Throw this exception.
         throw new UsernameNotFoundException("Username: " + username + " not found");
+    }
+
+    private String roleDistinguish(at.fh.ima.swengs.moviedbv3.model.User user){
+        if(user.isAdmin()) return "ROLE_ADMIN";
+        else if(user.isEmployee() && !user.isAdmin()) return "ROLE_EMPLOYEE";
+        else return "ROLE_USER";
     }
 
     @PostConstruct()
