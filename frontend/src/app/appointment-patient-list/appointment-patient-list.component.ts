@@ -11,15 +11,22 @@ import {Appointment} from '../api/appointment';
 export class AppointmentPatientListComponent implements OnInit {
 
   appointments: Array<Appointment>;
+  username: string;
 
   constructor(private appointmentService: AppointmentService, private router: Router) { }
 
   ngOnInit() {
 
+    this.getUsername();
+
     this.appointmentService.getAll()
       .subscribe((appointments: any) => {
         this.appointments = appointments;
       });
+  }
+
+  getUsername() {
+    this.username = localStorage.getItem('username');
   }
 
   createAppointment() {
