@@ -71,10 +71,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             admin.setAdmin(true);
             userRepository.save(admin);
 
+            at.fh.ima.swengs.moviedbv3.model.User employee = new at.fh.ima.swengs.moviedbv3.model.User();
+            employee.setUsername("employee");
+            employee.setPassword(encoder.encode("12345"));
+            employee.setEmployee(true);
+            userRepository.save(employee);
+
             at.fh.ima.swengs.moviedbv3.model.User tester = new at.fh.ima.swengs.moviedbv3.model.User();
             tester.setUsername("tester");
             tester.setPassword(encoder.encode("12345"));
             userRepository.save(tester);
+
+
         }
 
         if (movieRepository.count() == 0) {

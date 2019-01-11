@@ -21,9 +21,9 @@
 </div>
 <div *ngIf='!isAdmin && !isEmployee'>
   <p> USER PANEL</p>
-  <a href='"/user-form/%id" + ' >
-    <button>Questionnaire</button>
-  </a>
+  <button type="button" (click)="editQuestionnaire()">
+    Questionnaire
+  </button>
   <button type="button" (click)="editUser()">
     Edit Profile
   </button>

@@ -39,15 +39,18 @@ export class MainpageComponent implements OnInit {
       .subscribe((users: any) => {
         this.users = users;
       });
-    this.id = this.users[0].id;
       for (const user of this.users) {
-      if (user.username.match(this.name)) {
-      this.id = user.id;
+        if (user.username === this.name) {
+        this.id = user.id;
      }
     }
   }
   editUser() {
     this.getUserId()
     this.router.navigate(['/user-form/' + this.id.toString()]);
+  }
+  editQuestionnaire() {
+    this.getUserId()
+    this.router.navigate(['/questionnaire/' + this.id.toString()]);
   }
 }
