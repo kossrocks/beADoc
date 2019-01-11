@@ -1,11 +1,19 @@
 <br>
-<h1>Welcome</h1>
-<div *ngIf='isAdmin'>
-  <p> ADMIN PANEL</p>
-</div>
-
+<h1>Welcome {{name}}</h1>
 <div *ngIf='isEmployee'>
-  <p>EMPLOYEE PANEL</p>
+  <a href="/Employees">
+    <button>Employees</button>
+  </a>
+  <a href="/medicine-list">
+    <button>Medicine</button>
+  </a>
+  <a href="/calendar">
+    <button>Calendar</button>
+  </a>
+  <a href="/user-list">
+    <button>Users</button>
+  </a>
 </div>
-
-<div *ngIf='!isAdmin && !isEmployee'></div>
+<div *ngIf='!isAdmin && !isEmployee'>
+  <p> USER PANEL</p>
+</div>
