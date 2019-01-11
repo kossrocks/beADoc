@@ -32,10 +32,6 @@ import {CommonModule} from '@angular/common';
 import { MyCalendarComponent } from './calendar/calendar.component';
 import {FullCalendarModule} from 'ng-fullcalendar';
 
-
-
-
-
 defineLocale('de', deLocale);
 
 
@@ -52,18 +48,12 @@ export function tokenGetter() {
     LogoutComponent,
     MediainputComponent,
     SafeUrlPipe,
-
     AppointmentDoctorListComponent,
     AppointmentPatientFormComponent,
     AppointmentPatientListComponent,
-
-
     MedicineComponent,
     MedicineFormComponent,
-
     MyCalendarComponent,
-
-
   ],
   imports: [
     BrowserModule,
