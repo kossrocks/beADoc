@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {Router} from '@angular/router';
+import {User} from '../api/user';
+import {UserService} from '../service/user.service';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-mainpage',
@@ -7,14 +11,17 @@ import {JwtHelperService} from '@auth0/angular-jwt';
   styleUrls: ['./mainpage.component.scss']
 })
 export class MainpageComponent implements OnInit {
+  id: number;
   name: String;
   token: String;
   tokenDecoder: JwtHelperService;
   isAdmin: boolean;
   isEmployee: boolean;
-  constructor() { }
+  users: Array<User>;
+  constructor(private router: Router, private userService: UserService) { }
   ngOnInit() {
     this.getUserRole();
+    this.getUserId();
   }
   getUserRole() {
     this.tokenDecoder = new JwtHelperService();
@@ -26,5 +33,21 @@ export class MainpageComponent implements OnInit {
     } else if (this.token['authorities'].includes('ROLE_EMPLOYEE')) {
       this.isEmployee = true;
     }
+  }
+  getUserId() {
+    this.userService.getAll()
+      .subscribe((users: any) => {
+        this.users = users;
+      });
+    this.id = this.users[0].id;
+      for (const user of this.users) {
+      if (user.username.match(this.name)) {
+      this.id = user.id;
+     }
+    }
+  }
+  editUser() {
+    this.getUserId()
+    this.router.navigate(['/user-form/' + this.id.toString()]);
   }
 }

@@ -29,7 +29,7 @@ public class MedicineService {
 
   public Set<Medicine> getMedicines(Set<Long> dtos){
     Set<Medicine> entities = new HashSet<>();
-    dtos.forEach((dto)->entities.add(medicineRepository.findById(dto).get()));
+    if(entities == null || !entities.isEmpty()) dtos.forEach((dto)->entities.add(medicineRepository.findById(dto).get()));
     return entities;
   }
 

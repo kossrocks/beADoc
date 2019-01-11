@@ -21,7 +21,7 @@ export class UserFormComponent implements OnInit {
     this.userForm = new FormGroup({
       'id': new FormControl(),
       'username': new FormControl('', [Validators.required]),
-      'password': new FormControl('', [Validators.required]),
+      'password': new FormControl,
       'name': new FormControl(),
       'lastName': new FormControl(),
       'eMail': new FormControl(),
@@ -46,9 +46,9 @@ export class UserFormComponent implements OnInit {
 
   saveUser() {
 
-    const actor = this.userForm.value;
-    if (actor.id) {
-      this.userService.update(actor)
+    const user = this.userForm.value;
+    if (user.id) {
+      this.userService.update(user)
         .subscribe((response) => {
           alert('updated successfully');
           this.userForm.setValue(response);
@@ -57,7 +57,7 @@ export class UserFormComponent implements OnInit {
           }
         });
     } else {
-      this.userService.create(actor)
+      this.userService.create(user)
         .subscribe((response: any) => {
           alert('created successfully');
           if (this.shouldNavigateToList) {
