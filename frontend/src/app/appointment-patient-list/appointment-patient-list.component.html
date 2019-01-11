@@ -1,0 +1,16 @@
+<div *ngFor="let appointment of appointments">
+  <div *ngIf=" username == appointment.patient.username">
+    {{appointment.id}} , {{appointment.appointmentDate}} {{appointment.appointmentTime}} {{appointment.fixed}} <button *ngIf="appointment.fixed==false" type="button" (click)="fixAppointment()">Fix Appointment</button>
+
+  </div>
+</div>
+
+<button type="button" (click)="createAppointment()">
+  Create new Appointment
+</button>
+
+<button type="button" (click)="goBackHome()">
+  Back
+</button>
+
+

@@ -23,7 +23,10 @@ public class MedicineFacade {
 
     void mapDtoToEntity(MedicineDTO dto, Medicine entity) {
         entity.setName(dto.getName());
-        entity.setConsumers(userService.getUserSet(dto.getConsumers()));
+
+        if(dto.getConsumers() != null){
+            entity.setConsumers(userService.getUserSet(dto.getConsumers()));
+        }
         entity.setDosage(dto.getDosage());
         entity.setSideEffects(dto.getSideEffects());
     }
@@ -34,8 +37,8 @@ public class MedicineFacade {
         if (entity.getConsumers() != null) {
             dto.setConsumers(entity.getConsumers().stream().map((u) -> u.getId()).collect(Collectors.toSet()));
         }
-        entity.setDosage(entity.getDosage());
-        entity.setSideEffects(entity.getSideEffects());
+        dto.setDosage(entity.getDosage());
+        dto.setSideEffects(entity.getSideEffects());
     }
 
     public MedicineDTO update(Long id, MedicineDTO dto) {

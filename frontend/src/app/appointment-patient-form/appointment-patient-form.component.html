@@ -1,0 +1,75 @@
+<form [formGroup]="appointmentForm" (ngSubmit)="askForAppointment()">
+  <br>
+    <div class="row">
+    <div class="col">
+      <label>When do you want your appointment?</label>
+      <div class="form-check">
+        <input class="form-check-input" #soon type="radio" name="preferences" id="radio1" formControlName="preferences" value="soon">
+        <label class="form-check-label" for="radio1"> As soon as possible</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" #chooseMore type="radio" name="preferences" id="radio2" formControlName="preferences" value="chooseMore">
+        <label class="form-check-label" for="radio2"> Tell us your preferences</label>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div *ngIf="chooseMore.checked" class="row">
+    <div class="col">
+    <label>What day do you prefer?</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="day" id="checkbox1" formControlName="day" value="monday">
+        <label class="form-check-label" for="checkbox1"> Monday</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="day" id="checkbox2" formControlName="day" value="tuesday">
+        <label class="form-check-label" for="checkbox2"> Tuesday</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="day" id="checkbox3" formControlName="day" value="wednesday">
+        <label class="form-check-label" for="checkbox3"> Wednesday</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="day" id="checkbox4" formControlName="day" value="thursday">
+        <label class="form-check-label" for="checkbox4"> Thursday</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="day" id="checkbox5" formControlName="day" value="friday">
+        <label class="form-check-label" for="checkbox5"> Friday</label>
+      </div>
+  </div>
+  <div class="col">
+    <label>What part of the day do you prefer?</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="time" id="checkbox6" formControlName="time" value="morning">
+        <label class="form-check-label" for="checkbox6"> Morning</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="time" id="checkbox7" formControlName="time" value="midday">
+        <label class="form-check-label" for="checkbox7"> Midday</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="time" id="checkbox8" formControlName="time" value="afternoon">
+        <label class="form-check-label" for="checkbox8"> Afternoon</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="time" id="checkbox9" formControlName="time" value="allday">
+        <label class="form-check-label" for="checkbox9"> All day</label>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="btn-group">
+    <button type="submit" class="btn btn-primary" [disabled]="appointmentForm.invalid">
+      Ask for Appointment
+    </button>
+    <button type="button" (click)="goBackToList()">
+      Back
+    </button>
+  </div>
+
+</form>
+
+
+
+
