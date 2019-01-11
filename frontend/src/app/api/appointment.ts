@@ -5,5 +5,5 @@ export interface Appointment {
   appointmentDate: Date;
   appointmentTime: Date;
   fixed: boolean;
-  patient: User;
+  patient: number;
 }

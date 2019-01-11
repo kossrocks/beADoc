@@ -3,7 +3,7 @@ import {User} from './user';
 export interface Medicine {
   id?: number;
   name: string;
-  consumers?: Set<User>;
+  consumers?: Array<any>;
   dosage?: string;
   sideEffects?: string;
 
