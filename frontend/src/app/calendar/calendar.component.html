@@ -1,6 +1,4 @@
 <div *ngIf="calendarOptions">
   <ng-fullcalendar #ucCalendar [options]="calendarOptions" [(eventsModel)]="events"></ng-fullcalendar>
 </div>
-<div *ngFor="let appointment of appointments">
-  {{appointment.appointmentDate}}:{{appointment.appointmentTime}}
-</div>
+

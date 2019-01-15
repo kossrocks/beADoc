@@ -1,15 +1,14 @@
 package at.fh.ima.swengs.moviedbv3.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Appointment {
@@ -27,6 +26,10 @@ public class Appointment {
     @ManyToOne
     private User patient;
 
+    private boolean soon;
+
+    private String preferences;
+
     @Version
     @JsonIgnore
     private long version;
@@ -40,9 +43,30 @@ public class Appointment {
         this.appointmentDate = appointmentDate;
 
         this.appointmentTime = ((Math.floorDiv(appointmentTime,100)%24) *100) + ((appointmentTime - Math.floorDiv(appointmentTime,100)*100)%60);
+
     }
 
-    public long getId() {
+  public boolean isFixed() {
+    return fixed;
+  }
+
+  public boolean isSoon() {
+    return soon;
+  }
+
+  public void setSoon(boolean soon) {
+    this.soon = soon;
+  }
+
+  public String getPreferences() {
+    return preferences;
+  }
+
+  public void setPreferences(String preferences) {
+    this.preferences = preferences;
+  }
+
+  public long getId() {
         return id;
     }
 
@@ -60,10 +84,6 @@ public class Appointment {
 
     public void setAppointmentTime(long appointmentTime) {
         this.appointmentTime = appointmentTime;
-    }
-
-    public boolean getFixed() {
-        return fixed;
     }
 
     public void setFixed(boolean fixed) {
