@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {AppointmentService} from '../service/appointment.service';
 import {Appointment} from '../api/appointment';
+import {CalendarService} from '../service/calendar.service';
 
 @Component({
   selector: 'app-appointment-patient-list',
@@ -12,8 +13,9 @@ export class AppointmentPatientListComponent implements OnInit {
 
   appointments: Array<Appointment>;
   appointment: Appointment;
-  username: string;
-  checkboxAppointment = false;
+  usernameCurrent: string;
+  patients;
+  appointmentEntries;
 
   constructor(private appointmentService: AppointmentService, private router: Router) { }
 
@@ -25,10 +27,15 @@ export class AppointmentPatientListComponent implements OnInit {
       .subscribe((appointments: any) => {
         this.appointments = appointments;
       });
+
+    this.appointmentService.getAllEntries()
+      .subscribe((appointmentEntries: any) => {
+        this.appointmentEntries = appointmentEntries;
+    });
   }
 
   getUsername() {
-    this.username = localStorage.getItem('username');
+    this.usernameCurrent = localStorage.getItem('username');
   }
 
   createAppointment() {
@@ -50,7 +57,7 @@ export class AppointmentPatientListComponent implements OnInit {
         this.appointment = appointment;
       });
 
-    this.appointment.fixed = true;
+    this.appointment.fixed = false;
 
     this.appointmentService.update(this.appointment)
       .subscribe((response) => {

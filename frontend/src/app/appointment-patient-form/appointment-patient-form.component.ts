@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AppointmentService} from '../service/appointment.service';
+import {InquiryService} from '../service/inquiry.service';
+import {UserService} from '../service/user.service';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-appointment-patient-form',
@@ -11,22 +14,34 @@ import {AppointmentService} from '../service/appointment.service';
 export class AppointmentPatientFormComponent implements OnInit {
 
   appointmentForm;
+  currentUser;
 
-  constructor(private router: Router, private appointmentService: AppointmentService) { }
+  constructor(private router: Router, private inquiryService: InquiryService, private userService: UserService) { }
 
   ngOnInit() {
 
     this.appointmentForm = new FormGroup( {
-      'preferences': new FormControl(),
-      'day': new FormControl(),
-      'time': new FormControl()
+      'soon': new FormControl(),
+      'monday': new FormControl(),
+      'tuesday': new FormControl(),
+      'wednesday': new FormControl(),
+      'thursay': new FormControl(),
+      'friday': new FormControl(),
+      'morning': new FormControl(),
+      'midday': new FormControl(),
+      'evening': new FormControl(),
+      'patientId': new FormControl(),
     });
+
+
+
   }
 
 
+
   askForAppointment() {
-    const appointment = this.appointmentForm.value;
-    this.appointmentService.create(appointment);
+    const inquiry = this.appointmentForm.value;
+    this.inquiryService.create(inquiry);
   }
 
   goBackToList() {

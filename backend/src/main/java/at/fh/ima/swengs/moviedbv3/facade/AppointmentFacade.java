@@ -24,8 +24,6 @@ public class AppointmentFacade {
         entity.setAppointmentTime(dto.getAppointmentTime());
         entity.setFixed(dto.isFixed());
         entity.setPatient(userService.getUser(dto.getPatient()));
-        entity.setSoon(dto.isSoon());
-        entity.setPreferences(dto.getPreferences());
     }
 
     private void mapEntityToDto(Appointment entity, AppointmentDTO dto) {
@@ -36,8 +34,6 @@ public class AppointmentFacade {
         if (entity.getPatient() != null) {
             dto.setPatient(entity.getPatient().getId());
         }
-        dto.setSoon(entity.isSoon());
-        dto.setPreferences(entity.getPreferences());
     }
 
     public AppointmentDTO update(Long id, AppointmentDTO dto) {

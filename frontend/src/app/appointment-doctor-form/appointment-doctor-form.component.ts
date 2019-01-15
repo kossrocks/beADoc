@@ -23,11 +23,32 @@ export class AppointmentDoctorFormComponent implements OnInit {
       'appointmentDate': new FormControl(),
       'appointmentTime': new FormControl(),
       'patient': new FormControl(),
-    }
+    });
 
-    this.userService.getAll()
+    this.userService.getAllPatientsByUsername()
       .subscribe((patient: any) => {
         this.patientOption = patient;
       });
+  }
+
+  goBackToList() {
+    this.router.navigate(['/appointment-doctor-list']);
+  }
+
+  createAppointment () {
+    const patientToChange = this.appointmentFormDoctor.controls.patient.value;
+    const splitIt = patientToChange.split(':')[0];
+    const toInt: number = parseInt(splitIt, 10);
+    this.appointmentFormDoctor.controls.patient.setValue('3');
+
+    alert(this.appointmentFormDoctor.controls.patient.value);
+
+    // const appointment = this.appointmentFormDoctor.value;
+
+    /*this.appointmentService.create(appointment)
+      .subscribe((response: any) => {
+        alert('created successfully');
+          this.router.navigate(['/appointment-doctor-list', response.id]);
+      });*/
   }
 }
