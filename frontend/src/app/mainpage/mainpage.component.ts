@@ -21,7 +21,10 @@ export class MainpageComponent implements OnInit {
   constructor(private router: Router, private userService: UserService) { }
   ngOnInit() {
     this.getUserRole();
-    this.getUserId();
+    this.userService.getAll()
+      .subscribe((users: any) => {
+        this.users = users;
+      });
   }
   getUserRole() {
     this.tokenDecoder = new JwtHelperService();
@@ -35,10 +38,6 @@ export class MainpageComponent implements OnInit {
     }
   }
   getUserId() {
-    this.userService.getAll()
-      .subscribe((users: any) => {
-        this.users = users;
-      });
       for (const user of this.users) {
         if (user.username === this.name) {
         this.id = user.id;
@@ -51,6 +50,6 @@ export class MainpageComponent implements OnInit {
   }
   editQuestionnaire() {
     this.getUserId()
-    this.router.navigate(['/questionnaire/' + this.id.toString()]);
+    this.router.navigate(['/questionaires/' + this.id.toString()]);
   }
 }
