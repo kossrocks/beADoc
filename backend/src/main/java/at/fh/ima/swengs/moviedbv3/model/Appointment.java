@@ -43,6 +43,7 @@ public class Appointment {
         this.appointmentDate = appointmentDate;
 
         this.appointmentTime = ((Math.floorDiv(appointmentTime,100)%24) *100) + ((appointmentTime - Math.floorDiv(appointmentTime,100)*100)%60);
+
     }
 
   public boolean isFixed() {

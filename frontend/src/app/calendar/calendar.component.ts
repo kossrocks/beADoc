@@ -5,6 +5,8 @@ import {AppointmentService} from '../service/appointment.service';
 import {Appointment} from '../api/appointment';
 import {UserService} from '../service/user.service';
 import {User} from '../api/user';
+import {CalendarService} from '../service/calendar.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-calendar',
@@ -23,22 +25,26 @@ export class MyCalendarComponent implements OnInit {
 
   appointments: Array<Appointment>;
   users:Array<User>;
+  calendarEntries;
 
   calendarOptions: Options;
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
 
-  constructor(private appointmentService: AppointmentService, private userService: UserService) {
+  constructor(private calendarService: CalendarService, private appointmentService: AppointmentService) {
   }
 
 
   ngOnInit() {
     this.calendarOptions = {
-      editable: true,
+      editable: false,
       eventLimit: false,
       selectable: true,
       nowIndicator: true,
       locale: 'en',
       timeFormat: 'H:mm',
+      minTime: moment.duration("06:00:00"),
+      maxTime: moment.duration("21:00:00"),
+      dayClick: (date, jsEvent, view) => this.clickDay(date, jsEvent, view),
       header: {
         left: 'prev,next today',
         center: 'title',
@@ -47,57 +53,36 @@ export class MyCalendarComponent implements OnInit {
       events: this.data
     };
 
-    this.appointmentService.getAll()
-      .subscribe((appointments: any) => {
-        this.appointments = appointments;
-        for(let appointment of this.appointments){
+    this.calendarService.getAll()
+      .subscribe((entries: any) => {
+        this.calendarEntries = entries;
+        this.addData(this.calendarEntries);
 
-          let timeString: string = appointment.appointmentTime.toString();
-
-          while (timeString.length < 4){
-            timeString = '0' + timeString;
-          }
-
-          let hourString: string = timeString.substring(0,2);
-          let minuteString: string = timeString.substring(2,4);
-
-          let timeInMinutes = parseInt(hourString) * 60 + parseInt(minuteString);
-          timeInMinutes += 60;
-
-          let newHourString: string = Math.floor(timeInMinutes/60).toString();
-          while (newHourString.length < 2){
-            newHourString = '0' + newHourString;
-          }
-          let newMinuteString: string = (timeInMinutes % 60).toString();
-          while (newMinuteString.length < 2){
-            newMinuteString = '0' + newMinuteString;
-          }
+      });
 
 
-          let startString: string = appointment.appointmentDate + 'T' + hourString + ':' + minuteString + ':00.000';
 
+  }
 
-          let endString: string = appointment.appointmentDate + 'T' + newHourString + ':' + newMinuteString + ':00.000';
+  clickDay(date, jsEvent, view){
+    alert('works');
+  }
 
+  addData(entries:Array<any>){
+    for(let entry of entries){
 
-          this.data.push(
-            {
-              title: appointment.id.toString(),
-              start: startString,
-              end: endString
-            }
-          )
+      let startDate: Date = new Date(entry.appointmentDate);
+
+      let endDate = new Date(startDate.getTime() + 1000*60*60);
+
+      this.data.push(
+        {
+          title: entry.name + ' ' + entry.lastName,
+          start: startDate.toString(),
+          end: endDate.toString()
         }
-      });
-
-
-    this.userService.getAll()
-      .subscribe((appointments: any) => {
-        this.users = appointments;
-      });
-
-
-
+      )
+    }
   }
 
 
