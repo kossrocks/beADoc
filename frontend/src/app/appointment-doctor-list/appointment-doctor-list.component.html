@@ -1,5 +1,11 @@
+<p>All appointments</p>
 <div *ngFor="let appointment of appointments">
-  {{appointment.id}} , {{appointment.appointmentDate}} {{appointment.appointmentTime}} {{appointment.fixed}} <button *ngIf="appointment.fixed==false" type="button" (click)="fixAppointment()">Fix Appointment</button>
+  <div *ngIf='isEmployee && isAdmin'>
+    {{appointment.id}} , {{appointment.appointmentDate}} {{appointment.appointmentTime}} {{appointment.fixed}} <button type="button" (click)="deleteAppointment(appointment)">Delete</button>
+  </div>
+  <div *ngIf='isEmployee && !isAdmin'>
+    {{appointment.id}} , {{appointment.appointmentDate}} {{appointment.appointmentTime}} {{appointment.fixed}}
+  </div>
 </div>
 
 <button type="button" (click)="createAppointment()">

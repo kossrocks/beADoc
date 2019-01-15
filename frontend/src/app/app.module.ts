@@ -34,6 +34,7 @@ import { MyCalendarComponent } from './calendar/calendar.component';
 import {FullCalendarModule} from 'ng-fullcalendar';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { AppointmentDoctorFormComponent } from './appointment-doctor-form/appointment-doctor-form.component';
 import { QuestionaireComponent } from './questionaire/questionaire.component';
 
 defineLocale('de', deLocale);
@@ -64,6 +65,8 @@ export function tokenGetter() {
     UserFormComponent,
 
     QuestionaireComponent,
+
+    AppointmentDoctorFormComponent,
   ],
   imports: [
     BrowserModule,
