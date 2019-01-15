@@ -3,9 +3,12 @@
       <div class="form-group">
         <label for="name">Name:</label>
         <input id="name" type="text" name="name" formControlName="name" class="form-control"/>
-          <!--<div *ngIf="medicineForm.controls.name.errors.required">
+        <div *ngIf="medicineForm.controls.name.invalid && (medicineForm.controls.name.dirty || medicineForm.controls.name.touched)"
+             class="alert alert-danger">
+          <div *ngIf="medicineForm.controls.name.errors.required">
             Name is required.
-          </div> -->
+          </div>
+        </div>
       </div>
   </div>
 

@@ -7,7 +7,7 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
 
   name: String;
   token: String;
@@ -19,17 +19,27 @@ export class AuthGuard implements CanActivate {
     private router: Router
   ) {
   }
-
+  getUserRole() {
+    this.tokenDecoder = new JwtHelperService();
+    this.name = localStorage.getItem('username');
+    this.token = this.tokenDecoder.decodeToken(localStorage.getItem('access_token'));
+    if (this.token['authorities'].includes('ROLE_ADMIN')) {
+      this.isAdmin = true;
+      this.isEmployee = true;
+    } else if (this.token['authorities'].includes('ROLE_EMPLOYEE')) {
+      this.isEmployee = true;
+    }
+  }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     // handle any redirects if a user isn't authenticated
-    if (!this.userService.isLoggedIn) {
+    this.getUserRole()
+    if (!this.isAdmin) {
       // redirect the user
-      this.router.navigate(['/login']);
+      this.router.navigate(['/']);
       return false;
     }
-
     return true;
   }
 }

@@ -3,6 +3,7 @@ import {AppointmentService} from '../service/appointment.service';
 import {Router} from '@angular/router';
 import {Appointment} from '../api/appointment';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {Actor} from '../api/actor';
 
 @Component({
   selector: 'app-appointment-doctor-list',
@@ -44,6 +45,15 @@ export class AppointmentDoctorListComponent implements OnInit {
 
   goBackHome() {
     this.router.navigate(['/home']);
+  }
+
+  deleteAppointment(appointment: Appointment) {
+
+    this.appointmentService.delete(appointment)
+      .subscribe(() => {
+        this.ngOnInit();
+      });
+
   }
 
 }

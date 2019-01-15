@@ -1,0 +1,20 @@
+<form [formGroup]="appointmentFormDoctor" (ngSubmit)="createAppointment()">
+  <div class="row">
+    <div class="col">
+        <label for="appointmentDate">Date of Appointment</label>
+        <input id="appointmentDate" type="Date" name="appointmentDate" formControlName="appointmentDate" class="form-control"/>
+    </div>
+    <div class="col">
+      <label for="appointmentTime">Time of Appointment</label>
+      <input id="appointmentTime" type="text" name="appointmentTime" formControlName="appointmentTime" class="form-control"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label for="patient">Patient</label>
+      <ngx-select id="patient" [items]="patientOption" name="patient" [multiple]="false"
+                  formControlName="patient" optionTextField="patient"></ngx-select>
+    </div>
+
+  </div>
+</form>

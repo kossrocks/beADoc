@@ -51,6 +51,7 @@ export class UserService {
     this.router.navigate(['/login']);
   }
 
+
   getById(id: string) {
     return this.http.get('/api/dto/users/' + id);
   }

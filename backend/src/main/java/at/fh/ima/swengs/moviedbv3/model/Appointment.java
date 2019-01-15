@@ -38,7 +38,8 @@ public class Appointment {
         LocalDate localDate = appointmentDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         this.id = ((localDate.getYear()*100000000)+(localDate.getMonthValue()*1000000)+(localDate.getDayOfMonth()*10000)+appointmentTime);
         this.appointmentDate = appointmentDate;
-        this.appointmentTime = appointmentTime;
+
+        this.appointmentTime = ((Math.floorDiv(appointmentTime,100)%24) *100) + ((appointmentTime - Math.floorDiv(appointmentTime,100)*100)%60);
     }
 
     public long getId() {
