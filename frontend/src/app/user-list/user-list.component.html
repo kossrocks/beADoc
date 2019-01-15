@@ -1,26 +1,29 @@
 
-  <table mat-table dataSource="users" class="mat-elevation-z8">
+<h1 > {{title}}</h1>
+  <table>
     <thead>
     <tr>
       <th *ngFor="let head of headElements" scope="col">{{head}} </th>
     </tr>
     </thead>
     <tbody>
-    <tr mdbTableCol *ngFor="let user of users">
-      <th scope="row">{{user.username}}</th>
+    <tr *ngFor="let user of users">
+      <td>{{user.username}}</td>
       <td>{{user.name}}</td>
       <td>{{user.lastName}}</td>
       <td>{{user.eMail}}</td>
       <td>{{user.employee}}</td>
       <td>{{user.admin}}</td>
-      <td><a [routerLink]="'/user-form/' + user.id">Edit</a></td>
-      <td><button type="button" (click)="deleteUser(user)">Delete</button>
+      <td class="td-btn"><a [routerLink]="'/user-form/' + user.id"><button class="btn btn-success pull-right">Edit</button></a></td>
+      <td class="td-btn"><button class="btn btn-danger" (click)="deleteUser(user)">Delete</button>
       </td>
     </tr>
     </tbody>
   </table>
 
 <button type="button" (click)="createUser()">
-  Create user
+  Create new
 </button>
+
+
 
