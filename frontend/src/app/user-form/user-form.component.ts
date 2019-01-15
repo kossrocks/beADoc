@@ -75,7 +75,6 @@ export class UserFormComponent implements OnInit {
           }
         });
     }
-
   }
 
   navigateToList(isPatient) {
