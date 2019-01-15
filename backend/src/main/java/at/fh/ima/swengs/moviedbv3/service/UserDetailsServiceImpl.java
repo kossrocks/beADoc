@@ -71,6 +71,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             admin.setLastName("Power");
             admin.setPassword(encoder.encode("12345"));
             admin.setAdmin(true);
+            admin.setEmployee(true);
             userRepository.save(admin);
 
             at.fh.ima.swengs.moviedbv3.model.User employee = new at.fh.ima.swengs.moviedbv3.model.User();
