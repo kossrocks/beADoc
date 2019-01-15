@@ -33,6 +33,7 @@ Tries to call /user-form/1 suceeds gets forwarded
 Tries to call /user-form/2 fails gets routed to /home
 
  */
+
 const routes: Routes = [
   {
     path: '', redirectTo: '/home', pathMatch: 'full'
@@ -52,15 +53,12 @@ const routes: Routes = [
   {
     path: 'user-form/:id', component: UserFormComponent, canActivate: [AuthGuard, EditGuard]
   },
-  {
-    path: 'user-list/:id', component: UserListComponent, canActivate: [AuthGuard, EditGuard]
-  },
   /////////// EMPLOYEE and ADMIN ONLY ///////////////
   {
-    path: 'user-list', component: UserListComponent, canActivate: [AuthGuard, EmployeeGuard]
+    path: 'user-form', component: UserFormComponent, canActivate: [AuthGuard, EmployeeGuard]
   },
   {
-    path: 'user-form', component: UserFormComponent, canActivate: [AuthGuard, EmployeeGuard]
+    path: 'user-list/:id', component: UserListComponent, canActivate: [AuthGuard, EmployeeGuard]
   },
   {
     path: 'medicine-list', component: MedicineComponent, canActivate: [AuthGuard, EmployeeGuard]
