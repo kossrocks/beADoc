@@ -7,6 +7,7 @@ import {UserService} from '../service/user.service';
 import {User} from '../api/user';
 import {CalendarService} from '../service/calendar.service';
 import * as moment from 'moment';
+import {jsonpCallbackContext} from '@angular/common/http/src/module';
 
 @Component({
   selector: 'app-calendar',
@@ -44,7 +45,6 @@ export class MyCalendarComponent implements OnInit {
       timeFormat: 'H:mm',
       minTime: moment.duration("06:00:00"),
       maxTime: moment.duration("21:00:00"),
-      dayClick: (date, jsEvent, view) => this.clickDay(date, jsEvent, view),
       header: {
         left: 'prev,next today',
         center: 'title',
@@ -64,8 +64,23 @@ export class MyCalendarComponent implements OnInit {
 
   }
 
-  clickDay(date, jsEvent, view){
-    alert('works');
+
+  clickDay(details){
+    let detailStringList = Object.values(details).toString().split(' ');
+    detailStringList = detailStringList.splice(1,3);
+    let dateString = detailStringList[2]+'-'+ this.monthStringToNumber(detailStringList[0]) + '-' + detailStringList[1];
+
+    let viewNameList = ['month','agendaWeek','agendaDay'];
+
+    let view = this.ucCalendar.fullCalendar('getView');
+
+    let viewName = viewNameList[viewNameList.indexOf(view.name) + 1 ];
+
+    //alert("details: " + view.name);
+
+    this.ucCalendar.fullCalendar('changeView',viewName);
+    this.ucCalendar.fullCalendar('gotoDate', dateString);
+
   }
 
   addData(entries:Array<any>){
@@ -83,6 +98,15 @@ export class MyCalendarComponent implements OnInit {
         }
       )
     }
+  }
+
+  monthStringToNumber(string: String){
+    let months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+
+    let monthNumber: String = (months.indexOf(string.toLowerCase()) + 1).toString();
+    if(monthNumber.length < 2) monthNumber = '0' + monthNumber;
+
+    return monthNumber;
   }
 
 
