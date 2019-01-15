@@ -1,6 +1,8 @@
 package at.fh.ima.swengs.moviedbv3.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,6 +11,9 @@ import javax.persistence.Version;
 import java.util.Objects;
 
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Inquiry {
 
     @Id
@@ -21,7 +26,7 @@ public class Inquiry {
     private boolean friday;
     private boolean morning;
     private boolean midday;
-    private boolean evening;
+    private boolean afternoon;
 
     @ManyToOne
     private User patient;
@@ -42,7 +47,7 @@ public class Inquiry {
         this.friday = friday;
         this.morning = morning;
         this.midday = midday;
-        this.evening = evening;
+        this.afternoon = afternoon;
     }
 
     public long getId() {
@@ -117,12 +122,12 @@ public class Inquiry {
         this.midday = midday;
     }
 
-    public boolean isEvening() {
-        return evening;
+    public boolean isAfternoon() {
+        return afternoon;
     }
 
-    public void setEvening(boolean evening) {
-        this.evening = evening;
+    public void setAfternoon(boolean afternoon) {
+        this.afternoon = afternoon;
     }
 
     public User getPatient() {

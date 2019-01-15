@@ -40,8 +40,9 @@ public class InquiryFacade {
         entityInq.setFriday(dto.isFriday());
         entityInq.setMorning(dto.isMorning());
         entityInq.setMidday(dto.isMidday());
-        entityInq.setEvening(dto.isEvening());
-        entityInq.setPatient(userService.getUser(dto.getPatient()));
+        entityInq.setAfternoon(dto.isAfternoon());
+
+        //entityInq.setPatient(userService.getUser(dto.getPatient()));
     }
 
     private void mapEntityToDto (Inquiry entityInq, User entityUser, InquiryDTO dto) {
@@ -57,7 +58,7 @@ public class InquiryFacade {
         dto.setFriday(entityInq.isFriday());
         dto.setMorning(entityInq.isMorning());
         dto.setMidday(entityInq.isMidday());
-        dto.setEvening(entityInq.isEvening());
+        dto.setAfternoon(entityInq.isAfternoon());
     }
 
     public InquiryDTO create(InquiryDTO dto) {

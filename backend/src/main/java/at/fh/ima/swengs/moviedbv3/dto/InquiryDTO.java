@@ -11,7 +11,7 @@ public class InquiryDTO {
     private boolean friday;
     private boolean morning;
     private boolean midday;
-    private boolean evening;
+    private boolean afternoon;
     private Long userId;
     private String username;
     private String name;
@@ -130,12 +130,11 @@ public class InquiryDTO {
         this.midday = midday;
     }
 
-    public boolean isEvening() {
-        return evening;
+    public boolean isAfternoon() {
+        return afternoon;
     }
 
-    public void setEvening(boolean evening) {
-        this.evening = evening;
+    public void setAfternoon(boolean afternoon) {
+        this.afternoon = afternoon;
     }
-
 }

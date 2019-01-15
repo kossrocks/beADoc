@@ -1,14 +1,14 @@
-<form [formGroup]="appointmentForm" (ngSubmit)="askForAppointment()">
+<form [formGroup]="inquiryForm" (ngSubmit)="askForAppointment()">
   <br>
-    <div class="row">
+  <div class="row">
     <div class="col">
       <label>When do you want your appointment?</label>
       <div class="form-check">
-        <input class="form-check-input" #soon type="radio" name="soon" id="soon" formControlName="soon" value="true">
+        <input class="form-check-input" #soon type="radio" name="soon" id="soon" formControlName="soon" [value]="true">
         <label class="form-check-label" for="soon"> As soon as possible</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" #chooseMore type="radio" name="soon" id="notSoon" formControlName="soon" value="false">
+        <input class="form-check-input" #chooseMore type="radio" name="soon" id="notSoon" formControlName="soon" [value]="false">
         <label class="form-check-label" for="notSoon"> Tell us your preferences</label>
       </div>
     </div>
@@ -18,38 +18,38 @@
     <div class="col">
     <label>What day do you prefer?</label>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="monday" id="monday" formControlName="monday" value="monday">
+        <input class="form-check-input" type="checkbox" name="monday" id="monday" formControlName="monday" [value]="true">
         <label class="form-check-label" for="monday"> Monday</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="tuesday" id="tuesday" formControlName="tuesday" value="tuesday">
+        <input class="form-check-input" type="checkbox" name="tuesday" id="tuesday" formControlName="tuesday" [value]="true">
         <label class="form-check-label" for="tuesday"> Tuesday</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="wednesday" id="wednesday" formControlName="wednesday" value="wednesday">
+        <input class="form-check-input" type="checkbox" name="wednesday" id="wednesday" formControlName="wednesday" [value]="true">
         <label class="form-check-label" for="wednesday"> Wednesday</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="thursday" id="thursday" formControlName="thursday" value="thursday">
+        <input class="form-check-input" type="checkbox" name="thursday" id="thursday" formControlName="thursday" [value]="true">
         <label class="form-check-label" for="thursday"> Thursday</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="friday" id="friday" formControlName="friday" value="friday">
+        <input class="form-check-input" type="checkbox" name="friday" id="friday" formControlName="friday" [value]="true">
         <label class="form-check-label" for="friday"> Friday</label>
       </div>
   </div>
   <div class="col">
     <label>What part of the day do you prefer?</label>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="morning" id="morning" formControlName="morning" value="morning">
+        <input class="form-check-input" type="checkbox" name="morning" id="morning" formControlName="morning" [value]="true">
         <label class="form-check-label" for="morning"> Morning</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="midday" id="midday" formControlName="midday" value="midday">
+        <input class="form-check-input" type="checkbox" name="midday" id="midday" formControlName="midday" [value]="true">
         <label class="form-check-label" for="midday"> Midday</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="afternoon" id="afternoon" formControlName="afternoon" value="afternoon">
+        <input class="form-check-input" type="checkbox" name="afternoon" id="afternoon" formControlName="afternoon" [value]="true">
         <label class="form-check-label" for="afternoon"> Afternoon</label>
       </div>
     </div>

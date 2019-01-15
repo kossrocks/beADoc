@@ -13,35 +13,44 @@ import {forEach} from '@angular/router/src/utils/collection';
 })
 export class AppointmentPatientFormComponent implements OnInit {
 
-  appointmentForm;
-  currentUser;
+  inquiryForm;
+  users;
 
   constructor(private router: Router, private inquiryService: InquiryService, private userService: UserService) { }
 
   ngOnInit() {
 
-    this.appointmentForm = new FormGroup( {
+    this.inquiryForm = new FormGroup( {
       'soon': new FormControl(),
       'monday': new FormControl(),
       'tuesday': new FormControl(),
       'wednesday': new FormControl(),
-      'thursay': new FormControl(),
+      'thursday': new FormControl(),
       'friday': new FormControl(),
       'morning': new FormControl(),
       'midday': new FormControl(),
-      'evening': new FormControl(),
+      'afternoon': new FormControl(),
       'patientId': new FormControl(),
     });
 
 
+    this.userService.getAll()
+      .subscribe((users: any) => {
+        this.users = users;
+      });
 
   }
 
 
 
   askForAppointment() {
-    const inquiry = this.appointmentForm.value;
-    this.inquiryService.create(inquiry);
+    //const id = this.users.filter((u) => u.username === localStorage.getItem('username'))[0].id;
+    //this.inquiryForm.patchValue({patientId: 3});
+    const inquiry = this.inquiryForm.value;
+    this.inquiryService.create(inquiry)
+      .subscribe((response: any) => {
+        alert('inquiry created');
+      });
   }
 
   goBackToList() {
