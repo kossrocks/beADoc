@@ -3,6 +3,7 @@ import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '
 import {Observable} from 'rxjs';
 import {UserService} from './service/user.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {User} from './api/user';
 
 @Injectable({
   providedIn: 'root'

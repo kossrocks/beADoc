@@ -16,6 +16,7 @@ import {MyCalendarComponent} from './calendar/calendar.component';
 import {UserListComponent} from './user-list/user-list.component';
 import {UserFormComponent} from './user-form/user-form.component';
 import {EditGuard} from './edit.guard';
+import {QuestionaireComponent} from './questionaire/questionaire.component';
 
 
 /*
@@ -54,6 +55,9 @@ const routes: Routes = [
   },
   {
     path: 'user-list/:id', component: UserListComponent, canActivate: [AuthGuard, EditGuard]
+  },
+  {
+    path: 'questionaires/:id', component: QuestionaireComponent, canActivate: [AuthGuard, EditGuard]
   },
   /////////// EMPLOYEE and ADMIN ONLY ///////////////
   {
