@@ -39,6 +39,9 @@ public class User {
   @ManyToMany(mappedBy = "consumers")
   private Set<Medicine> medicines;
 
+  @OneToMany(mappedBy = "patient")
+  private Set<Inquiry> inquiries;
+
   @ManyToMany
   @JoinTable(name =
     "movies_pictures"
@@ -66,6 +69,14 @@ public class User {
   @Version
   @JsonIgnore
   private long version;
+
+  public Set<Inquiry> getInquiries() {
+    return inquiries;
+  }
+
+  public void setInquiries(Set<Inquiry> inquiries) {
+    this.inquiries = inquiries;
+  }
 
   public Set<Questionaire> getQuestionaires() {
     return questionaires;

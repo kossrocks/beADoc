@@ -12,7 +12,7 @@ public class InquiryDTO {
     private boolean morning;
     private boolean midday;
     private boolean afternoon;
-    private Long userId;
+    private long userId;
     private String username;
     private String name;
     private String lastName;
@@ -26,7 +26,7 @@ public class InquiryDTO {
         this.patient = patient;
     }
 
-    public Long getUserId() {
+    public long getUserId() {
         return userId;
     }
 
