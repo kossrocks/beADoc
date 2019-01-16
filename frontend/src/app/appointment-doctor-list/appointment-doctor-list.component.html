@@ -12,8 +12,8 @@
 
 <div *ngIf="isEmployee">
   <div *ngFor="let inquiry of inquiryentries">
-    Inquiry by {{inquiry.username}}
-    <button type="button" (click)="goToAppointmentForm()">Create new Appointment</button>
+    Inquiry by {{inquiry.username}}{{inquiry.id}}
+    <button type="button" (click)="goToAppointmentForm(inquiry.id)">Create new Appointment</button>
   </div>
 </div>
 <div style="margin-top: 70px;">

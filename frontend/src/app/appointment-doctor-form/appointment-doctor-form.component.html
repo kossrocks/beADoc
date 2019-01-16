@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col">
     <h3>Pending Inquiries</h3>
-    <div class="inquiry" *ngFor="let inquiry of inquiryentries" style="margin-bottom: 20px;">
+    <div *ngIf="inquiry" class="inquiry" style="margin-bottom: 20px;">
       <span style="font-weight: bold;"> Inquiry by {{inquiry.name}} {{inquiry.lastName}} ({{inquiry.username}}): </span>
       <br>
       <div>

@@ -1,5 +1,7 @@
 package at.fh.ima.swengs.moviedbv3.dto;
 
+import java.util.Date;
+
 public class InquiryDTO {
 
     private long id;
@@ -17,6 +19,7 @@ public class InquiryDTO {
     private String name;
     private String lastName;
     private Long patientId;
+  private Date dayOfCreation;
 
   public Long getPatientId() {
     return patientId;
@@ -24,6 +27,14 @@ public class InquiryDTO {
 
   public void setPatientId(Long patientId) {
     this.patientId = patientId;
+  }
+
+  public Date getDayOfCreation() {
+    return dayOfCreation;
+  }
+
+  public void setDayOfCreation(Date dayOfCreation) {
+    this.dayOfCreation = dayOfCreation;
   }
 
   public long getUserId() {

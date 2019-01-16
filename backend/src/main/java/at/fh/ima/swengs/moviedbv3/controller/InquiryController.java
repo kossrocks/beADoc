@@ -3,10 +3,7 @@ package at.fh.ima.swengs.moviedbv3.controller;
 import at.fh.ima.swengs.moviedbv3.dto.InquiryDTO;
 import at.fh.ima.swengs.moviedbv3.facade.InquiryFacade;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -21,6 +18,11 @@ public class InquiryController {
     InquiryDTO create(@RequestBody @Valid InquiryDTO dto) {
         return inquiryFacade.create(dto);
     }
+
+  @GetMapping("/dto/inquirys/{id}")
+  InquiryDTO getById(@PathVariable Long id) {
+    return inquiryFacade.getById(id);
+  }
 
     @GetMapping("/dto/inquiryentries")
     List<InquiryDTO> getInquiryEntries() {
