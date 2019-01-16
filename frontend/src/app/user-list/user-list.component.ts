@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../api/user';
 import {UserService} from '../service/user.service';
+import {split} from 'ts-node';
 
 @Component({
   selector: 'app-user-list',
@@ -21,7 +22,8 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
 
     const id = this.route.snapshot.paramMap.get('id');
-
+    const urlString = this.route.snapshot.url.toString();
+    localStorage.setItem('filterMode', urlString.split(',')[1]);
     switch (id) {
       case 'employees': {
         this.userService.getAllEmployees()
@@ -43,6 +45,7 @@ export class UserListComponent implements OnInit {
         this.userService.getAll()
           .subscribe((users: any) => {
             this.users = users;
+            this.title = 'Users';
           });
         break;
       }
