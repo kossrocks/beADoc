@@ -38,6 +38,8 @@ import { AppointmentDoctorFormComponent } from './appointment-doctor-form/appoin
 import { QuestionaireComponent } from './questionaire/questionaire.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 
+
+
 defineLocale('de', deLocale);
 
 
