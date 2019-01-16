@@ -36,6 +36,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { AppointmentDoctorFormComponent } from './appointment-doctor-form/appointment-doctor-form.component';
 import { QuestionaireComponent } from './questionaire/questionaire.component';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 defineLocale('de', deLocale);
 
@@ -67,6 +68,8 @@ export function tokenGetter() {
     QuestionaireComponent,
 
     AppointmentDoctorFormComponent,
+
+    UserInfoComponent,
   ],
   imports: [
     BrowserModule,

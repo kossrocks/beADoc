@@ -17,6 +17,7 @@ import {UserListComponent} from './user-list/user-list.component';
 import {UserFormComponent} from './user-form/user-form.component';
 import {EditGuard} from './edit.guard';
 import {QuestionaireComponent} from './questionaire/questionaire.component';
+import {UserInfoComponent} from './user-info/user-info.component';
 
 
 /*
@@ -52,6 +53,9 @@ const routes: Routes = [
   },
   {
     path: 'user-form/:id', component: UserFormComponent, canActivate: [AuthGuard, EditGuard]
+  },
+  {
+    path: 'user-info/:id', component: UserInfoComponent, canActivate: [AuthGuard]
   },
   {
     path: 'questionaires/:id', component: QuestionaireComponent, canActivate: [AuthGuard, EditGuard]
