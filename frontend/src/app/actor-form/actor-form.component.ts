@@ -1,6 +1,4 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Actor} from '../api/actor';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ActorService} from '../service/actor.service';
 import {MovieService} from '../service/movie.service';

@@ -16,6 +16,7 @@ import {MyCalendarComponent} from './calendar/calendar.component';
 import {UserListComponent} from './user-list/user-list.component';
 import {UserFormComponent} from './user-form/user-form.component';
 import {EditGuard} from './edit.guard';
+import {QuestionaireComponent} from './questionaire/questionaire.component';
 
 
 /*
@@ -33,7 +34,6 @@ Tries to call /user-form/1 suceeds gets forwarded
 Tries to call /user-form/2 fails gets routed to /home
 
  */
-
 const routes: Routes = [
   {
     path: '', redirectTo: '/home', pathMatch: 'full'
@@ -52,6 +52,9 @@ const routes: Routes = [
   },
   {
     path: 'user-form/:id', component: UserFormComponent, canActivate: [AuthGuard, EditGuard]
+  },
+  {
+    path: 'questionaires/:id', component: QuestionaireComponent, canActivate: [AuthGuard, EditGuard]
   },
   /////////// EMPLOYEE and ADMIN ONLY ///////////////
   {
