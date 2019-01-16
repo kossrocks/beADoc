@@ -33,6 +33,7 @@ export class ActorFormComponent implements OnInit, OnDestroy {
       'gender': new FormControl(),
       'alive': new FormControl(),
       'pictures': new FormControl(),
+      'profilePictures': new FormControl(),
     });
 
     this.socketMessageService.connect();
