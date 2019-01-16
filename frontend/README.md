@@ -4,6 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Dependencies
 Run `npm i ng-fullcalendar fullcalendar@3.6.1 --save --no-audit `
+Run `npm i @angular/material --save --no-audit `
 
 ## Development server
 
