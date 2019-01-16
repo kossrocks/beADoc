@@ -50,20 +50,21 @@ export class AppointmentPatientListComponent implements OnInit {
     this.router.navigate(['/appointment-patient-list']);
   }
 
-  fixAppointment(id) {
+  fixAppointment(id, index) {
 
     this.appointmentService.getById(id)
       .subscribe((appointment: any) => {
-        this.appointment = appointment;
+
+        appointment.fixed = !appointment.fixed;
+
+        this.appointmentService.update(appointment)
+          .subscribe((response) => {
+            alert('appointment fixed');
+            this.appointmentEntries[index].fixed = appointment.fixed;
+            //location.reload();
+          });
       });
 
-    this.appointment.fixed = false;
-
-    this.appointmentService.update(this.appointment)
-      .subscribe((response) => {
-      alert('appointment fixed');
-      location.reload();
-    });
 
   }
   /*

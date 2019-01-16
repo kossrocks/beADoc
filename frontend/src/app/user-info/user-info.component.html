@@ -1,0 +1,64 @@
+<form [formGroup]="userForm" (ngSubmit)="navigateToList()">
+  <div class="row">
+    <div class="col-3">
+      <div class="form-group">
+        <label>Username:</label>
+        <p>{{userForm.value.username}}</p>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="form-group">
+        <label>Password:</label>
+        <p>{{userForm.value.password}}</p>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <button class="btn btn-primary" style="margin-top: 20px">
+        Reset
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label>Name:</label>
+        <p>{{userForm.value.name}}</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <label>Lastname:</label>
+        <p>{{userForm.value.lastName}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <label>Day of Birth:</label>
+      <p>{{userForm.value.dayOfBirth}}</p>
+    </div>
+    <div class="col">
+      <label>Gender:</label>
+      <p>{{userForm.value.gender}}</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <label>Permissions:</label>
+      <p *ngIf="userForm.value.admin">Admin</p>
+      <p *ngIf="userForm.value.employee">Employee</p>
+      <p *ngIf="!userForm.value.admin && !userForm.value.employee">Patient</p>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="btn-group">
+      <button type="submit" class="btn btn-primary">
+        Back
+      </button>
+    </div>
+  </div>
+</form>
