@@ -22,6 +22,10 @@ export class AppointmentService {
     );
   }
 
+  getAllEntries() {
+    return this.http.get('/api/dto/appointmententries');
+  }
+
   delete(appointment) {
     return this.http.delete('/api/appointments/' + appointment.id);
   }

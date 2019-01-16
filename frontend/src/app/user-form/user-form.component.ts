@@ -34,6 +34,7 @@ export class UserFormComponent implements OnInit {
       'gender': new FormControl(),
       'pictures': new FormControl(),
       'email': new FormControl(),
+      'questionaires': new FormControl(),
     });
 
     const id = this.route.snapshot.paramMap.get('id');
@@ -75,7 +76,6 @@ export class UserFormComponent implements OnInit {
           }
         });
     }
-
   }
 
   navigateToList(isPatient) {
