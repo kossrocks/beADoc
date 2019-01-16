@@ -1,12 +1,9 @@
-<h1>Create a new Appointment</h1>
-<p></p>
+<br>
 <div class="row">
   <div class="col">
-    <app-calendar></app-calendar>
-  </div>
-  <div class="col inquiry">
-    <div *ngFor="let inquiry of inquiryentries" style="margin-bottom: 20px;">
-      Inquiry by {{inquiry.username}}:
+    <h3>Pending Inquiries</h3>
+    <div class="inquiry" *ngFor="let inquiry of inquiryentries" style="margin-bottom: 20px;">
+      <span style="font-weight: bold;"> Inquiry by {{inquiry.name}} {{inquiry.lastName}} ({{inquiry.username}}): </span>
       <br>
       <div>
         Day preferences:
@@ -17,11 +14,8 @@
         {{inquiry.morning ? "Morning" : ""}} {{inquiry.midday ? "Midday" : ""}} {{inquiry.afternoon ? "Afternoon" : ""}}
       </div>
     </div>
-  </div>
-
-</div>
-<br>
-<div class="row">
+    <br>
+    <h3>Create a new Appointment</h3>
   <form [formGroup]="appointmentFormDoctor" (ngSubmit)="createAppointment()">
     <div class="row">
       <div class="col">
@@ -50,4 +44,10 @@
       </button>
     </div>
   </form>
+  </div>
+  <div class="col">
+    <div>
+      <app-calendar></app-calendar>
+    </div>
+  </div>
 </div>
