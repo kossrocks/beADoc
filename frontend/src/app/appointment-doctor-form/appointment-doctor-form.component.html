@@ -24,14 +24,15 @@
       </div>
       <div class="col">
         <label for="appointmentTime">Time of Appointment</label>
-        <input id="appointmentTime" type="text" name="appointmentTime" formControlName="appointmentTime" class="form-control"/>
+        <ngx-select id="appointmentTime" [items]="timeOption" name="appointmentTime" [multiple]="false"
+                    formControlName="appointmentTime" optionTextField="appointmentTime"></ngx-select>
       </div>
     </div>
     <div class="row">
       <div class="col">
         <label for="patient">Patient</label>
         <ngx-select id="patient" [items]="patientOption" name="patient" [multiple]="false"
-                    formControlName="patient" optionTextField="patient"></ngx-select>
+                    formControlName="patient" optionTextField="name"></ngx-select>
       </div>
     </div>
     <br>
