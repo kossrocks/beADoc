@@ -4,10 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Version;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -17,7 +14,9 @@ import java.util.Objects;
 public class Inquiry {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private boolean soon;
     private boolean monday;
     private boolean tuesday;
