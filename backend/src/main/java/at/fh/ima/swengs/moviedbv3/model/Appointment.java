@@ -26,10 +26,6 @@ public class Appointment {
     @ManyToOne
     private User patient;
 
-    private boolean soon;
-
-    private String preferences;
-
     @Version
     @JsonIgnore
     private long version;
@@ -48,22 +44,6 @@ public class Appointment {
 
   public boolean isFixed() {
     return fixed;
-  }
-
-  public boolean isSoon() {
-    return soon;
-  }
-
-  public void setSoon(boolean soon) {
-    this.soon = soon;
-  }
-
-  public String getPreferences() {
-    return preferences;
-  }
-
-  public void setPreferences(String preferences) {
-    this.preferences = preferences;
   }
 
   public long getId() {

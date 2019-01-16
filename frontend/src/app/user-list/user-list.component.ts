@@ -21,18 +21,35 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
 
     const id = this.route.snapshot.paramMap.get('id');
-    if (id === 'employees') {
-      this.userService.getAllEmployees()
-        .subscribe((users: any) => {
-          this.users = users;
-          this.title = 'Employees';
-        });
-    } else if (id === 'patients') {
-      this.userService.getAllPatients()
-        .subscribe((users: any) => {
-          this.users = users;
-          this.title = 'Patients';
-        });
+
+    switch (id) {
+      case 'employees': {
+        this.userService.getAllEmployees()
+          .subscribe((users: any) => {
+            this.users = users;
+            this.title = 'Employees';
+          });
+        break;
+      }
+      case 'patients': {
+        this.userService.getAllPatients()
+          .subscribe((users: any) => {
+            this.users = users;
+            this.title = 'Patients';
+          });
+        break;
+      }
+      case 'users': {
+        this.userService.getAll()
+          .subscribe((users: any) => {
+            this.users = users;
+          });
+        break;
+      }
+      default: {
+        this.router.navigate(['/home']);
+        break;
+      }
     }
   }
 

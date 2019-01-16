@@ -64,6 +64,20 @@ export class UserService {
     );
   }
 
+  getAllPatientsByUsername () {
+    return this.http.get('/api/users').pipe(
+      map((response: any) => {
+        const patients: Array<User> = [];
+        for (const user of response._embedded.users) {
+          if (!user.admin) {
+            patients.push(user.id.toString().concat(':' + user.name + ' ' + user.lastName));
+          }
+        }
+        return patients;
+      })
+    );
+  }
+
   getAllEmployees() {
     return this.http.get('/api/users').pipe(
       map((response: any) => {
@@ -103,4 +117,5 @@ export class UserService {
   create(user: User) {
     return this.http.post('/api/dto/users', user);
   }
+
 }

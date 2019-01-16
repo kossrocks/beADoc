@@ -9,7 +9,7 @@ export class CalendarService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  getAll(){
+  getAll() {
     return this.http.get('/api/dto/calendarentries');
   }
 }
