@@ -70,7 +70,7 @@ export class UserService {
         const patients: Array<User> = [];
         for (const user of response._embedded.users) {
           if (!user.admin) {
-            patients.push(user.id.toString().concat(':' + user.name + ' ' + user.lastName));
+            patients.push(user.id.toString().concat(': ' + user.name + ' ' + user.lastName + ' (' + user.username + ')'));
           }
         }
         return patients;
