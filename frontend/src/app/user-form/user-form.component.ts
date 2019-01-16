@@ -33,6 +33,7 @@ export class UserFormComponent implements OnInit {
       'active': new FormControl(),
       'gender': new FormControl(),
       'pictures': new FormControl(),
+      'profilPictures' : new FormControl(),
       'email': new FormControl(),
       'questionaires': new FormControl(),
     });

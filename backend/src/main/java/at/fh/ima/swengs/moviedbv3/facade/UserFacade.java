@@ -48,6 +48,7 @@ public class UserFacade {
     entity.setActive(dto.isActive());
     entity.setGender(dto.getGender());
     entity.setPictures(dto.getPictures());
+    entity.setProfilPictures(dto.getProfilPictures());
     //entity.setQuestionaires(questionaireService.getQuestionaires(dto.getQuestionaires()));
     entity.setInquiries(inquiryService.getInquirys(dto.getInquiries()));
 
@@ -72,6 +73,7 @@ public class UserFacade {
     dto.setActive(entity.isActive());
     dto.setGender(entity.getGender());
     dto.setPictures(entity.getPictures());
+    dto.setProfilPictures(entity.getProfilPictures());
     if (entity.getQuestionaires() != null) {
       dto.setQuestionaires(entity.getQuestionaires().stream().map((m) -> m.getId()).collect(Collectors.toSet()));
     }

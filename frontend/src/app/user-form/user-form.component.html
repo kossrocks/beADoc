@@ -1,4 +1,15 @@
 <form [formGroup]="userForm" (ngSubmit)="saveUser()">
+  <h2>Profile Picture:</h2>
+  <br>
+  <div class="row">
+    <div class="col">
+      <app-mediainput name="profilPictures" formControlName="profilPictures"></app-mediainput>
+    </div>
+  </div>
+  <br>
+  <br>
+  <h2>User Settings:</h2>
+  <br>
   <div class="row">
     <div class="col-3">
       <div class="form-group">
@@ -73,10 +84,20 @@
       </div>
     </div>
   </div>
-
+  <h2>Medicine:</h2>
+  <br>
   <div class="row">
     <div class="col">
-      <label>Permissions:</label>
+      <app-mediainput name="pictures"
+                      formControlName="pictures"></app-mediainput>
+    </div>
+  </div>
+  <br>
+  <div class="row" *ngIf="userForm.value.employee">
+    <div class="col">
+      <br>
+      <h2>Permissions:</h2>
+      <br>
         <div>
         <input class="form-check-input" type="checkbox" name="employee" id="permissionEmployee" formControlName="employee" value="true">
         <label class="form-check-label" for="permissionEmployee">

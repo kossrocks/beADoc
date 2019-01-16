@@ -22,6 +22,7 @@ public class UserDTO {
   private boolean employee;
   private boolean active;
   private Gender gender;
+  private Set<Media> profilPictures;
   private Set<Media> pictures;
   private Set<Long> questionaires;
   private Set<Long> inquiries;
@@ -56,6 +57,14 @@ public class UserDTO {
 
   public void setPictures(Set<Media> pictures) {
     this.pictures = pictures;
+  }
+
+  public Set<Media> getProfilPictures() {
+    return profilPictures;
+  }
+
+  public void setProfilPictures(Set<Media> profilPictures) {
+    this.profilPictures = profilPictures;
   }
 
   public long getId() {

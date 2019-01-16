@@ -51,7 +51,7 @@ public class InquiryFacade {
         dto.setName(entityUser.getName());
         dto.setLastName(entityUser.getLastName());
         dto.setSoon(entityInq.isSoon());
-        dto.setMonday(entityInq.isSoon());
+        dto.setMonday(entityInq.isMonday());
         dto.setTuesday(entityInq.isTuesday());
         dto.setWednesday(entityInq.isWednesday());
         dto.setThursday(entityInq.isThursday());
