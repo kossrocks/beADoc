@@ -1,9 +1,8 @@
 <h1>{{usernameCurrent}}, these are your current appointments</h1>
-<div class="row" *ngFor="let appointment of appointmentEntries">
+<div class="row" *ngFor="let appointment of appointmentEntries; let i = index">
     <div class="col" *ngIf="usernameCurrent == appointment.username">
       Appointment: {{appointment.appointmentDate}} {{appointment.appointmentTime}} {{appointment.fixed}}
-    </div>
-    <div class="col"> <form *ngIf="!appointment.fixed" (ngSubmit)="fixAppointment(appointment.appointmentID)"><button type="submit">Fix</button></form>
+      <form *ngIf="!appointment.fixed" (ngSubmit)="fixAppointment(appointment.appointmentID, i)"><button type="submit">Fix</button></form>
     </div>
 </div>
 

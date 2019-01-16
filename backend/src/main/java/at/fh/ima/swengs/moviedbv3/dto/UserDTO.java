@@ -24,6 +24,15 @@ public class UserDTO {
   private Gender gender;
   private Set<Media> pictures;
   private Set<Long> questionaires;
+  private Set<Long> inquiries;
+
+  public Set<Long> getInquiries() {
+    return inquiries;
+  }
+
+  public void setInquiries(Set<Long> inquiries) {
+    this.inquiries = inquiries;
+  }
 
   public Set<Long> getQuestionaires() {
     return questionaires;

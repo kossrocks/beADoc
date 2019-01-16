@@ -19,6 +19,11 @@ public class UserService {
 
   public User save(User entity) { return userRepository.save(entity); }
 
+  public User getByUsername(String username){
+   User entity = userRepository.findByUsername(username);
+    return entity;
+  }
+
   public User getUser(Long dto){
     if(dto!=null) {
       User entity = userRepository.findById(dto).get();
