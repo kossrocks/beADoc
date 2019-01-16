@@ -16,4 +16,5 @@ export interface Inquiry {
   username?: string;
   name?: string;
   lastName?: string;
+  dayOfCreation?: Date;
 }

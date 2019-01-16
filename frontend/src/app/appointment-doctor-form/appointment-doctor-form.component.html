@@ -2,20 +2,19 @@
   <div class="col">
     <app-calendar></app-calendar>
   </div>
-  <div class="col" *ngFor="let inquiry of inquiryentries">
-    <div>
-      Inquiry by {{inquiry.username}}:
+    <div *ngIf="inquiryentry">
+      Inquiry by {{inquiryentry.username}}:
       <br>
         Day preferences:
-        {{inquiry.soon ? "As soon as possible" : ""}} {{inquiry.monday ? "Monday" : ""}} {{inquiry.tuesday ? "Tuesday" : ""}} {{inquiry.wednesday ? "Wednesday" : ""}} {{inquiry.thursday ? "Thursday" : ""}} {{inquiry.friday ? "Friday" : ""}}
+        {{inquiryentry.soon ? "As soon as possible" : ""}} {{inquiryentry.monday ? "Monday" : ""}} {{inquiryentry.tuesday ? "Tuesday" : ""}} {{inquiryentry.wednesday ? "Wednesday" : ""}} {{inquiryentry.thursday ? "Thursday" : ""}} {{inquiryentry.friday ? "Friday" : ""}}
 
       <br>
         Time preferences:
-        {{inquiry.morning ? "Morning" : ""}} {{inquiry.midday ? "Midday" : ""}} {{inquiry.afternoon ? "Afternoon" : ""}}
+        {{inquiryentry.morning ? "Morning" : ""}} {{inquiryentry.midday ? "Midday" : ""}} {{inquiryentry.afternoon ? "Afternoon" : ""}}
 
     </div>
     <br>
-  </div>
+
 
 </div>
 <br>

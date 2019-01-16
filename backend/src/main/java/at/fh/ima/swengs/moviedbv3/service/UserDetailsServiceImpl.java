@@ -157,7 +157,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
       inquiry.setMorning(true);
       inquiry.setMidday(false);
       inquiry.setAfternoon(false);
+      inquiry.setDayOfCreation(new Date());
       inquiryRepository.save(inquiry);
+
 
     }
 

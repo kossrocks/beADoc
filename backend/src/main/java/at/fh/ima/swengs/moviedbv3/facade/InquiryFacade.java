@@ -43,6 +43,7 @@ public class InquiryFacade {
         entityInq.setMidday(dto.isMidday());
         entityInq.setAfternoon(dto.isAfternoon());
         entityInq.setPatient(userService.getByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
+        entityInq.setDayOfCreation(dto.getDayOfCreation());
     }
 
     private void mapEntityToDto (Inquiry entityInq, User entityUser, InquiryDTO dto) {
@@ -59,6 +60,7 @@ public class InquiryFacade {
         dto.setMorning(entityInq.isMorning());
         dto.setMidday(entityInq.isMidday());
         dto.setAfternoon(entityInq.isAfternoon());
+        dto.setDayOfCreation(entityInq.getDayOfCreation());
     }
 
     public InquiryDTO create(InquiryDTO dto) {
@@ -80,6 +82,14 @@ public class InquiryFacade {
 
         return dtos;
     }
+
+  public InquiryDTO getById(Long id) {
+    Inquiry entity = inquiryService.findById(id).get();
+    InquiryDTO dto = new InquiryDTO();
+    User user = userRepository.findById(entity.getPatient().getId()).get();
+    mapEntityToDto(entity,user, dto);
+    return dto;
+  }
 
 
 }

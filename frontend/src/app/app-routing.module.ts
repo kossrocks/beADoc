@@ -76,6 +76,9 @@ const routes: Routes = [
   {
     path: 'appointment-doctor-form', component: AppointmentDoctorFormComponent, canActivate: [AuthGuard, EmployeeGuard]
   },
+  {
+    path: 'appointment-doctor-form/:id', component: AppointmentDoctorFormComponent, canActivate: [AuthGuard, EmployeeGuard]
+  },
   ///// ADMIN ONLY ////////////
   {
     path: 'medicine-form', component: MedicineFormComponent, canActivate: [AuthGuard, AdminGuard]
