@@ -55,6 +55,7 @@ public class UserFacade {
 
   void mapEntityToDto(User entity, UserDTO dto) {
     dto.setId(entity.getId());
+    dto.setName(entity.getName());
     dto.setLastName(entity.getLastName());
     dto.setUsername(entity.getUsername());
     dto.setPassword(entity.getPassword());

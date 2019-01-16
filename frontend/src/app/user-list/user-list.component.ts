@@ -12,6 +12,7 @@ import {UserService} from '../service/user.service';
 export class UserListComponent implements OnInit {
 
   users: Array<User>;
+  title: String;
   headElements = ['Username', 'Name', 'LastName', 'eMail', 'isEmployee', 'isAdmin'];
 
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) {
@@ -20,11 +21,13 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
 
     const id = this.route.snapshot.paramMap.get('id');
+
     switch (id) {
       case 'employees': {
         this.userService.getAllEmployees()
           .subscribe((users: any) => {
             this.users = users;
+            this.title = 'Employees';
           });
         break;
       }
@@ -32,6 +35,7 @@ export class UserListComponent implements OnInit {
         this.userService.getAllPatients()
           .subscribe((users: any) => {
             this.users = users;
+            this.title = 'Patients';
           });
         break;
       }
