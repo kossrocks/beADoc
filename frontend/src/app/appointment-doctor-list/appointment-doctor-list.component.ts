@@ -48,6 +48,7 @@ export class AppointmentDoctorListComponent implements OnInit {
       .subscribe((inquiryentries: any) => {
         this.inquiryentries = inquiryentries;
       });
+
   }
 
   goBackHome() {
@@ -63,8 +64,8 @@ export class AppointmentDoctorListComponent implements OnInit {
 
   }
 
-  goToAppointmentForm() {
-    this.router.navigate(['/appointment-doctor-form']);
+  goToAppointmentForm(id) {
+    this.router.navigate(['/appointment-doctor-form/' + id]);
   }
 
 }

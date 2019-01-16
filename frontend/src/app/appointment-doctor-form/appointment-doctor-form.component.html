@@ -2,16 +2,16 @@
 <div class="row">
   <div class="col">
     <h3>Pending Inquiries</h3>
-    <div class="inquiry" style="margin-bottom: 20px;">
-      <span style="font-weight: bold;"> Inquiry by {{inquiryentry.name}} {{inquiryentry.lastName}} ({{inquiryentry.username}}): </span>
+    <div *ngIf="inquiry" class="inquiry" style="margin-bottom: 20px;">
+      <span style="font-weight: bold;"> Inquiry by {{inquiry.name}} {{inquiry.lastName}} ({{inquiry.username}}): </span>
       <br>
       <div>
         Day preferences:
-        {{inquiryentry.soon ? "As soon as possible" : ""}} {{inquiryentry.monday ? "Monday" : ""}} {{inquiryentry.tuesday ? "Tuesday" : ""}} {{inquiryentry.wednesday ? "Wednesday" : ""}} {{inquiryentry.thursday ? "Thursday" : ""}} {{inquiryentry.friday ? "Friday" : ""}}
+        {{inquiry.soon ? "As soon as possible" : ""}} {{inquiry.monday ? "Monday" : ""}} {{inquiry.tuesday ? "Tuesday" : ""}} {{inquiry.wednesday ? "Wednesday" : ""}} {{inquiry.thursday ? "Thursday" : ""}} {{inquiry.friday ? "Friday" : ""}}
       </div>
       <div *ngIf="!inquiry.soon">
         Time preferences:
-        {{inquiryentry.morning ? "Morning" : ""}} {{inquiryentry.midday ? "Midday" : ""}} {{inquiryentry.afternoon ? "Afternoon" : ""}}
+        {{inquiry.morning ? "Morning" : ""}} {{inquiry.midday ? "Midday" : ""}} {{inquiry.afternoon ? "Afternoon" : ""}}
       </div>
     </div>
     <br>

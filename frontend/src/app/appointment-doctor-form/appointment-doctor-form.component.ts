@@ -14,7 +14,7 @@ export class AppointmentDoctorFormComponent implements OnInit {
 
   patientOption;
   appointmentFormDoctor;
-  inquiryentry;
+  inquiry;
 
   constructor(private router: Router, private appointmentService: AppointmentService, private userService: UserService,
               private inquiryService: InquiryService, private route: ActivatedRoute) { }
@@ -28,6 +28,8 @@ export class AppointmentDoctorFormComponent implements OnInit {
       'patient': new FormControl(),
     });
 
+
+
     this.userService.getAllPatientsByUsername()
       .subscribe((patient: any) => {
         this.patientOption = patient;
@@ -37,7 +39,7 @@ export class AppointmentDoctorFormComponent implements OnInit {
     if (id) {
       this.inquiryService.getById(id)
         .subscribe((response) => {
-          this.inquiryentry = response;
+          this.inquiry = response;
         });
     }
   }
