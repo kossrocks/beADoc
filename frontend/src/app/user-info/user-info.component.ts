@@ -34,6 +34,8 @@ export class UserInfoComponent implements OnInit {
       'pictures': new FormControl(),
       'email': new FormControl(),
       'questionaires': new FormControl(),
+      'profilPictures': new FormControl(),
+      'inquiries': new FormControl(),
     });
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
