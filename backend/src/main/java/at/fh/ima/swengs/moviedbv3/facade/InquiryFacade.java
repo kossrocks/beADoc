@@ -8,6 +8,7 @@ import at.fh.ima.swengs.moviedbv3.model.UserRepository;
 import at.fh.ima.swengs.moviedbv3.service.InquiryService;
 import at.fh.ima.swengs.moviedbv3.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -41,7 +42,7 @@ public class InquiryFacade {
         entityInq.setMorning(dto.isMorning());
         entityInq.setMidday(dto.isMidday());
         entityInq.setAfternoon(dto.isAfternoon());
-        //entityInq.setPatient(userService.getUser(dto.getPatient()));
+        entityInq.setPatient(userService.getByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
     }
 
     private void mapEntityToDto (Inquiry entityInq, User entityUser, InquiryDTO dto) {
