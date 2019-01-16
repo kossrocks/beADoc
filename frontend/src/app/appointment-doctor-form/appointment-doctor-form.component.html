@@ -1,20 +1,22 @@
+<h1>Create a new Appointment</h1>
+<p></p>
 <div class="row">
   <div class="col">
     <app-calendar></app-calendar>
   </div>
-  <div class="col" *ngFor="let inquiry of inquiryentries">
-    <div>
+  <div class="col inquiry">
+    <div *ngFor="let inquiry of inquiryentries" style="margin-bottom: 20px;">
       Inquiry by {{inquiry.username}}:
       <br>
+      <div>
         Day preferences:
         {{inquiry.soon ? "As soon as possible" : ""}} {{inquiry.monday ? "Monday" : ""}} {{inquiry.tuesday ? "Tuesday" : ""}} {{inquiry.wednesday ? "Wednesday" : ""}} {{inquiry.thursday ? "Thursday" : ""}} {{inquiry.friday ? "Friday" : ""}}
-
-      <br>
+      </div>
+      <div *ngIf="!inquiry.soon">
         Time preferences:
         {{inquiry.morning ? "Morning" : ""}} {{inquiry.midday ? "Midday" : ""}} {{inquiry.afternoon ? "Afternoon" : ""}}
-
+      </div>
     </div>
-    <br>
   </div>
 
 </div>
@@ -44,7 +46,7 @@
         Create Appointment
       </button>
       <button type="submit" (click)="goBackToList()" class="btn btn-primary">
-        Back
+        Back to Appointment-list
       </button>
     </div>
   </form>
