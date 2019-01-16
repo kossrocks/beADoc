@@ -4,10 +4,7 @@ import at.fh.ima.swengs.moviedbv3.dto.QuestionaireDTO;
 import at.fh.ima.swengs.moviedbv3.dto.UserDTO;
 import at.fh.ima.swengs.moviedbv3.model.Questionaire;
 import at.fh.ima.swengs.moviedbv3.model.User;
-import at.fh.ima.swengs.moviedbv3.service.AppointmentService;
-import at.fh.ima.swengs.moviedbv3.service.MedicineService;
-import at.fh.ima.swengs.moviedbv3.service.QuestionaireService;
-import at.fh.ima.swengs.moviedbv3.service.UserService;
+import at.fh.ima.swengs.moviedbv3.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,6 +29,9 @@ public class UserFacade {
   @Autowired
   QuestionaireService questionaireService;
 
+  @Autowired
+  InquiryService inquiryService;
+
 
   void mapDtoToEntity(UserDTO dto, User entity) {
 
@@ -49,6 +49,7 @@ public class UserFacade {
     entity.setGender(dto.getGender());
     entity.setPictures(dto.getPictures());
     //entity.setQuestionaires(questionaireService.getQuestionaires(dto.getQuestionaires()));
+    entity.setInquiries(inquiryService.getInquirys(dto.getInquiries()));
 
   }
 
@@ -74,9 +75,12 @@ public class UserFacade {
     if (entity.getQuestionaires() != null) {
       dto.setQuestionaires(entity.getQuestionaires().stream().map((m) -> m.getId()).collect(Collectors.toSet()));
     }
+    if (entity.getInquiries() != null) {
+      dto.setInquiries(entity.getInquiries().stream().map((m) -> m.getId()).collect(Collectors.toSet()));
+    }
   }
 
-  public UserDTO update(Long id, UserDTO dto) {
+  public UserDTO update (Long id, UserDTO dto) {
     User entity = userService.findById(id).get();
     mapDtoToEntity(dto, entity);
     mapEntityToDto(userService.save(entity), dto);
@@ -94,9 +98,6 @@ public class UserFacade {
     mapDtoToEntity(dto, entity);
     entity.setQuestionaires(questionaires);
     mapEntityToDto(userService.save(entity), dto);
-
-
-
 
     return dto;
   }

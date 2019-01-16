@@ -41,7 +41,6 @@ public class InquiryFacade {
         entityInq.setMorning(dto.isMorning());
         entityInq.setMidday(dto.isMidday());
         entityInq.setAfternoon(dto.isAfternoon());
-
         //entityInq.setPatient(userService.getUser(dto.getPatient()));
     }
 
