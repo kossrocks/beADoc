@@ -1,19 +1,31 @@
 <form [formGroup]="userForm" (ngSubmit)="saveUser()">
   <div class="row">
-    <div class="col">
+    <div class="col-3">
       <div class="form-group">
         <label for="username">Username:</label>
         <input id="username" type="text" name="username" formControlName="username" class="form-control"/>
-        <div *ngIf="userForm.controls.name.invalid && (userForm.controls.name.dirty || userForm.controls.name.touched)"
+        <div *ngIf="userForm.controls.username.invalid && (userForm.controls.username.dirty || userForm.controls.username.touched)"
            class="alert alert-danger">
-          <div *ngIf="userForm.controls.name.errors.required">
+          <div *ngIf="userForm.controls.username.errors.required">
             Name is required.
           </div>
         </div>
       </div>
     </div>
+    <div class="col-3">
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input id="password" type="text" name="password" formControlName="password" class="form-control"/>
+        <div *ngIf="userForm.controls.password.invalid && (userForm.controls.password.dirty || userForm.controls.password.touched)"
+             class="alert alert-danger">
+          <div *ngIf="userForm.controls.password.errors.required">
+            Password is required.
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="col-md-3">
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" style="margin-top: 30px">
           Reset
         </button>
     </div>
@@ -79,7 +91,7 @@
         </div>
     </div>
   </div>
-
+<br>
   <div class="row">
     <div class="btn-group">
       <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">
