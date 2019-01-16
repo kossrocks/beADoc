@@ -3,8 +3,20 @@
     <app-calendar></app-calendar>
   </div>
   <div class="col" *ngFor="let inquiry of inquiryentries">
-    {{inquiry.monday}}
+    <div>
+      Inquiry by {{inquiry.username}}:
+      <br>
+        Day preferences:
+        {{inquiry.soon ? "As soon as possible" : ""}} {{inquiry.monday ? "Monday" : ""}} {{inquiry.tuesday ? "Tuesday" : ""}} {{inquiry.wednesday ? "Wednesday" : ""}} {{inquiry.thursday ? "Thursday" : ""}} {{inquiry.friday ? "Friday" : ""}}
+
+      <br>
+        Time preferences:
+        {{inquiry.morning ? "Morning" : ""}} {{inquiry.midday ? "Midday" : ""}} {{inquiry.afternoon ? "Afternoon" : ""}}
+
+    </div>
+    <br>
   </div>
+
 </div>
 <br>
 <div class="row">
