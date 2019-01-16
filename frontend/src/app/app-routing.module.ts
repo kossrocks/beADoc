@@ -17,6 +17,7 @@ import {UserListComponent} from './user-list/user-list.component';
 import {UserFormComponent} from './user-form/user-form.component';
 import {EditGuard} from './edit.guard';
 import {QuestionaireComponent} from './questionaire/questionaire.component';
+import {AppointmentDoctorFormComponent} from './appointment-doctor-form/appointment-doctor-form.component';
 
 
 /*
@@ -71,6 +72,9 @@ const routes: Routes = [
   },
   {
     path: 'calendar', component: MyCalendarComponent, canActivate: [AuthGuard, EmployeeGuard]
+  },
+  {
+    path: 'appointment-doctor-form', component: AppointmentDoctorFormComponent, canActivate: [AuthGuard, EmployeeGuard]
   },
   ///// ADMIN ONLY ////////////
   {
