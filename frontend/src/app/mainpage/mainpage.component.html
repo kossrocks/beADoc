@@ -3,17 +3,14 @@
 <div *ngIf='isEmployee'>
   <p *ngIf='isAdmin'> ADMIN PANEL</p>
   <p *ngIf='isEmployee && !isAdmin' > EMPLOYEE PANEL</p>
-  <a href="/user-list/employees">
-    <button>Employees</button>
-  </a>
-  <a href="/user-list/patients">
-    <button>Patients</button>
-  </a>
   <a href="/medicine-list">
     <button>Medicine</button>
   </a>
   <a href="/calendar">
     <button>Calendar</button>
+  </a>
+  <a href="/appointment-doctor-list">
+    <button>Appointments</button>
   </a>
   <a href="/user-list/users">
     <button>Users</button>
@@ -33,6 +30,12 @@
   <button type="button" (click)="editQuestionnaire()">
     Questionnaire
   </button>
+  <a href="/appointment-patient-list">
+    <button>Your Appointments</button>
+  </a>
+  <a href="/appointment-patient-form">
+    <button>Create a Appointment</button>
+  </a>
   <button type="button" (click)="editUser()">
     Edit Profile
   </button>

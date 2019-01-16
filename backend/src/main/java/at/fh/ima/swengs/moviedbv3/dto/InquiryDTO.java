@@ -16,17 +16,17 @@ public class InquiryDTO {
     private String username;
     private String name;
     private String lastName;
-    private long patient;
+    private Long patientId;
 
-    public long getPatient() {
-        return patient;
-    }
+  public Long getPatientId() {
+    return patientId;
+  }
 
-    public void setPatient(long patient) {
-        this.patient = patient;
-    }
+  public void setPatientId(Long patientId) {
+    this.patientId = patientId;
+  }
 
-    public long getUserId() {
+  public long getUserId() {
         return userId;
     }
 
