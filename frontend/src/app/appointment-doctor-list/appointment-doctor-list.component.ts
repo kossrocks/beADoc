@@ -50,17 +50,12 @@ export class AppointmentDoctorListComponent implements OnInit {
       });
   }
 
-  goBackHome() {
-    this.router.navigate(['/home']);
-  }
-
   deleteAppointment(appointment: Appointment) {
 
     this.appointmentService.delete(appointment)
       .subscribe(() => {
         this.ngOnInit();
       });
-
   }
 
   goToAppointmentForm() {
