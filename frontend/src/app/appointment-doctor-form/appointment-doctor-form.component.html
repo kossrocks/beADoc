@@ -2,19 +2,20 @@
   <div class="col">
     <app-calendar></app-calendar>
   </div>
-    <div *ngIf="inquiryentry">
+  <div class="col inquiry">
+    <div  style="margin-bottom: 20px;">
       Inquiry by {{inquiryentry.username}}:
       <br>
+      <div>
         Day preferences:
         {{inquiryentry.soon ? "As soon as possible" : ""}} {{inquiryentry.monday ? "Monday" : ""}} {{inquiryentry.tuesday ? "Tuesday" : ""}} {{inquiryentry.wednesday ? "Wednesday" : ""}} {{inquiryentry.thursday ? "Thursday" : ""}} {{inquiryentry.friday ? "Friday" : ""}}
-
-      <br>
+      </div>
+      <div *ngIf="!inquiry.soon">
         Time preferences:
         {{inquiryentry.morning ? "Morning" : ""}} {{inquiryentry.midday ? "Midday" : ""}} {{inquiryentry.afternoon ? "Afternoon" : ""}}
-
+      </div>
     </div>
-    <br>
-
+  </div>
 
 </div>
 <br>
@@ -43,7 +44,7 @@
         Create Appointment
       </button>
       <button type="submit" (click)="goBackToList()" class="btn btn-primary">
-        Back
+        Back to Appointment-list
       </button>
     </div>
   </form>
