@@ -52,6 +52,16 @@ public class User {
       "pictures_id"))
   private Set<Media> pictures = new HashSet<>();
 
+  @ManyToMany
+  @JoinTable(name =
+          "movies_profilpictures"
+          ,
+          joinColumns = @JoinColumn(name =
+                  "movie_id"),
+          inverseJoinColumns = @JoinColumn(name =
+                  "profilpictures_id"))
+  private Set<Media> profilPictures = new HashSet<>();
+
   private boolean admin;
   private boolean employee;
   private boolean active;
@@ -69,6 +79,14 @@ public class User {
   @Version
   @JsonIgnore
   private long version;
+
+  public Set<Media> getProfilPictures() {
+    return profilPictures;
+  }
+
+  public void setProfilPictures(Set<Media> profilPictures) {
+    this.profilPictures = profilPictures;
+  }
 
   public Set<Inquiry> getInquiries() {
     return inquiries;
