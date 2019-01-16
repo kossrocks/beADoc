@@ -1,28 +1,39 @@
-<form [formGroup]="appointmentFormDoctor" (ngSubmit)="createAppointment()">
-  <div class="row">
-    <div class="col">
-        <label for="appointmentDate">Date of Appointment</label>
-        <input id="appointmentDate" type="Date" name="appointmentDate" formControlName="appointmentDate" class="form-control"/>
-    </div>
-    <div class="col">
-      <label for="appointmentTime">Time of Appointment</label>
-      <input id="appointmentTime" type="text" name="appointmentTime" formControlName="appointmentTime" class="form-control"/>
-    </div>
+<div class="row">
+  <div class="col">
+    <app-calendar></app-calendar>
   </div>
-  <div class="row">
-    <div class="col">
-      <label for="patient">Patient</label>
-      <ngx-select id="patient" [items]="patientOption" name="patient" [multiple]="false"
-                  formControlName="patient" optionTextField="patient"></ngx-select>
+  <div class="col" *ngFor="let inquiry of inquiryentries">
+    {{inquiry.monday}}
+  </div>
+</div>
+<br>
+<div class="row">
+  <form [formGroup]="appointmentFormDoctor" (ngSubmit)="createAppointment()">
+    <div class="row">
+      <div class="col">
+          <label for="appointmentDate">Date of Appointment</label>
+          <input id="appointmentDate" type="Date" name="appointmentDate" formControlName="appointmentDate" class="form-control"/>
+      </div>
+      <div class="col">
+        <label for="appointmentTime">Time of Appointment</label>
+        <input id="appointmentTime" type="text" name="appointmentTime" formControlName="appointmentTime" class="form-control"/>
+      </div>
     </div>
-  </div>
-  <br>
-  <div class="btn-group">
-    <button type="submit" class="btn btn-primary" [disabled]="appointmentFormDoctor.invalid">
-      Create Appointment
-    </button>
-    <button type="submit" (click)="goBackToList()" class="btn btn-primary">
-      Back
-    </button>
-  </div>
-</form>
+    <div class="row">
+      <div class="col">
+        <label for="patient">Patient</label>
+        <ngx-select id="patient" [items]="patientOption" name="patient" [multiple]="false"
+                    formControlName="patient" optionTextField="patient"></ngx-select>
+      </div>
+    </div>
+    <br>
+    <div class="btn-group">
+      <button type="submit" class="btn btn-primary" [disabled]="appointmentFormDoctor.invalid">
+        Create Appointment
+      </button>
+      <button type="submit" (click)="goBackToList()" class="btn btn-primary">
+        Back
+      </button>
+    </div>
+  </form>
+</div>
