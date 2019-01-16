@@ -1,0 +1,72 @@
+<form [formGroup]="questionaireForm" (ngSubmit)="saveQuestionaire()">
+
+  <div class="row">
+    <div class="col">
+      <label for="answer1">Question1:</label>
+      <input id="answer1" type="text" name="answer1" formControlName="answer1" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label for="answer2">Question2:</label>
+      <input id="answer2" type="text" name="answer2" formControlName="answer2" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label for="answer3">Question3:</label>
+      <input id="answer3" type="text" name="answer3" formControlName="answer3" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label for="answer4">Question4:</label>
+      <input id="answer4" type="text" name="answer4" formControlName="answer4" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label for="answer5">Question5:</label>
+      <input id="answer5" type="text" name="answer5" formControlName="answer5" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label for="answer6">Question6:</label>
+      <input id="answer6" type="text" name="answer6" formControlName="answer6" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label for="answer7">Question7:</label>
+      <input id="answer7" type="text" name="answer7" formControlName="answer7" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label for="answer8">Question8:</label>
+      <input id="answer8" type="text" name="answer8" formControlName="answer8" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label for="answer9">Question9:</label>
+      <input id="answer9" type="text" name="answer9" formControlName="answer9" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label for="answer10">Question10:</label>
+      <input id="answer10" type="text" name="answer10" formControlName="answer10" class="form-control">
+    </div>
+  </div>
+  <div class="btn-group">
+    <button type="submit" class="btn btn-primary" [disabled]="questionaireForm.invalid">
+      Save
+    </button>
+    <button type="submit" (click)="navigateToList()" class="btn btn-primary">
+      Back without saving
+    </button>
+  </div>
+
+</form>

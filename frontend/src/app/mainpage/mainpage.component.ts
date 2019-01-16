@@ -50,6 +50,6 @@ export class MainpageComponent implements OnInit {
   }
   editQuestionnaire() {
     this.getUserId()
-    this.router.navigate(['/questionnaire/' + this.id.toString()]);
+    this.router.navigate(['/questionaires/' + this.id.toString()]);
   }
 }
