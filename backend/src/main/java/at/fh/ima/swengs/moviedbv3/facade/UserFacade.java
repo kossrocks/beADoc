@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -80,6 +82,8 @@ public class UserFacade {
     if (entity.getInquiries() != null) {
       dto.setInquiries(entity.getInquiries().stream().map((m) -> m.getId()).collect(Collectors.toSet()));
     }
+    String userDataString = Long.toString(entity.getId()) + ':' + entity.getLastName() + ' ' + entity.getName() ;
+    dto.setUserData(userDataString);
   }
 
   public UserDTO update (Long id, UserDTO dto) {
@@ -109,6 +113,17 @@ public class UserFacade {
     UserDTO dto = new UserDTO();
     mapEntityToDto(entity, dto);
     return dto;
+  }
+
+  public List<UserDTO> getAll(){
+    List<User> entitys = userService.getAll();
+    List<UserDTO> dtos = new ArrayList<>();
+    for(User entity: entitys){
+      UserDTO dto = new UserDTO();
+      mapEntityToDto(entity,dto);
+      dtos.add(dto);
+    }
+    return dtos;
   }
 
 }

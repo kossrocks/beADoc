@@ -129,17 +129,17 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     if (appointmentRepository.count() == 0) {
-      at.fh.ima.swengs.moviedbv3.model.Appointment appointmentFixed = new at.fh.ima.swengs.moviedbv3.model.Appointment(new Date(119, 0, 12, 13, 0), 1234);
+      at.fh.ima.swengs.moviedbv3.model.Appointment appointmentFixed = new at.fh.ima.swengs.moviedbv3.model.Appointment(new Date(119, 0, 12, 13, 0), 1300);
       appointmentFixed.setFixed(true);
       appointmentFixed.setPatient(userRepository.findByUsername("tester"));
       appointmentRepository.save(appointmentFixed);
 
-      at.fh.ima.swengs.moviedbv3.model.Appointment appointmentNotFixed = new at.fh.ima.swengs.moviedbv3.model.Appointment(new Date(119, 0, 12, 14, 0), 1864);
+      at.fh.ima.swengs.moviedbv3.model.Appointment appointmentNotFixed = new at.fh.ima.swengs.moviedbv3.model.Appointment(new Date(119, 0, 12, 14, 0), 1400);
       appointmentNotFixed.setFixed(false);
       appointmentNotFixed.setPatient(userRepository.findByUsername("tester"));
       appointmentRepository.save(appointmentNotFixed);
 
-      at.fh.ima.swengs.moviedbv3.model.Appointment appointmentOtherUser = new at.fh.ima.swengs.moviedbv3.model.Appointment(new Date(119, 0, 12, 15, 0), 987);
+      at.fh.ima.swengs.moviedbv3.model.Appointment appointmentOtherUser = new at.fh.ima.swengs.moviedbv3.model.Appointment(new Date(119, 0, 12, 15, 0), 1500);
       appointmentOtherUser.setFixed(true);
       appointmentOtherUser.setPatient(userRepository.findByUsername("admin"));
       appointmentRepository.save(appointmentOtherUser);

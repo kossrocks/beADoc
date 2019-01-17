@@ -26,6 +26,15 @@ public class UserDTO {
   private Set<Media> pictures;
   private Set<Long> questionaires;
   private Set<Long> inquiries;
+  private String userData;
+
+  public String getUserData() {
+    return userData;
+  }
+
+  public void setUserData(String userData) {
+    this.userData = userData;
+  }
 
   public Set<Long> getInquiries() {
     return inquiries;

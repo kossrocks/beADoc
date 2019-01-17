@@ -64,15 +64,12 @@ export class AppointmentDoctorFormComponent implements OnInit {
   }
 
   createAppointment () {
+    const appointment = this.appointmentFormDoctor.value;
 
-    alert(this.appointmentFormDoctor.controls.patient.value);
-
-    // const appointment = this.appointmentFormDoctor.value;
-
-    /*this.appointmentService.create(appointment)
+    this.appointmentService.create(appointment)
       .subscribe((response: any) => {
         alert('created successfully');
-          this.router.navigate(['/appointment-doctor-list', response.id]);
-      });*/
+        this.goBackToList();
+      });
   }
 }
