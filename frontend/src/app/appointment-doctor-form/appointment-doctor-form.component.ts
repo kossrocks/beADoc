@@ -15,6 +15,7 @@ export class AppointmentDoctorFormComponent implements OnInit {
   patientOption;
   appointmentFormDoctor;
   inquiry;
+  timeOption = [];
 
   constructor(private router: Router, private appointmentService: AppointmentService, private userService: UserService,
               private inquiryService: InquiryService, private route: ActivatedRoute) { }
@@ -28,9 +29,23 @@ export class AppointmentDoctorFormComponent implements OnInit {
       'patient': new FormControl(),
     });
 
+    let x = 7;
 
+    while(x < 21){
 
-    this.userService.getAllPatientsByUsername()
+      const string1: string = x.toString() + ':00';
+      const string2: string = x.toString() + ':15';
+      const string3: string = x.toString() + ':30';
+      const string4: string = x.toString() + ':45';
+      this.timeOption.push(string1);
+      this.timeOption.push(string2);
+      this.timeOption.push(string3);
+      this.timeOption.push(string4);
+
+      x += 1;
+    }
+
+    this.userService.getAll()
       .subscribe((patient: any) => {
         this.patientOption = patient;
       });
@@ -49,10 +64,6 @@ export class AppointmentDoctorFormComponent implements OnInit {
   }
 
   createAppointment () {
-    const patientToChange = this.appointmentFormDoctor.controls.patient.value;
-    const splitIt = patientToChange.split(':')[0];
-    const toInt: number = parseInt(splitIt, 10);
-    this.appointmentFormDoctor.controls.patient.setValue('3');
 
     alert(this.appointmentFormDoctor.controls.patient.value);
 
