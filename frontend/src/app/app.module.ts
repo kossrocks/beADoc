@@ -38,6 +38,9 @@ import { AppointmentDoctorFormComponent } from './appointment-doctor-form/appoin
 import { QuestionaireComponent } from './questionaire/questionaire.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 
+import { UserService } from './service/user.service';
+import { SortingUsersPipe } from './pipes/tableSort-pipe';
+
 defineLocale('de', deLocale);
 
 
@@ -62,6 +65,7 @@ export function tokenGetter() {
     MedicineFormComponent,
     MyCalendarComponent,
     UserListComponent,
+    SortingUsersPipe,
 
     UserFormComponent,
 
@@ -92,7 +96,7 @@ export function tokenGetter() {
     BsDatepickerModule.forRoot(),
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
