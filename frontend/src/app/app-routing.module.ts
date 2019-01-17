@@ -17,6 +17,8 @@ import {UserListComponent} from './user-list/user-list.component';
 import {UserFormComponent} from './user-form/user-form.component';
 import {EditGuard} from './edit.guard';
 import {QuestionaireComponent} from './questionaire/questionaire.component';
+import {UserInfoComponent} from './user-info/user-info.component';
+import {AppointmentDoctorFormComponent} from './appointment-doctor-form/appointment-doctor-form.component';
 
 
 /*
@@ -54,6 +56,9 @@ const routes: Routes = [
     path: 'user-form/:id', component: UserFormComponent, canActivate: [AuthGuard, EditGuard]
   },
   {
+    path: 'user-info/:id', component: UserInfoComponent, canActivate: [AuthGuard]
+  },
+  {
     path: 'questionaires/:id', component: QuestionaireComponent, canActivate: [AuthGuard, EditGuard]
   },
   /////////// EMPLOYEE and ADMIN ONLY ///////////////
@@ -71,6 +76,12 @@ const routes: Routes = [
   },
   {
     path: 'calendar', component: MyCalendarComponent, canActivate: [AuthGuard, EmployeeGuard]
+  },
+  {
+    path: 'appointment-doctor-form', component: AppointmentDoctorFormComponent, canActivate: [AuthGuard, EmployeeGuard]
+  },
+  {
+    path: 'appointment-doctor-form/:id', component: AppointmentDoctorFormComponent, canActivate: [AuthGuard, EmployeeGuard]
   },
   ///// ADMIN ONLY ////////////
   {

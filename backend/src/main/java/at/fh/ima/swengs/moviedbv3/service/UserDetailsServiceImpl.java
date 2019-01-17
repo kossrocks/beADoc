@@ -33,6 +33,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
   @Autowired
   private QuestionaireRepository questionaireRepository;
 
+  @Autowired
+  private InquiryRepository inquiryRepository;
+
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     try {
@@ -140,6 +143,24 @@ public class UserDetailsServiceImpl implements UserDetailsService {
       appointmentOtherUser.setFixed(true);
       appointmentOtherUser.setPatient(userRepository.findByUsername("admin"));
       appointmentRepository.save(appointmentOtherUser);
+    }
+
+    if (inquiryRepository.count() == 0) {
+      at.fh.ima.swengs.moviedbv3.model.Inquiry inquiry = new at.fh.ima.swengs.moviedbv3.model.Inquiry();
+      inquiry.setPatient(userRepository.findByUsername("tester"));
+      inquiry.setSoon(false);
+      inquiry.setMonday(true);
+      inquiry.setTuesday(false);
+      inquiry.setWednesday(false);
+      inquiry.setThursday(false);
+      inquiry.setFriday(false);
+      inquiry.setMorning(true);
+      inquiry.setMidday(false);
+      inquiry.setAfternoon(false);
+      inquiry.setDayOfCreation(new Date());
+      inquiryRepository.save(inquiry);
+
+
     }
 
   }

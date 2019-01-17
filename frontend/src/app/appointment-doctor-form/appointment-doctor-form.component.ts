@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AppointmentService} from '../service/appointment.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../service/user.service';
+import {InquiryService} from '../service/inquiry.service';
 
 @Component({
   selector: 'app-appointment-doctor-form',
@@ -13,8 +14,10 @@ export class AppointmentDoctorFormComponent implements OnInit {
 
   patientOption;
   appointmentFormDoctor;
+  inquiry;
 
-  constructor(private router: Router, private appointmentService: AppointmentService, private userService: UserService) { }
+  constructor(private router: Router, private appointmentService: AppointmentService, private userService: UserService,
+              private inquiryService: InquiryService, private route: ActivatedRoute) { }
 
 
   ngOnInit() {
@@ -25,10 +28,20 @@ export class AppointmentDoctorFormComponent implements OnInit {
       'patient': new FormControl(),
     });
 
+
+
     this.userService.getAllPatientsByUsername()
       .subscribe((patient: any) => {
         this.patientOption = patient;
       });
+
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.inquiryService.getById(id)
+        .subscribe((response) => {
+          this.inquiry = response;
+        });
+    }
   }
 
   goBackToList() {

@@ -36,8 +36,8 @@ export class UserFormComponent implements OnInit {
       'profilPictures' : new FormControl(),
       'email': new FormControl(),
       'questionaires': new FormControl(),
+      'inquiries': new FormControl()
     });
-
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.userService.getById(id)
@@ -50,20 +50,13 @@ export class UserFormComponent implements OnInit {
   saveUser() {
 
     const user = this.userForm.value;
-    let isPatient = true;
-    if (user.admin || user.employee) {
-      isPatient = false;
-    }
-    if (user.admin) {
-      user.employee = true;
-    }
     if (user.id) {
       this.userService.update(user)
         .subscribe((response) => {
           alert('updated successfully');
           this.userForm.setValue(response);
           if (this.shouldNavigateToList) {
-            this.navigateToList(isPatient);
+            this.navigateToList();
           }
         });
     } else {
@@ -71,7 +64,7 @@ export class UserFormComponent implements OnInit {
         .subscribe((response: any) => {
           alert('created successfully');
           if (this.shouldNavigateToList) {
-            this.navigateToList(isPatient);
+            this.navigateToList();
           } else {
             this.router.navigate(['/user-form', response.id]);
           }
@@ -79,12 +72,8 @@ export class UserFormComponent implements OnInit {
     }
   }
 
-  navigateToList(isPatient) {
-    if (isPatient) {
-      this.router.navigate(['/user-list/patients']);
-    } else {
-      this.router.navigate(['/user-list/employees']);
-    }
+  navigateToList() {
+      this.router.navigate(['/user-list/' + localStorage.getItem('filterMode')]);
   }
 
   setShouldNavigateToList() {
