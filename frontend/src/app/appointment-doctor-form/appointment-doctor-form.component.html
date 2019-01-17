@@ -1,25 +1,21 @@
-<div class="row">
-  <div class="col">
-    <app-calendar></app-calendar>
-  </div>
-  <div class="col" *ngFor="let inquiry of inquiryentries">
-    <div>
-      Inquiry by {{inquiry.username}}:
-      <br>
-        Day preferences:
-        {{inquiry.soon ? "As soon as possible" : ""}} {{inquiry.monday ? "Monday" : ""}} {{inquiry.tuesday ? "Tuesday" : ""}} {{inquiry.wednesday ? "Wednesday" : ""}} {{inquiry.thursday ? "Thursday" : ""}} {{inquiry.friday ? "Friday" : ""}}
-
-      <br>
-        Time preferences:
-        {{inquiry.morning ? "Morning" : ""}} {{inquiry.midday ? "Midday" : ""}} {{inquiry.afternoon ? "Afternoon" : ""}}
-
-    </div>
-    <br>
-  </div>
-
-</div>
 <br>
 <div class="row">
+  <div class="col">
+    <h3>Pending Inquiries</h3>
+    <div *ngIf="inquiry" class="inquiry" style="margin-bottom: 20px;">
+      <span style="font-weight: bold;"> Inquiry by {{inquiry.name}} {{inquiry.lastName}} ({{inquiry.username}}): </span>
+      <br>
+      <div>
+        Day preferences:
+        {{inquiry.soon ? "As soon as possible" : ""}} {{inquiry.monday ? "Monday" : ""}} {{inquiry.tuesday ? "Tuesday" : ""}} {{inquiry.wednesday ? "Wednesday" : ""}} {{inquiry.thursday ? "Thursday" : ""}} {{inquiry.friday ? "Friday" : ""}}
+      </div>
+      <div *ngIf="!inquiry.soon">
+        Time preferences:
+        {{inquiry.morning ? "Morning" : ""}} {{inquiry.midday ? "Midday" : ""}} {{inquiry.afternoon ? "Afternoon" : ""}}
+      </div>
+    </div>
+    <br>
+    <h3>Create a new Appointment</h3>
   <form [formGroup]="appointmentFormDoctor" (ngSubmit)="createAppointment()">
     <div class="row">
       <div class="col">
@@ -28,14 +24,15 @@
       </div>
       <div class="col">
         <label for="appointmentTime">Time of Appointment</label>
-        <input id="appointmentTime" type="text" name="appointmentTime" formControlName="appointmentTime" class="form-control"/>
+        <ngx-select id="appointmentTime" [items]="timeOption" name="appointmentTime" [multiple]="false"
+                    formControlName="appointmentTime" optionTextField="appointmentTime"></ngx-select>
       </div>
     </div>
     <div class="row">
       <div class="col">
         <label for="patient">Patient</label>
         <ngx-select id="patient" [items]="patientOption" name="patient" [multiple]="false"
-                    formControlName="patient" optionTextField="patient"></ngx-select>
+                    formControlName="patient" optionTextField="name"></ngx-select>
       </div>
     </div>
     <br>
@@ -44,8 +41,14 @@
         Create Appointment
       </button>
       <button type="submit" (click)="goBackToList()" class="btn btn-primary">
-        Back
+        Back to Appointment-list
       </button>
     </div>
   </form>
+  </div>
+  <div class="col">
+    <div>
+      <app-calendar></app-calendar>
+    </div>
+  </div>
 </div>

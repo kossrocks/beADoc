@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -27,6 +28,9 @@ public class Inquiry {
     private boolean midday;
     private boolean afternoon;
 
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date dayOfCreation;
+
     @ManyToOne
     private User patient;
 
@@ -37,7 +41,7 @@ public class Inquiry {
     public Inquiry() {
     }
 
-    public Inquiry(boolean soon, boolean monday, boolean tuesday, boolean wednesday, boolean thursday, boolean friday, boolean morning, boolean midday, boolean evening) {
+    public Inquiry(boolean soon, boolean monday, boolean tuesday, boolean wednesday, boolean thursday, boolean friday, boolean morning, boolean midday, boolean afternoon) {
         this.soon = soon;
         this.monday = monday;
         this.tuesday = tuesday;
@@ -49,7 +53,15 @@ public class Inquiry {
         this.afternoon = afternoon;
     }
 
-    public long getId() {
+  public Date getDayOfCreation() {
+    return dayOfCreation;
+  }
+
+  public void setDayOfCreation(Date dayOfCreation) {
+    this.dayOfCreation = dayOfCreation;
+  }
+
+  public long getId() {
         return id;
     }
 

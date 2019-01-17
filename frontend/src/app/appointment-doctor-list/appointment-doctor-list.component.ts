@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {Appointment} from '../api/appointment';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {Actor} from '../api/actor';
+import {InquiryService} from '../service/inquiry.service';
 
 @Component({
   selector: 'app-appointment-doctor-list',
@@ -18,8 +19,9 @@ export class AppointmentDoctorListComponent implements OnInit {
   isEmployee: boolean;
   tokenDecoder: JwtHelperService;
   token: String;
+  inquiryentries;
 
-  constructor(private appointmentService: AppointmentService, private router: Router) { }
+  constructor(private appointmentService: AppointmentService, private router: Router, private inquiryService: InquiryService) { }
 
   ngOnInit() {
 
@@ -41,10 +43,12 @@ export class AppointmentDoctorListComponent implements OnInit {
     } else if (this.token['authorities'].includes('ROLE_EMPLOYEE')) {
       this.isEmployee = true;
     }
-  }
 
-  goBackHome() {
-    this.router.navigate(['/home']);
+    this.inquiryService.getAll()
+      .subscribe((inquiryentries: any) => {
+        this.inquiryentries = inquiryentries;
+      });
+
   }
 
   deleteAppointment(appointment: Appointment) {
@@ -53,7 +57,10 @@ export class AppointmentDoctorListComponent implements OnInit {
       .subscribe(() => {
         this.ngOnInit();
       });
+  }
 
+  goToAppointmentForm(id) {
+    this.router.navigate(['/appointment-doctor-form/' + id]);
   }
 
 }

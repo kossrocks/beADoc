@@ -19,67 +19,78 @@ import java.util.List;
 @Transactional
 public class InquiryFacade {
 
-    @Autowired
-    private InquiryService inquiryService;
+  @Autowired
+  private InquiryService inquiryService;
 
-    @Autowired
-    private InquiryRepository inquiryRepository;
+  @Autowired
+  private InquiryRepository inquiryRepository;
 
-    @Autowired
-    private UserRepository userRepository;
+  @Autowired
+  private UserRepository userRepository;
 
-    @Autowired
-    private UserService userService;
+  @Autowired
+  private UserService userService;
 
-    void mapDtoToEntity(InquiryDTO dto, Inquiry entityInq) {
-        entityInq.setId(dto.getId());
-        entityInq.setSoon(dto.isSoon());
-        entityInq.setMonday(dto.isMonday());
-        entityInq.setTuesday(dto.isTuesday());
-        entityInq.setWednesday(dto.isWednesday());
-        entityInq.setThursday(dto.isThursday());
-        entityInq.setFriday(dto.isFriday());
-        entityInq.setMorning(dto.isMorning());
-        entityInq.setMidday(dto.isMidday());
-        entityInq.setAfternoon(dto.isAfternoon());
-        entityInq.setPatient(userService.getByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
+  void mapDtoToEntity(InquiryDTO dto, Inquiry entityInq) {
+    entityInq.setId(dto.getId());
+    entityInq.setSoon(dto.isSoon());
+    entityInq.setMonday(dto.isMonday());
+    entityInq.setTuesday(dto.isTuesday());
+    entityInq.setWednesday(dto.isWednesday());
+    entityInq.setThursday(dto.isThursday());
+    entityInq.setFriday(dto.isFriday());
+    entityInq.setMorning(dto.isMorning());
+    entityInq.setMidday(dto.isMidday());
+    entityInq.setAfternoon(dto.isAfternoon());
+    entityInq.setPatient(userService.getByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
+    entityInq.setDayOfCreation(dto.getDayOfCreation());
+  }
+
+  private void mapEntityToDto(Inquiry entityInq, User entityUser, InquiryDTO dto) {
+    dto.setId(entityInq.getId());
+    dto.setUserId(entityUser.getId());
+    dto.setUsername(entityUser.getUsername());
+    dto.setName(entityUser.getName());
+    dto.setLastName(entityUser.getLastName());
+    dto.setSoon(entityInq.isSoon());
+    dto.setMonday(entityInq.isMonday());
+    dto.setTuesday(entityInq.isTuesday());
+    dto.setWednesday(entityInq.isWednesday());
+    dto.setThursday(entityInq.isThursday());
+    dto.setFriday(entityInq.isFriday());
+    dto.setMorning(entityInq.isMorning());
+    dto.setMidday(entityInq.isMidday());
+    dto.setAfternoon(entityInq.isAfternoon());
+    dto.setDayOfCreation(entityInq.getDayOfCreation());
+  }
+
+  public InquiryDTO create(InquiryDTO dto) {
+    Inquiry entity = new Inquiry();
+    mapDtoToEntity(dto, entity);
+    inquiryService.save(entity);
+    return dto;
+  }
+
+  public List<InquiryDTO> getAll() {
+    List<Inquiry> listEntityApp = inquiryRepository.findAll();
+    List<InquiryDTO> dtos = new ArrayList<>();
+    for (Inquiry appointment : listEntityApp) {
+      InquiryDTO dto = new InquiryDTO();
+      User user = userRepository.findById(appointment.getPatient().getId()).get();
+      mapEntityToDto(appointment, user, dto);
+      dtos.add(dto);
     }
 
-    private void mapEntityToDto (Inquiry entityInq, User entityUser, InquiryDTO dto) {
-        dto.setUserId(entityUser.getId());
-        dto.setUsername(entityUser.getUsername());
-        dto.setName(entityUser.getName());
-        dto.setLastName(entityUser.getLastName());
-        dto.setSoon(entityInq.isSoon());
-        dto.setMonday(entityInq.isMonday());
-        dto.setTuesday(entityInq.isTuesday());
-        dto.setWednesday(entityInq.isWednesday());
-        dto.setThursday(entityInq.isThursday());
-        dto.setFriday(entityInq.isFriday());
-        dto.setMorning(entityInq.isMorning());
-        dto.setMidday(entityInq.isMidday());
-        dto.setAfternoon(entityInq.isAfternoon());
-    }
+    return dtos;
+  }
 
-    public InquiryDTO create(InquiryDTO dto) {
-        Inquiry entity = new Inquiry();
-        mapDtoToEntity(dto, entity);
-        inquiryService.save(entity);
-        return dto;
-    }
-
-    public List<InquiryDTO> getAll() {
-        List<Inquiry> listEntityApp = inquiryRepository.findAll();
-        List<InquiryDTO> dtos = new ArrayList<>();
-        for(Inquiry appointment: listEntityApp){
-            InquiryDTO dto = new InquiryDTO();
-            User user = userRepository.findById(appointment.getPatient().getId()).get();
-            mapEntityToDto(appointment,user,dto);
-            dtos.add(dto);
-        }
-
-        return dtos;
-    }
+  public InquiryDTO getById(Long id) {
+    Inquiry entity = inquiryService.findById(id).get();
+    InquiryDTO dto = new InquiryDTO();
+    User user = userRepository.findById(entity.getPatient().getId()).get();
+    mapEntityToDto(entity, user, dto);
+    return dto;
+  }
 
 
 }
