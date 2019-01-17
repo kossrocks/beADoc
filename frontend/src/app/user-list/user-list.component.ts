@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../api/user';
 import {UserService} from '../service/user.service';
-import {split} from 'ts-node';
 
 @Component({
   selector: 'app-user-list',
@@ -15,6 +14,9 @@ export class UserListComponent implements OnInit {
   users: Array<User>;
   title: String;
   headElements = ['Username', 'Name', 'LastName', 'eMail', 'isEmployee', 'isAdmin'];
+
+  path: string[] = ['user'];
+  order = 1;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) {
   }
@@ -68,4 +70,11 @@ export class UserListComponent implements OnInit {
   createUser() {
     this.router.navigate(['/user-form']);
   }
+
+  sortTable(prop: string) {
+    this.path = prop.split('.')
+    this.order = this.order * (-1); // change order
+    return false; // do not reload
+  }
+
 }
