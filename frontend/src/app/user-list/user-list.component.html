@@ -3,11 +3,11 @@
   <table>
     <thead>
     <tr>
-      <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+      <th *ngFor="let head of headElements" scope="col"> <a href (click)="sortTable(head)"> {{head}}</a></th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let user of users">
+    <tr *ngFor="let user of users | sortingUsers:path:order">
       <td>{{user.username}}</td>
       <td>{{user.name}}</td>
       <td>{{user.lastName}}</td>
@@ -25,6 +25,3 @@
 <button type="button" (click)="createUser()">
   Create new
 </button>
-
-
-
