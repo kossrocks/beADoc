@@ -4,24 +4,24 @@
   <p *ngIf='isAdmin'> ADMIN PANEL</p>
   <p *ngIf='isEmployee && !isAdmin' > EMPLOYEE PANEL</p>
   <a href="/medicine-list">
-    <button>Medicine</button>
+    <button class="btn-info">Medicine</button>
   </a>
   <a href="/calendar">
-    <button>Calendar</button>
+    <button class="btn-info">Calendar</button>
   </a>
   <a href="/appointment-doctor-list">
-    <button>Appointments</button>
+    <button class="btn-info">Appointments</button>
   </a>
   <a href="/user-list/users">
-    <button>Users</button>
+    <button class="btn-info">Users</button>
   </a>
   <a href="/user-list/patients">
-    <button>Patients</button>
+    <button class="btn-info">Patients</button>
   </a>
   <a href="/user-list/employees">
-    <button>Employees</button>
+    <button class="btn-info">Employees</button>
   </a>
-  <button type="button" (click)="editUser()">
+  <button type="button" (click)="editUser()" class="btn-info">
     Edit Profile
   </button>
 </div>

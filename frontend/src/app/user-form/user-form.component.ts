@@ -36,7 +36,8 @@ export class UserFormComponent implements OnInit {
       'profilPictures' : new FormControl(),
       'email': new FormControl(),
       'questionaires': new FormControl(),
-      'inquiries': new FormControl()
+      'inquiries': new FormControl(),
+      'userData': new  FormControl()
     });
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
