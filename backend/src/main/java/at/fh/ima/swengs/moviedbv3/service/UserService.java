@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -18,6 +19,8 @@ public class UserService {
   public Optional<User> findById(long id) { return userRepository.findById(id); }
 
   public User save(User entity) { return userRepository.save(entity); }
+
+  public List<User> getAll(){ return userRepository.findAll();}
 
   public User getByUsername(String username){
    User entity = userRepository.findByUsername(username);

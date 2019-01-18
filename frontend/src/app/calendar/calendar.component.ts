@@ -8,6 +8,7 @@ import {User} from '../api/user';
 import {CalendarService} from '../service/calendar.service';
 import * as moment from 'moment';
 import {jsonpCallbackContext} from '@angular/common/http/src/module';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-calendar',
@@ -55,6 +56,7 @@ export class MyCalendarComponent implements OnInit {
 
     this.calendarService.getAll()
       .subscribe((entries: any) => {
+
         this.calendarEntries = entries;
         this.addData(this.calendarEntries);
 
@@ -76,8 +78,6 @@ export class MyCalendarComponent implements OnInit {
 
     let viewName = viewNameList[viewNameList.indexOf(view.name) + 1 ];
 
-    //alert("details: " + view.name);
-
     this.ucCalendar.fullCalendar('changeView',viewName);
     this.ucCalendar.fullCalendar('gotoDate', dateString);
 
@@ -87,6 +87,12 @@ export class MyCalendarComponent implements OnInit {
     for(let entry of entries){
 
       let startDate: Date = new Date(entry.appointmentDate);
+
+      const hour: number = Math.floor(entry.appointmentTime / 100);
+
+      const minute: number = entry.appointmentTime - (Math.floor(entry.appointmentTime / 100)*100);
+      startDate.setHours(hour);
+      startDate.setMinutes(minute);
 
       let endDate = new Date(startDate.getTime() + 1000*60*60);
 

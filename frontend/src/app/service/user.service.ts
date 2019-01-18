@@ -63,6 +63,13 @@ export class UserService {
       })
     );
   }
+  getAllDTOs() {
+    return this.http.get('/api/dto/users').pipe(
+      map((response: any) => {
+        return response._embedded.users;
+      })
+    );
+  }
 
   getAllPatientsByUsername () {
     return this.http.get('/api/users').pipe(

@@ -6,7 +6,7 @@ public class AppointmentDTO {
 
     private long id;
     private Date appointmentDate;
-    private long appointmentTime;
+    private String appointmentTime;
     private boolean fixed;
     private long patient;
 
@@ -26,11 +26,11 @@ public class AppointmentDTO {
         this.appointmentDate = appointmentDate;
     }
 
-    public long getAppointmentTime() {
+    public String getAppointmentTime() {
         return appointmentTime;
     }
 
-    public void setAppointmentTime(long appointmentTime) {
+    public void setAppointmentTime(String appointmentTime) {
         this.appointmentTime = appointmentTime;
     }
 
