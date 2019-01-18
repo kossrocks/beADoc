@@ -103,7 +103,7 @@
           Employee
         </label>
         </div>
-        <div>
+        <div *ngIf="isAdmin">
           <input class="form-check-input" type="checkbox" name="admin" id="permissionAdmin" formControlName="admin" value="false">
           <label class="form-check-label" for="permissionAdmin">
             Admin

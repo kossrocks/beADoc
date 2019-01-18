@@ -8,7 +8,7 @@
         <span *ngIf="!media.id">Uploading...</span>
       </td>
       <td>
-        <img [src]="previews[0] | safeUrl" *ngIf="previews[0]" class="img-fluid">
+        <img [src]="previews[i] | safeUrl" *ngIf="previews[i]" class="img-fluid">
       </td>
       <td>
         <div class="btn-group">
