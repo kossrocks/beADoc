@@ -7,7 +7,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let user of users | sortingUsers:path:order">
+    <tr *ngFor="let user of users"> <!-- | sortingUsers:path:order-->
       <td>{{user.username}}</td>
       <td>{{user.name}}</td>
       <td>{{user.lastName}}</td>
