@@ -53,7 +53,12 @@ export class UserService {
 
 
   getById(id: string) {
-    return this.http.get('/api/dto/users/' + id);
+    return this.http.get('/api/dto/users/' + id).pipe(map((res: any) => {
+      if (res.dayOfBirth) {
+        res.dayOfBirth = new Date(res.dayOfBirth);
+      }
+      return res;
+    }));
   }
 
   getAll() {
@@ -118,7 +123,12 @@ export class UserService {
   }
 
   update(user: User) {
-    return this.http.put('/api/dto/users/' + user.id, user);
+    return this.http.put('/api/dto/users/' + user.id, user).pipe(map((res: any) => {
+      if (res.dayOfBirth) {
+        res.dayOfBirth = new Date(res.dayOfBirth);
+      }
+      return res;
+    }));
   }
 
   create(user: User) {

@@ -38,6 +38,8 @@ export class UserInfoComponent implements OnInit {
       'inquiries': new FormControl(),
       'userData': new FormControl()
     });
+
+
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.userService.getById(id)
@@ -48,6 +50,10 @@ export class UserInfoComponent implements OnInit {
   }
   navigateToList() {
     this.router.navigate(['/user-list/' + localStorage.getItem('filterMode')]);
+  }
+
+  showQuestionaire () {
+
   }
 }
 

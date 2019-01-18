@@ -1,13 +1,14 @@
 
-<h1 > {{title}}</h1>
+<h1>{{title}}</h1>
   <table>
     <thead>
     <tr>
       <th *ngFor="let head of headElements" scope="col"> <a href (click)="sortTable(head)"> {{head}}</a></th>
+      <th colspan="3"><input type="text" name="searchText" [(ngModel)]="searchString" placeholder="Type to search..."></th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let user of users | sortingUsers:path:order">
+    <tr *ngFor="let user of users | filter : searchList : searchString"> <!-- | sortingUsers:path:order-->
       <td>{{user.username}}</td>
       <td>{{user.name}}</td>
       <td>{{user.lastName}}</td>

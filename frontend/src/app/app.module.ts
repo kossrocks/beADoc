@@ -18,6 +18,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { deLocale } from 'ngx-bootstrap/locale';
 import {MediainputComponent} from './mediainput/mediainput.component';
+import {ProfilePicInputComponent} from './profilePicInput/profilePicInput.component';
 import {SafeUrlPipe} from './service/safe-url.pipe';
 import { MainpageComponent } from './mainpage/mainpage.component';
 
@@ -39,7 +40,7 @@ import { QuestionaireComponent } from './questionaire/questionaire.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 
 import { UserService } from './service/user.service';
-import { SortingUsersPipe } from './pipes/tableSort-pipe';
+import {FilterPipe} from './pipes/filter.pipe';
 
 defineLocale('de', deLocale);
 
@@ -56,6 +57,7 @@ export function tokenGetter() {
     LoginComponent,
     LogoutComponent,
     MediainputComponent,
+    ProfilePicInputComponent,
     SafeUrlPipe,
     MainpageComponent,
     AppointmentDoctorListComponent,
@@ -65,7 +67,7 @@ export function tokenGetter() {
     MedicineFormComponent,
     MyCalendarComponent,
     UserListComponent,
-    SortingUsersPipe,
+    FilterPipe,
 
     UserFormComponent,
 

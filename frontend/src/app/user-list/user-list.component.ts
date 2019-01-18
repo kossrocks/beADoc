@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../api/user';
 import {UserService} from '../service/user.service';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-user-list',
@@ -14,8 +15,9 @@ export class UserListComponent implements OnInit {
   users: Array<User>;
   title: String;
   headElements = ['Username', 'Name', 'LastName', 'eMail', 'isEmployee', 'isAdmin'];
+  searchString: string;
+  searchList = ['name','username','lastName'];
 
-  path: string[] = ['user'];
   order = 1;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) {
@@ -72,9 +74,23 @@ export class UserListComponent implements OnInit {
   }
 
   sortTable(prop: string) {
-    this.path = prop.split('.')
-    this.order = this.order * (-1); // change order
+
+    const property = this.firstLetterToLower(prop);
+    this.users.sort((a, b) => {
+      if (typeof a[property] == 'string') {
+        return (a[property] === b[property])? 0 : a[property] > b[property] ? (1*this.order) : (-1*this.order);
+      }
+      if (typeof a[property] == 'boolean'){
+        return (a[property] === b[property])? 0 : a[property]? (this.order *-1) : (1 * this.order);
+      }
+    });
+    this.order = this.order * -1;
+    
     return false; // do not reload
+  }
+
+  firstLetterToLower(string) {
+    return string.slice(0, 1).toLowerCase() + string.slice(1);
   }
 
 }
