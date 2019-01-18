@@ -3,7 +3,7 @@
   <br>
   <div class="row">
     <div class="col">
-      <app-mediainput name="profilPictures" formControlName="profilPictures"></app-mediainput>
+      <app-profilePicInput name="profilPictures" formControlName="profilPictures"></app-profilePicInput>
     </div>
   </div>
   <br>
@@ -88,12 +88,11 @@
   <br>
   <div class="row">
     <div class="col">
-      <app-mediainput name="pictures"
-                      formControlName="pictures"></app-mediainput>
+      <app-mediainput name="pictures" formControlName="pictures"></app-mediainput>
     </div>
   </div>
   <br>
-  <div class="row" *ngIf="userForm.value.employee">
+  <div class="row" *ngIf="isEmployee">
     <div class="col">
       <br>
       <h2>Permissions:</h2>
