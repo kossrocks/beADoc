@@ -64,22 +64,20 @@ export class ProfilePicInputComponent implements OnInit, ControlValueAccessor {
     };
     this.uploader.onCompleteAll = () => {
       this.onChange(this.medias);
-      //this.showMedia(this.medias[0])
     };
   }
 
   deleteMedia(index: number): void {
-    alert(this.medias.length);
     this.medias.splice(index, 1);
     this.onChange(this.medias);
-    //alert(this.router.url);
+    delete this.previews[index];
   }
 
   initPreviews(){
     if(this.medias){
       this.medias.forEach((media, index) =>{
         if(media.id && !this.previews[index]){
-          this.http.get(`${this.resourceUrl}/${media.id}`, {responseType: 'blob'}).subscribe((blob: Blob) => {
+          this.http.get(`${this.resourceUrl}/${media.id }`, {responseType: 'blob'}).subscribe((blob: Blob) => {
             const fileURL = URL.createObjectURL(blob);
             this.previews[index] = fileURL;
           });
