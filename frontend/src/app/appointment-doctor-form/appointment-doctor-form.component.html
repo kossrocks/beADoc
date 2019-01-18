@@ -35,6 +35,21 @@
                     formControlName="patient" optionTextField="username"></ngx-select>
       </div>
     </div>
+    <div *ngIf="appointmentFormDoctor.controls.appointmentDate.untouched">
+      <div *ngIf="appointmentFormDoctor.controls.appointmentDate.errors.required">
+        Please choose a date!
+      </div>
+    </div>
+    <div *ngIf="appointmentFormDoctor.controls.appointmentTime.untouched">
+      <div *ngIf="appointmentFormDoctor.controls.appointmentTime.errors.required">
+        Please choose a date!
+      </div>
+    </div>
+    <div *ngIf="appointmentFormDoctor.controls.patient.untouched">
+      <div *ngIf="appointmentFormDoctor.controls.patient.errors.required">
+        Please choose a date!
+      </div>
+    </div>
     <br>
     <div class="btn-group">
       <button type="submit" class="btn btn-primary" [disabled]="appointmentFormDoctor.invalid">

@@ -20,6 +20,9 @@ export class AppointmentDoctorListComponent implements OnInit {
   tokenDecoder: JwtHelperService;
   token: String;
   inquiryentries;
+  title = 'Appointments & Inquiries';
+  headElementsAppointments = ['Date of Appointment', 'Time', 'Status'];
+  order = 1;
 
   constructor(private appointmentService: AppointmentService, private router: Router, private inquiryService: InquiryService) { }
 
@@ -61,6 +64,25 @@ export class AppointmentDoctorListComponent implements OnInit {
 
   goToAppointmentForm(id) {
     this.router.navigate(['/appointment-doctor-form/' + id]);
+  }
+
+  sortTable(prop: string) {
+  const property = this.firstLetterToLower(prop);
+    this.appointments.sort((a, b) => {
+      if (typeof a[property] === 'string') {
+        return (a[property] === b[property]) ? 0 : a[property] > b[property] ? (1 * this.order) : (-1 * this.order);
+      }
+      if (typeof a[property] === 'boolean') {
+        return (a[property] === b[property]) ? 0 : a[property] ? (this.order * - 1) : (1 * this.order);
+      }
+    });
+    this.order = this.order * -1;
+
+    return false; // do not reload
+  }
+
+  firstLetterToLower(string) {
+    return string.slice(0, 1).toLowerCase() + string.slice(1);
   }
 
 }

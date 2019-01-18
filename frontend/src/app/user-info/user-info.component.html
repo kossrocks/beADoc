@@ -52,6 +52,9 @@
       <p *ngIf="userForm.value.employee">Employee</p>
       <p *ngIf="!userForm.value.admin && !userForm.value.employee">Patient</p>
     </div>
+    <div class="col">
+      <a [routerLink]="'/questionaire/' + userForm.id"><button class="btn btn-primary">Show Questionaire</button></a>
+    </div>
   </div>
   <br>
   <div class="row">
