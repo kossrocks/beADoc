@@ -1,56 +1,64 @@
 <form [formGroup]="userForm" (ngSubmit)="navigateToList()">
+
   <div class="row">
     <div class="col-3">
       <div class="form-group">
-        <label>Username:</label>
-        <p>{{userForm.value.username}}</p>
+        <h5>Username: &nbsp;</h5>
+        <h3>{{userForm.value.username}}</h3>
       </div>
     </div>
+  </div>
+
+  <div class="row">
     <div class="col-3">
       <div class="form-group">
-        <label>Password:</label>
-        <p>{{userForm.value.password}}</p>
+        <h5>Name: &nbsp;</h5>
+        <h3>{{userForm.value.name}}</h3>
       </div>
     </div>
-    <div class="col-md-5">
-      <button class="btn btn-primary" style="margin-top: 20px">
-        Reset
-      </button>
+    <div class="col">
+      <div class="form-group">
+        <h5>Lastname: &nbsp;</h5>
+        <h3>{{userForm.value.lastName}}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <h5>Day of Birth: &nbsp;</h5>
+      <h3>{{userForm.value.dayOfBirth}}</h3>
+    </div>
+    <div class="col">
+      <h5>Gender: &nbsp;</h5>
+      <h3>{{userForm.value.gender}}</h3>
+    </div>
+  </div>
+
+  <div *ngIf="userForm.value.admin" class="row">
+    <div class="col">
+      <h5>Role: &nbsp;</h5>
+      <h3 *ngIf="userForm.value.admin">Admin</h3>
+      <h3 *ngIf="userForm.value.employee">Employee</h3>
+      <h3 *ngIf="!userForm.value.admin && !userForm.value.employee">Patient</h3>
     </div>
   </div>
 
   <div class="row">
     <div class="col">
       <div class="form-group">
-        <label>Name:</label>
-        <p>{{userForm.value.name}}</p>
+        <h5>Appointments: &nbsp;</h5>
+        <h3>[]Appointments</h3>
       </div>
     </div>
+  </div>
+
+  <div class="row">
     <div class="col">
       <div class="form-group">
-        <label>Lastname:</label>
-        <p>{{userForm.value.lastName}}</p>
+        <h5>Medicine: &nbsp;</h5>
+        <h3>[]Medicines</h3>
       </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <label>Day of Birth:</label>
-      <p>{{userForm.value.dayOfBirth}}</p>
-    </div>
-    <div class="col">
-      <label>Gender:</label>
-      <p>{{userForm.value.gender}}</p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <label>Permissions:</label>
-      <p *ngIf="userForm.value.admin">Admin</p>
-      <p *ngIf="userForm.value.employee">Employee</p>
-      <p *ngIf="!userForm.value.admin && !userForm.value.employee">Patient</p>
     </div>
     <div class="col">
       <a [routerLink]="'/questionaire/' + userForm.id"><button class="btn btn-primary">Show Questionaire</button></a>
