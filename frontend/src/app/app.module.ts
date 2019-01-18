@@ -18,6 +18,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { deLocale } from 'ngx-bootstrap/locale';
 import {MediainputComponent} from './mediainput/mediainput.component';
+import {ProfilePicInputComponent} from './profilePicInput/profilePicInput.component';
 import {SafeUrlPipe} from './service/safe-url.pipe';
 import { MainpageComponent } from './mainpage/mainpage.component';
 
@@ -56,6 +57,7 @@ export function tokenGetter() {
     LoginComponent,
     LogoutComponent,
     MediainputComponent,
+    ProfilePicInputComponent,
     SafeUrlPipe,
     MainpageComponent,
     AppointmentDoctorListComponent,
