@@ -43,7 +43,7 @@ export class UserFormComponent implements OnInit {
       'email': new FormControl(),
       'questionaires': new FormControl(),
       'inquiries': new FormControl(),
-      'userData' : new FormControl()
+      'userData': new FormControl()
     });
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {

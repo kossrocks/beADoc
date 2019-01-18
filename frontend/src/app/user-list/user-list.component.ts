@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../api/user';
 import {UserService} from '../service/user.service';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-user-list',
@@ -14,6 +15,8 @@ export class UserListComponent implements OnInit {
   users: Array<User>;
   title: String;
   headElements = ['Username', 'Name', 'LastName', 'eMail', 'isEmployee', 'isAdmin'];
+  searchString: string;
+  searchList = ['name','username','lastName'];
 
   order = 1;
 
@@ -71,14 +74,6 @@ export class UserListComponent implements OnInit {
   }
 
   sortTable(prop: string) {
-    /*let liste: Array<any> = [{name: "sam"},{name: "weiß"},{name:"fischer"},{name: "berry"}]
-
-    liste.sort((a,b) => {
-      return a['name'] > b['name'] ? 1 : -1;
-    });
-
-    alert(JSON.stringify(liste));
-*/
 
     const property = this.firstLetterToLower(prop);
     this.users.sort((a, b) => {

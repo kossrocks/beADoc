@@ -30,7 +30,6 @@ public class User {
   private String eMail;
 
   @Temporal(TemporalType.TIMESTAMP)
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private Date dayOfBirth;
 
   @OneToMany(mappedBy = "patient")
