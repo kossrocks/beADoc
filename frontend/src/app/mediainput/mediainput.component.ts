@@ -70,6 +70,7 @@ export class MediainputComponent implements OnInit, ControlValueAccessor {
   deleteMedia(index: number): void {
     this.medias.splice(index, 1);
     this.onChange(this.medias);
+    delete this.previews[index];
   }
 
   initPreviews(){
