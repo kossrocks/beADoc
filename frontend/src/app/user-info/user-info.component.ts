@@ -17,8 +17,6 @@ export class UserInfoComponent implements OnInit {
 
   ngOnInit() {
 
-
-
     this.userForm = new FormGroup({
       'id': new FormControl(),
       'username': new FormControl('', [Validators.required]),
@@ -38,8 +36,7 @@ export class UserInfoComponent implements OnInit {
       'questionaires': new FormControl(),
       'profilPictures': new FormControl(),
       'inquiries': new FormControl(),
-      'userData': new FormControl(),
-
+      'userData': new FormControl()
     });
 
 
