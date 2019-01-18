@@ -24,14 +24,14 @@ export class AppointmentDoctorFormComponent implements OnInit {
   ngOnInit() {
 
     this.appointmentFormDoctor = new FormGroup({
-      'appointmentDate': new FormControl(),
-      'appointmentTime': new FormControl(),
-      'patient': new FormControl(),
+      'appointmentDate': new FormControl([Validators.required]),
+      'appointmentTime': new FormControl([Validators.required]),
+      'patient': new FormControl([Validators.required]),
     });
 
     let x = 7;
 
-    while(x < 21){
+    while (x < 21) {
 
       const string1: string = x.toString() + ':00';
       const string2: string = x.toString() + ':15';

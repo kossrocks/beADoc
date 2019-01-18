@@ -1,12 +1,22 @@
-<h1>{{usernameCurrent}}, these are your current appointments</h1>
-<div class="row" *ngFor="let appointment of appointmentEntries; let i = index">
-    <div class="col" *ngIf="usernameCurrent == appointment.username">
-      Appointment: {{appointment.appointmentDate}} {{appointment.appointmentTime}} {{appointment.fixed}}
-    </div>
-    <form class="col" *ngIf="!appointment.fixed && usernameCurrent == appointment.username" (ngSubmit)="fixAppointment(appointment.appointmentID, i)"><button type="submit">Fix</button></form>
-</div>
-
+<p></p>
+<h1>{{title}} for {{usernameCurrent}}</h1>
 <br>
-<button type="button" (click)="createAppointment()">
-  Ask for Appointment
-</button>
+<br>
+<table>
+  <thead>
+  <tr>
+    <th *ngFor="let head of headElementsAppointments" scope="col"><a href (click)="sortTable(head)"> {{head}}</a></th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let appointment of appointmentEntries; let i = index">
+      <td>{{appointment.appointmentDate}}</td>
+      <td>{{appointment.appointmentTime}}</td>
+      <td>{{appointment.fixed ? "Fixed" : "Not fixed"}}</td>
+      <td><form class="col" *ngIf="!appointment.fixed && usernameCurrent == appointment.username" (ngSubmit)="fixAppointment(appointment.appointmentID, i)"><button class="btn-primary button" type="submit">Fix</button></form></td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="btn-primary button2" type="button" (click)="createAppointment()">Ask for new Appointment</button>
+

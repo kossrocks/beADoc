@@ -17,6 +17,8 @@ export class UserInfoComponent implements OnInit {
 
   ngOnInit() {
 
+
+
     this.userForm = new FormGroup({
       'id': new FormControl(),
       'username': new FormControl('', [Validators.required]),
@@ -36,7 +38,11 @@ export class UserInfoComponent implements OnInit {
       'questionaires': new FormControl(),
       'profilPictures': new FormControl(),
       'inquiries': new FormControl(),
+      'userData': new FormControl(),
+
     });
+
+
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.userService.getById(id)
@@ -47,6 +53,10 @@ export class UserInfoComponent implements OnInit {
   }
   navigateToList() {
     this.router.navigate(['/user-list/' + localStorage.getItem('filterMode')]);
+  }
+
+  showQuestionaire () {
+
   }
 }
 
