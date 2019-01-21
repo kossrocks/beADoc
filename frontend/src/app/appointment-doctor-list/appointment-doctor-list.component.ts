@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {Appointment} from '../api/appointment';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {InquiryService} from '../service/inquiry.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-appointment-doctor-list',
@@ -25,8 +26,8 @@ export class AppointmentDoctorListComponent implements OnInit {
   order = 1;
   searchList = ['username', 'name', 'lastName'];
 
-  constructor(private appointmentService: AppointmentService, private router: Router, private inquiryService: InquiryService) {
-  }
+  constructor(private appointmentService: AppointmentService, private router: Router, private inquiryService: InquiryService,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
 
@@ -61,6 +62,7 @@ export class AppointmentDoctorListComponent implements OnInit {
 
     this.appointmentService.delete(id).subscribe(() => {
       this.ngOnInit();
+      this.toastr.info('You sucessfully deleted your Appointment', 'Deletion of Appointment');
     });
 
 

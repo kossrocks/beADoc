@@ -33,7 +33,7 @@ export class LogoutComponent implements OnInit {
     this.inquiryService.getAll()
       .subscribe((inquiries: any) => {
         this.inquiries = inquiries;
-
+        this.ngOnInit();
       });
 
     this.getUserRole();
