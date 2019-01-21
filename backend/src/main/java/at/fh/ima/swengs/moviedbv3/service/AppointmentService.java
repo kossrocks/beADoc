@@ -24,4 +24,13 @@ public class AppointmentService {
       if(entities == null || !entities.isEmpty()) dtos.forEach((dto)->entities.add(appointmentRepository.findById(dto).get()));
       return entities;
     }
+
+    public long stringToLong(String timeString){
+      return Long.parseLong(timeString.replaceAll(":",""));
+    }
+
+    public String longToString(long timeLong){
+      String returnString = Long.toString(timeLong).length() == 3 ? Long.toString(timeLong).substring(0,1) + ':' + Long.toString(timeLong).substring(1) : Long.toString(timeLong).substring(0,2) + ':' + Long.toString(timeLong).substring(2);
+      return returnString;
+    }
 }

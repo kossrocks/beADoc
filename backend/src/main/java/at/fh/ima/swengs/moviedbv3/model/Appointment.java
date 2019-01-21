@@ -1,93 +1,94 @@
 package at.fh.ima.swengs.moviedbv3.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Appointment {
 
-    @Id
-    private long id;
+  @Id
+  private long id;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date appointmentDate;
-    private long appointmentTime;
+  @Temporal(TemporalType.TIMESTAMP)
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+  private Date appointmentDate;
+  private long appointmentTime;
 
-    private boolean fixed;
+  private boolean fixed;
 
-    @ManyToOne
-    private User patient;
+  @ManyToOne
+  private User patient;
 
-    @Version
-    @JsonIgnore
-    private long version;
+  @Version
+  @JsonIgnore
+  private long version;
 
-    public Appointment() {
-    }
+  public Appointment() {
+  }
 
-    public Appointment(Date appointmentDate, long appointmentTime) {
-        LocalDate localDate = appointmentDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        this.id = ((localDate.getYear()*100000000)+(localDate.getMonthValue()*1000000)+(localDate.getDayOfMonth()*10000)+appointmentTime);
-        this.appointmentDate = appointmentDate;
+  public Appointment(Date appointmentDate, long appointmentTime) {
+    LocalDate localDate = appointmentDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    this.id = ((localDate.getYear() * 100000000) + (localDate.getMonthValue() * 1000000) + (localDate.getDayOfMonth() * 10000) + appointmentTime);
+    this.appointmentTime = ((Math.floorDiv(appointmentTime, 100) % 24) * 100) + ((appointmentTime - Math.floorDiv(appointmentTime, 100) * 100) % 60);
 
-        this.appointmentTime = ((Math.floorDiv(appointmentTime,100)%24) *100) + ((appointmentTime - Math.floorDiv(appointmentTime,100)*100)%60);
-    }
+    this.appointmentDate = appointmentDate;
 
-    public long getId() {
-        return id;
-    }
 
-    public Date getAppointmentDate() {
-        return appointmentDate;
-    }
+  }
 
-    public void setAppointmentDate(Date appointmentDate) {
-        this.appointmentDate = appointmentDate;
-    }
+  public boolean isFixed() {
+    return fixed;
+  }
 
-    public long getAppointmentTime() {
-        return appointmentTime;
-    }
+  public long getId() {
+    return id;
+  }
 
-    public void setAppointmentTime(long appointmentTime) {
-        this.appointmentTime = appointmentTime;
-    }
+  public Date getAppointmentDate() {
+    return appointmentDate;
+  }
 
-    public boolean getFixed() {
-        return fixed;
-    }
+  public void setAppointmentDate(Date appointmentDate) {
+    this.appointmentDate = appointmentDate;
+  }
 
-    public void setFixed(boolean fixed) {
-        this.fixed = fixed;
-    }
+  public long getAppointmentTime() {
+    return appointmentTime;
+  }
 
-    public User getPatient() {
-        return patient;
-    }
+  public void setAppointmentTime(long appointmentTime) {
+    this.appointmentTime = appointmentTime;
+  }
 
-    public void setPatient(User patient) {
-        this.patient = patient;
-    }
+  public void setFixed(boolean fixed) {
+    this.fixed = fixed;
+  }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Appointment that = (Appointment) o;
-        return id == that.id;
-    }
+  public User getPatient() {
+    return patient;
+  }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
+  public void setPatient(User patient) {
+    this.patient = patient;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Appointment that = (Appointment) o;
+    return id == that.id;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
+  }
 }

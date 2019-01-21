@@ -30,7 +30,6 @@ public class User {
   private String eMail;
 
   @Temporal(TemporalType.TIMESTAMP)
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private Date dayOfBirth;
 
   @OneToMany(mappedBy = "patient")
@@ -38,6 +37,9 @@ public class User {
 
   @ManyToMany(mappedBy = "consumers")
   private Set<Medicine> medicines;
+
+  @OneToMany(mappedBy = "patient")
+  private Set<Inquiry> inquiries;
 
   @ManyToMany
   @JoinTable(name =
@@ -49,6 +51,16 @@ public class User {
       "pictures_id"))
   private Set<Media> pictures = new HashSet<>();
 
+  @ManyToMany
+  @JoinTable(name =
+          "movies_profilpictures"
+          ,
+          joinColumns = @JoinColumn(name =
+                  "movie_id"),
+          inverseJoinColumns = @JoinColumn(name =
+                  "profilpictures_id"))
+  private Set<Media> profilPictures = new HashSet<>();
+
   private boolean admin;
   private boolean employee;
   private boolean active;
@@ -56,9 +68,40 @@ public class User {
   @Enumerated(EnumType.STRING)
   private Gender gender;
 
+  @ManyToMany
+  @JoinTable(name = "questionaires_users",
+    joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "questionaire_id")
+  )
+  private Set<Questionaire> questionaires;
+
   @Version
   @JsonIgnore
   private long version;
+
+  public Set<Media> getProfilPictures() {
+    return profilPictures;
+  }
+
+  public void setProfilPictures(Set<Media> profilPictures) {
+    this.profilPictures = profilPictures;
+  }
+
+  public Set<Inquiry> getInquiries() {
+    return inquiries;
+  }
+
+  public void setInquiries(Set<Inquiry> inquiries) {
+    this.inquiries = inquiries;
+  }
+
+  public Set<Questionaire> getQuestionaires() {
+    return questionaires;
+  }
+
+  public void setQuestionaires(Set<Questionaire> questionaires) {
+    this.questionaires = questionaires;
+  }
 
   public Set<Appointment> getAppointments() {
     return appointments;

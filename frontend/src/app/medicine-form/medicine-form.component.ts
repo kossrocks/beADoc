@@ -37,9 +37,9 @@ export class MedicineFormComponent implements OnInit {
 
   saveMedicine() {
 
-    const actor = this.medicineForm.value;
-    if (actor.id) {
-      this.medicineService.update(actor)
+    const medicine = this.medicineForm.value;
+    if (medicine.id) {
+      this.medicineService.update(medicine)
         .subscribe((response) => {
           alert('updated successfully');
           this.medicineForm.setValue(response);
@@ -48,7 +48,7 @@ export class MedicineFormComponent implements OnInit {
           }
         });
     } else {
-      this.medicineService.create(actor)
+      this.medicineService.create(medicine)
         .subscribe((response: any) => {
           alert('created successfully');
           if (this.shouldNavigateToList) {
@@ -62,7 +62,7 @@ export class MedicineFormComponent implements OnInit {
   }
 
   navigateToList() {
-    this.router.navigate(['/medicine']);
+    this.router.navigate(['/medicine-list']);
   }
 
   setShouldNavigateToList() {

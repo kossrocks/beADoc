@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AppointmentService} from '../service/appointment.service';
+import {InquiryService} from '../service/inquiry.service';
+import {UserService} from '../service/user.service';
+import {forEach} from '@angular/router/src/utils/collection';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-appointment-patient-form',
@@ -10,23 +14,44 @@ import {AppointmentService} from '../service/appointment.service';
 })
 export class AppointmentPatientFormComponent implements OnInit {
 
-  appointmentForm;
+  inquiryForm;
+  users;
 
-  constructor(private router: Router, private appointmentService: AppointmentService) { }
+  constructor(private router: Router, private inquiryService: InquiryService, private userService: UserService, private toastr: ToastrService) { }
 
   ngOnInit() {
 
-    this.appointmentForm = new FormGroup( {
-      'preferences': new FormControl(),
-      'day': new FormControl(),
-      'time': new FormControl()
+    this.inquiryForm = new FormGroup( {
+      'soon': new FormControl(),
+      'monday': new FormControl(),
+      'tuesday': new FormControl(),
+      'wednesday': new FormControl(),
+      'thursday': new FormControl(),
+      'friday': new FormControl(),
+      'morning': new FormControl(),
+      'midday': new FormControl(),
+      'afternoon': new FormControl(),
     });
+
+
+    this.userService.getAll()
+      .subscribe((users: any) => {
+        this.users = users;
+      });
+
   }
 
 
+
   askForAppointment() {
-    const appointment = this.appointmentForm.value;
-    this.appointmentService.create(appointment);
+   /* const id = this.users.filter((u) => u.username === localStorage.getItem('username'))[0].id;
+    this.inquiryForm.patchValue({patientId: id});*/
+    const inquiry = this.inquiryForm.value;
+    this.inquiryService.create(inquiry)
+      .subscribe((response: any) => {
+        this.toastr.success('The Inquiry was send to your doctor!', 'New Inquiry');
+        this.router.navigate(['/appointment-patient-list']);
+      });
   }
 
   goBackToList() {

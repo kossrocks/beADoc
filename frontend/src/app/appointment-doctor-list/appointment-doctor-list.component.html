@@ -1,11 +1,40 @@
-<div *ngFor="let appointment of appointments">
-  {{appointment.id}} , {{appointment.appointmentDate}} {{appointment.appointmentTime}} {{appointment.fixed}} <button *ngIf="appointment.fixed==false" type="button" (click)="fixAppointment()">Fix Appointment</button>
+<p></p>
+<h1>{{title}}</h1>
+<br>
+<div class="row">
+  <table class="col appointments">
+    <thead>
+    <tr>
+      <th *ngFor="let head of headElementsAppointments; let i = index;" scope="col"><a href (click)="sortTable(sortHeaders[i])"> {{head}}</a></th>
+      <th colspan="1"><input type="text" name="searchText" [(ngModel)]="searchString" placeholder="Type to search..."></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let appointment of appointments | filter : searchList : searchString">
+      <td *ngIf='isEmployee && isAdmin'>{{appointment.appointmentDate}}</td>
+      <td *ngIf='isEmployee && isAdmin'>{{appointment.appointmentTime}}</td>
+      <td *ngIf='isEmployee && isAdmin'>{{appointment.username}}</td>
+      <td *ngIf='isEmployee && isAdmin'>{{appointment.name}}</td>
+      <td *ngIf='isEmployee && isAdmin'>{{appointment.lastName}}</td>
+      <td *ngIf='isEmployee && isAdmin'>{{appointment.fixed ? "Fixed" : "Not fixed"}}</td>
+      <td *ngIf='isEmployee && !isAdmin'>{{appointment.appointmentDate}}</td>
+      <td *ngIf='isEmployee && !isAdmin'>{{appointment.appointmentTime}}</td>
+      <td *ngIf='isEmployee && !isAdmin'>{{appointment.username}}</td>
+      <td *ngIf='isEmployee && !isAdmin'>{{appointment.name}}</td>
+      <td *ngIf='isEmployee && !isAdmin'>{{appointment.lastName}}</td>
+      <td *ngIf='isEmployee && !isAdmin'>{{appointment.fixed ? "Fixed" : "Not fixed"}}</td>
+      <td *ngIf='isEmployee && isAdmin' class="td-btn">
+        <button class="btn btn-danger" (click)="deleteAppointment(appointment.id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+
+  <div class="col">
+    <div class="inquiry" *ngFor="let inquiry of inquiryentries">
+      <span class="textInquiry"> Inquiry by <span style="font-weight: bold;">{{inquiry.username}}</span></span>
+      <button class="btn-primary button" type="button" (click)="goToAppointmentForm(inquiry.id)"><span>Create new Appointment</span></button>
+    </div>
+  </div>
 </div>
-
-<button type="button" (click)="createAppointment()">
-  Create new Appointment
-</button>
-
-<button type="button" (click)="goBackHome()">
-  Back
-</button>

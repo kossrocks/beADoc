@@ -14,26 +14,29 @@ import {RatingModule} from 'ngx-bootstrap/rating';
 import {NgxSelectModule} from 'ngx-select-ex';
 import {BsDatepickerModule} from 'ngx-bootstrap';
 import { FileUploadModule } from 'ng2-file-upload';
-
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { deLocale } from 'ngx-bootstrap/locale';
 import {MediainputComponent} from './mediainput/mediainput.component';
+import {ProfilePicInputComponent} from './profilePicInput/profilePicInput.component';
 import {SafeUrlPipe} from './service/safe-url.pipe';
 import { MainpageComponent } from './mainpage/mainpage.component';
-
 import { AppointmentDoctorListComponent } from './appointment-doctor-list/appointment-doctor-list.component';
 import { AppointmentPatientFormComponent } from './appointment-patient-form/appointment-patient-form.component';
 import { AppointmentPatientListComponent } from './appointment-patient-list/appointment-patient-list.component';
-
-
 import { MedicineComponent } from './medicine/medicine.component';
 import { MedicineFormComponent } from './medicine-form/medicine-form.component';
-
 import {CommonModule} from '@angular/common';
 import { MyCalendarComponent } from './calendar/calendar.component';
 import {FullCalendarModule} from 'ng-fullcalendar';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { AppointmentDoctorFormComponent } from './appointment-doctor-form/appointment-doctor-form.component';
+import { QuestionaireComponent } from './questionaire/questionaire.component';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { UserService } from './service/user.service';
+import {FilterPipe} from './pipes/filter.pipe';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 defineLocale('de', deLocale);
 
@@ -50,6 +53,7 @@ export function tokenGetter() {
     LoginComponent,
     LogoutComponent,
     MediainputComponent,
+    ProfilePicInputComponent,
     SafeUrlPipe,
     MainpageComponent,
     AppointmentDoctorListComponent,
@@ -59,8 +63,15 @@ export function tokenGetter() {
     MedicineFormComponent,
     MyCalendarComponent,
     UserListComponent,
+    FilterPipe,
 
     UserFormComponent,
+
+    QuestionaireComponent,
+
+    AppointmentDoctorFormComponent,
+
+    UserInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,8 +93,10 @@ export function tokenGetter() {
     NgxSelectModule,
     BsDatepickerModule.forRoot(),
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

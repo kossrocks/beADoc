@@ -53,7 +53,12 @@ export class UserService {
 
 
   getById(id: string) {
-    return this.http.get('/api/dto/users/' + id);
+    return this.http.get('/api/dto/users/' + id).pipe(map((res: any) => {
+      if (res.dayOfBirth) {
+        res.dayOfBirth = new Date(res.dayOfBirth);
+      }
+      return res;
+    }));
   }
 
   getAll() {
@@ -63,16 +68,71 @@ export class UserService {
       })
     );
   }
+  getAllDTOs() {
+    return this.http.get('/api/dto/users').pipe(
+      map((response: any) => {
+        return response._embedded.users;
+      })
+    );
+  }
+
+  getAllPatientsByUsername () {
+    return this.http.get('/api/users').pipe(
+      map((response: any) => {
+        const patients: Array<User> = [];
+        for (const user of response._embedded.users) {
+          if (!user.admin) {
+            patients.push(user.id.toString().concat(': ' + user.name + ' ' + user.lastName + ' (' + user.username + ')'));
+          }
+        }
+        return patients;
+      })
+    );
+  }
+
+  getAllEmployees() {
+    return this.http.get('/api/users').pipe(
+      map((response: any) => {
+        const employees: Array<User> = [];
+        for (const user of response._embedded.users) {
+          if (user.admin || user.employee) {
+            employees.unshift(user);
+          }
+        }
+        return employees;
+      })
+    );
+  }
+
+  getAllPatients() {
+    return this.http.get('/api/users').pipe(
+      map((response: any) => {
+        const patients: Array<User> = [];
+        for (const user of response._embedded.users) {
+          if (!user.admin && !user.employee) {
+            patients.unshift(user);
+          }
+        }
+        return patients;
+      })
+    );
+  }
 
   delete(user) {
     return this.http.delete('/api/users/' + user.id);
   }
 
   update(user: User) {
-    return this.http.put('/api/dto/users/' + user.id, user);
+    return this.http.put('/api/dto/users/' + user.id, user).pipe(map((res: any) => {
+      if (res.dayOfBirth) {
+        res.dayOfBirth = new Date(res.dayOfBirth);
+      }
+      return res;
+    }));
   }
 
   create(user: User) {
     return this.http.post('/api/dto/users', user);
   }
+
 }

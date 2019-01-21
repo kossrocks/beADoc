@@ -1,13 +1,29 @@
-<form (ngSubmit)="login()">
-  <label>
-    Username:
-    <input type="text" name="username" [(ngModel)]="user.username"/>
-  </label>
-  <label>
-    Password:
-    <input type="text" name="password" [(ngModel)]="user.password"/>
-  </label>
-  <button type="submit">
-    Login
-  </button>
+
+<form (ngSubmit)="login()" style="text-align: center">
+
+  <img src="assets/img/logo.PNG" width="600px">
+
+<div class="login">
+  <div class="login-screen">
+    <div class="app-title">
+      <h1>Login</h1>
+    </div>
+
+    <div class="login-form">
+      <div class="control-group">
+        <input type="text" class="login-field" placeholder="username" id="username" name="username" [(ngModel)]="user.username">
+        <label class="login-field-icon fui-user" for="username"></label>
+      </div>
+
+      <div class="control-group">
+        <input type="password" class="login-field" placeholder="password" id="password" name="password" [(ngModel)]="user.password">
+        <label class="login-field-icon fui-lock" for="password"></label>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-large btn-block">login</button>
+      <a class="login-link" href="#">Lost your password?</a>
+    </div>
+  </div>
+</div>
+
 </form>

@@ -21,7 +21,7 @@ public class AppointmentFacade {
 
     void mapDtoToEntity(AppointmentDTO dto, Appointment entity) {
         entity.setAppointmentDate(dto.getAppointmentDate());
-        entity.setAppointmentTime(dto.getAppointmentTime());
+        entity.setAppointmentTime(appointmentService.stringToLong(dto.getAppointmentTime()));
         entity.setFixed(dto.isFixed());
         entity.setPatient(userService.getUser(dto.getPatient()));
     }
@@ -29,8 +29,8 @@ public class AppointmentFacade {
     private void mapEntityToDto(Appointment entity, AppointmentDTO dto) {
         dto.setId(entity.getId());
         dto.setAppointmentDate(entity.getAppointmentDate());
-        dto.setAppointmentTime(entity.getAppointmentTime());
-        dto.setFixed(entity.getFixed());
+        dto.setAppointmentTime(appointmentService.longToString(entity.getAppointmentTime()));
+        dto.setFixed(entity.isFixed());
         if (entity.getPatient() != null) {
             dto.setPatient(entity.getPatient().getId());
         }
@@ -44,7 +44,7 @@ public class AppointmentFacade {
     }
 
     public AppointmentDTO create(AppointmentDTO dto) {
-        Appointment entity = new Appointment(dto.getAppointmentDate(), dto.getAppointmentTime());
+        Appointment entity = new Appointment(dto.getAppointmentDate(), appointmentService.stringToLong(dto.getAppointmentTime()));
         mapDtoToEntity(dto, entity);
         mapEntityToDto(appointmentService.save(entity), dto);
         return dto;

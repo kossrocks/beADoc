@@ -3,28 +3,38 @@
 <div *ngIf='isEmployee'>
   <p *ngIf='isAdmin'> ADMIN PANEL</p>
   <p *ngIf='isEmployee && !isAdmin' > EMPLOYEE PANEL</p>
-  <a href="/">
-    <button>Employees</button>
-  </a>
-  <a href="/medicine-list">
-    <button>Medicine</button>
-  </a>
   <a href="/calendar">
-    <button>Calendar</button>
+    <button><img src="assets/img/CalendarIcon.png" onmouseover="this.src='assets/img/calendarIconOnHover.png';" onmouseout="this.src='assets/img/CalendarIcon.png';"></button>
   </a>
-  <a href="/user-list">
-    <button>Users</button>
+  <a href="/appointment-doctor-list">
+    <button><img src="assets/img/newAppointmentIcon.png" onmouseover="this.src='assets/img/newAppointmentIconOnHover.png';" onmouseout="this.src='assets/img/newAppointmentIcon.png';"></button>
+  </a>
+  <a href="/user-list/users">
+    <button><img src="assets/img/userIcon.png" onmouseover="this.src='assets/img/userIconOnHover.png';" onmouseout="this.src='assets/img/userIcon.png';"></button>
+  </a>
+  <a href="/user-list/patients">
+    <button><img src="assets/img/patientsIcon.png" onmouseover="this.src='assets/img/patientsIconOnHover.png';" onmouseout="this.src='assets/img/patientsIcon.png';"></button>
+  </a>
+  <a href="/user-list/employees">
+    <button><img src="assets/img/employeesIcon.png" onmouseover="this.src='assets/img/employeesIconOnHover.png';" onmouseout="this.src='assets/img/employeesIcon.png';"></button>
   </a>
   <button type="button" (click)="editUser()">
-    Edit Profile
+    <img src="assets/img/editProfileIcon.png" onmouseover="this.src='assets/img/editProfileIconOnHover.png';" onmouseout="this.src='assets/img/editProfileIcon.png';">
   </button>
 </div>
 <div *ngIf='!isAdmin && !isEmployee'>
   <p> USER PANEL</p>
-  <a href='"/user-form/%id" + ' >
-    <button>Questionnaire</button>
+  <button type="button" (click)="editQuestionnaire()">
+    <img src="assets/img/questionaireIcon.png" onmouseover="this.src='assets/img/questionaireIconOnHover.png';" onmouseout="this.src='assets/img/questionaireIcon.png';">
+  </button>
+  <a href="/appointment-patient-list">
+    <button><img src="assets/img/AppointmentsPatientsIcon.png" onmouseover="this.src='assets/img/AppointmentsPatientsIconOnHover.png';" onmouseout="this.src='assets/img/AppointmentsPatientsIcon.png';"></button>
+  </a>
+  <a href="/appointment-patient-form">
+    <button><img src="assets/img/InquiryIcon.png" onmouseover="this.src='assets/img/InquiryIconOnHover.png';" onmouseout="this.src='assets/img/InquiryIcon.png';"></button>
   </a>
   <button type="button" (click)="editUser()">
-    Edit Profile
+    <img src="assets/img/editProfileIcon.png" onmouseover="this.src='assets/img/editProfileIconOnHover.png';" onmouseout="this.src='assets/img/editProfileIcon.png';">
   </button>
 </div>
+

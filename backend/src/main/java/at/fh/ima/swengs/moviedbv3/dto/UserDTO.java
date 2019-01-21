@@ -2,6 +2,7 @@ package at.fh.ima.swengs.moviedbv3.dto;
 
 import at.fh.ima.swengs.moviedbv3.model.Gender;
 import at.fh.ima.swengs.moviedbv3.model.Media;
+import at.fh.ima.swengs.moviedbv3.model.Questionaire;
 
 import java.util.Date;
 import java.util.Set;
@@ -21,7 +22,35 @@ public class UserDTO {
   private boolean employee;
   private boolean active;
   private Gender gender;
+  private Set<Media> profilPictures;
   private Set<Media> pictures;
+  private Set<Long> questionaires;
+  private Set<Long> inquiries;
+  private String userData;
+
+  public String getUserData() {
+    return userData;
+  }
+
+  public void setUserData(String userData) {
+    this.userData = userData;
+  }
+
+  public Set<Long> getInquiries() {
+    return inquiries;
+  }
+
+  public void setInquiries(Set<Long> inquiries) {
+    this.inquiries = inquiries;
+  }
+
+  public Set<Long> getQuestionaires() {
+    return questionaires;
+  }
+
+  public void setQuestionaires(Set<Long> questionaires) {
+    this.questionaires = questionaires;
+  }
 
   public String geteMail() {
     return eMail;
@@ -37,6 +66,14 @@ public class UserDTO {
 
   public void setPictures(Set<Media> pictures) {
     this.pictures = pictures;
+  }
+
+  public Set<Media> getProfilPictures() {
+    return profilPictures;
+  }
+
+  public void setProfilPictures(Set<Media> profilPictures) {
+    this.profilPictures = profilPictures;
   }
 
   public long getId() {

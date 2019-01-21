@@ -1,0 +1,27 @@
+<div>
+  <table class="table">
+    <thead>
+    </thead>
+    <tbody>
+    <tr *ngFor="let media of medias; let i = index;">
+      <td>
+        <span *ngIf="!media.id">Uploading...</span>
+      </td>
+      <td>
+        <img [src]="previews[i] | safeUrl" *ngIf="previews[i]" class="img-fluid">
+      </td>
+      <td>
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" (click)="deleteMedia(i)">
+            Set new Picture
+          </button>
+          <button type="button" class="btn btn-primary" (click)="downloadMedia(media)">
+            Download
+          </button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+    <input [id]="'field_' + name" type="file" ng2FileSelect [uploader]="uploader" [multiple]="false" accept="image/*" *ngIf="medias != null && medias.length == 0"/>
+  </table>
+</div>

@@ -5,6 +5,10 @@ import {AppointmentService} from '../service/appointment.service';
 import {Appointment} from '../api/appointment';
 import {UserService} from '../service/user.service';
 import {User} from '../api/user';
+import {CalendarService} from '../service/calendar.service';
+import * as moment from 'moment';
+import {jsonpCallbackContext} from '@angular/common/http/src/module';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-calendar',
@@ -17,28 +21,32 @@ export class MyCalendarComponent implements OnInit {
     {
       title: 'Test Event',
       start: '2019-01-11T12:00:00.000',
-      end: '2019-01-11T13:00:00.000'
+      end: '2019-01-11T13:00:00.000',
+      color: 'green'
     }
   ];
 
   appointments: Array<Appointment>;
-  users:Array<User>;
+  users: Array<User>;
+  calendarEntries;
 
   calendarOptions: Options;
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
 
-  constructor(private appointmentService: AppointmentService, private userService: UserService) {
+  constructor(private calendarService: CalendarService, private appointmentService: AppointmentService) {
   }
 
 
   ngOnInit() {
     this.calendarOptions = {
-      editable: true,
+      editable: false,
       eventLimit: false,
       selectable: true,
       nowIndicator: true,
       locale: 'en',
       timeFormat: 'H:mm',
+      minTime: moment.duration("06:00:00"),
+      maxTime: moment.duration("21:00:00"),
       header: {
         left: 'prev,next today',
         center: 'title',
@@ -47,57 +55,68 @@ export class MyCalendarComponent implements OnInit {
       events: this.data
     };
 
-    this.appointmentService.getAll()
-      .subscribe((appointments: any) => {
-        this.appointments = appointments;
-        for(let appointment of this.appointments){
+    this.calendarService.getAll()
+      .subscribe((entries: any) => {
 
-          let timeString: string = appointment.appointmentTime.toString();
+        this.calendarEntries = entries;
+        this.addData(this.calendarEntries);
 
-          while (timeString.length < 4){
-            timeString = '0' + timeString;
-          }
-
-          let hourString: string = timeString.substring(0,2);
-          let minuteString: string = timeString.substring(2,4);
-
-          let timeInMinutes = parseInt(hourString) * 60 + parseInt(minuteString);
-          timeInMinutes += 60;
-
-          let newHourString: string = Math.floor(timeInMinutes/60).toString();
-          while (newHourString.length < 2){
-            newHourString = '0' + newHourString;
-          }
-          let newMinuteString: string = (timeInMinutes % 60).toString();
-          while (newMinuteString.length < 2){
-            newMinuteString = '0' + newMinuteString;
-          }
+      });
 
 
-          let startString: string = appointment.appointmentDate + 'T' + hourString + ':' + minuteString + ':00.000';
+
+  }
 
 
-          let endString: string = appointment.appointmentDate + 'T' + newHourString + ':' + newMinuteString + ':00.000';
+  clickDay(details) {
+    let detailStringList = Object.values(details).toString().split(' ');
+    detailStringList = detailStringList.splice(1,3);
+    let dateString = detailStringList[2] + '-' + this.monthStringToNumber(detailStringList[0]) + '-' + detailStringList[1];
 
+    let viewNameList = ['month', 'agendaWeek', 'agendaDay'];
 
-          this.data.push(
-            {
-              title: appointment.id.toString(),
-              start: startString,
-              end: endString
-            }
-          )
+    let view = this.ucCalendar.fullCalendar('getView');
+
+    let viewName = viewNameList[viewNameList.indexOf(view.name) + 1 ];
+
+    this.ucCalendar.fullCalendar('changeView', viewName);
+    this.ucCalendar.fullCalendar('gotoDate', dateString);
+
+  }
+
+  addData (entries:Array<any>) {
+    for (let entry of entries) {
+
+      let startDate: Date = new Date(entry.appointmentDate);
+
+      const hour: number = Math.floor(entry.appointmentTime / 100);
+
+      const minute: number = entry.appointmentTime - (Math.floor(entry.appointmentTime / 100)*100);
+      startDate.setHours(hour);
+      startDate.setMinutes(minute);
+
+      let endDate = new Date(startDate.getTime() + 1000 * 60 * 60);
+
+      const colorString: string = entry.fixed ? '#009be6' : '#ff4000';
+
+      this.data.push(
+        {
+          title: entry.name + ' ' + entry.lastName,
+          start: startDate.toString(),
+          end: endDate.toString(),
+          color: colorString
         }
-      });
+      )
+    }
+  }
 
+  monthStringToNumber(string: String){
+    let months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
 
-    this.userService.getAll()
-      .subscribe((appointments: any) => {
-        this.users = appointments;
-      });
+    let monthNumber: String = (months.indexOf(string.toLowerCase()) + 1).toString();
+    if(monthNumber.length < 2) monthNumber = '0' + monthNumber;
 
-
-
+    return monthNumber;
   }
 
 
