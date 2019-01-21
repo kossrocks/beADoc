@@ -5,7 +5,9 @@ import at.fh.ima.swengs.moviedbv3.dto.UserDTO;
 import at.fh.ima.swengs.moviedbv3.model.Questionaire;
 import at.fh.ima.swengs.moviedbv3.model.User;
 import at.fh.ima.swengs.moviedbv3.service.*;
+import at.fh.ima.swengs.moviedbv3.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,7 +25,13 @@ public class UserFacade {
   UserService userService;
 
   @Autowired
+  UserDetailsServiceImpl impl;
+
+  @Autowired
   AppointmentService appointmentService;
+
+  @Autowired
+  private BCryptPasswordEncoder encoder;
 
   @Autowired
   MedicineService medicineService;
@@ -40,7 +48,7 @@ public class UserFacade {
     entity.setName(dto.getName());
     entity.setLastName(dto.getLastName());
     entity.setUsername(dto.getUsername());
-    entity.setPassword(dto.getPassword());
+    entity.setPassword(encoder.encode(dto.getPassword())); //HIER ENCRYPTEN
     entity.setEMail(dto.getEMail());
     entity.setDayOfBirth(dto.getDayOfBirth());
     entity.setAppointments(appointmentService.getAppointments(dto.getAppointments()));
