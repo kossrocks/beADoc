@@ -18,7 +18,7 @@
         </li>
 
         <li class="nav-item">
-          <a href="/appointment-doctor-list" *ngIf="isLoggedIn && isAdmin && isEmployee" class="notification">
+          <a href="/appointment-doctor-list" *ngIf="isLoggedIn" class="notification">
             <img src="assets/img/bellIcon.png" onmouseover="this.src='assets/img/bellIconOnHover.png';" onmouseout="this.src='assets/img/bellIcon.png';">
             <span class="badge">{{inquiries.length}}</span>
           </a>

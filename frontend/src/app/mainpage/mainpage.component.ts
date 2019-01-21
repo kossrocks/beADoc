@@ -3,7 +3,6 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 import {Router} from '@angular/router';
 import {User} from '../api/user';
 import {UserService} from '../service/user.service';
-import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-mainpage',

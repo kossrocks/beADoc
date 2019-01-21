@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AppointmentService} from '../service/appointment.service';
 import {Router} from '@angular/router';
 import {Appointment} from '../api/appointment';
 import {JwtHelperService} from '@auth0/angular-jwt';
-import {Actor} from '../api/actor';
 import {InquiryService} from '../service/inquiry.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-appointment-doctor-list',
@@ -26,7 +26,8 @@ export class AppointmentDoctorListComponent implements OnInit {
   order = 1;
   searchList = ['username', 'name', 'lastName'];
 
-  constructor(private appointmentService: AppointmentService, private router: Router, private inquiryService: InquiryService) { }
+  constructor(private appointmentService: AppointmentService, private router: Router, private inquiryService: InquiryService,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
 
@@ -58,19 +59,11 @@ export class AppointmentDoctorListComponent implements OnInit {
 
   deleteAppointment(id) {
 
-    let appointment;
 
-    this.appointmentService.getAll().subscribe((apps)=>{
-
-      for(let app of apps){
-        if(app.id == id) appointment = app;
-      }
-
-      alert(JSON.stringify(appointment));
+    this.appointmentService.delete(id).subscribe(() => {
+      this.ngOnInit();
+      this.toastr.info('You sucessfully deleted your Appointment', 'Deletion of Appointment');
     });
-
-
-
 
 
   }
@@ -80,13 +73,13 @@ export class AppointmentDoctorListComponent implements OnInit {
   }
 
   sortTable(prop: string) {
-  const property = this.firstLetterToLower(prop);
+    const property = this.firstLetterToLower(prop);
     this.appointments.sort((a, b) => {
       if (typeof a[property] === 'string') {
         return (a[property] === b[property]) ? 0 : a[property] > b[property] ? (1 * this.order) : (-1 * this.order);
       }
       if (typeof a[property] === 'boolean') {
-        return (a[property] === b[property]) ? 0 : a[property] ? (this.order * - 1) : (1 * this.order);
+        return (a[property] === b[property]) ? 0 : a[property] ? (this.order * -1) : (1 * this.order);
       }
       if (typeof a[property] === 'number') {
         return (a[property] === b[property]) ? 0 : a[property] > b[property] ? (this.order * -1) : (1 * this.order);

@@ -4,6 +4,7 @@ import {AppointmentService} from '../service/appointment.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../service/user.service';
 import {InquiryService} from '../service/inquiry.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-appointment-doctor-form',
@@ -16,9 +17,10 @@ export class AppointmentDoctorFormComponent implements OnInit {
   appointmentFormDoctor;
   inquiry;
   timeOption = [];
+  id = '';
 
   constructor(private router: Router, private appointmentService: AppointmentService, private userService: UserService,
-              private inquiryService: InquiryService, private route: ActivatedRoute) { }
+              private inquiryService: InquiryService, private route: ActivatedRoute, private toastr: ToastrService) { }
 
 
   ngOnInit() {
@@ -50,9 +52,9 @@ export class AppointmentDoctorFormComponent implements OnInit {
         this.patientOption = patient;
       });
 
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.inquiryService.getById(id)
+    this.id = this.route.snapshot.paramMap.get('id');
+    if (this.id != '') {
+      this.inquiryService.getById(this.id)
         .subscribe((response) => {
           this.inquiry = response;
         });
@@ -66,15 +68,17 @@ export class AppointmentDoctorFormComponent implements OnInit {
   createAppointment () {
     const appointment = this.appointmentFormDoctor.value;
 
-    const id = this.route.snapshot.paramMap.get('id');
-    const toDelete = this.inquiryService.getById(id);
-    this.inquiryService.delete(toDelete);
 
-    /*this.appointmentService.create(appointment)
-      .subscribe((response: any) => {
-        alert('created successfully');
-        this.goBackToList();
+    this.inquiryService.delete(this.id).subscribe(()=>{
 
-      });*/
+      this.appointmentService.create(appointment)
+        .subscribe((response: any) => {
+          alert('created successfully');
+          this.goBackToList();
+
+        });
+    });
+
+
   }
 }
