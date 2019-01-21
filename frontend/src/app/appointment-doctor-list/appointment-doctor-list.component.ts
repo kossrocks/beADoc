@@ -22,6 +22,7 @@ export class AppointmentDoctorListComponent implements OnInit {
   inquiryentries;
   title = 'Appointments & Inquiries';
   headElementsAppointments = ['Date', 'Time', 'Username', 'First Name', 'Last Name', 'Status'];
+  sortHeaders = ['appointmentDate', 'appointmentTime', 'username', 'name', 'lastName', 'fixed'];
   order = 1;
 
   constructor(private appointmentService: AppointmentService, private router: Router, private inquiryService: InquiryService) { }
@@ -74,6 +75,9 @@ export class AppointmentDoctorListComponent implements OnInit {
       }
       if (typeof a[property] === 'boolean') {
         return (a[property] === b[property]) ? 0 : a[property] ? (this.order * - 1) : (1 * this.order);
+      }
+      if (typeof a[property] === 'number') {
+        return (a[property] === b[property]) ? 0 : a[property] > b[property] ? (this.order * -1) : (1 * this.order);
       }
     });
     this.order = this.order * -1;
