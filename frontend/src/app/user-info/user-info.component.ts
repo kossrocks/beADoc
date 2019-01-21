@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../service/user.service';
+import {User} from '../api/user';
 
 @Component({
   selector: 'app-user-info',
@@ -11,6 +12,8 @@ import {UserService} from '../service/user.service';
 export class UserInfoComponent implements OnInit {
 
   userForm;
+  users: Array<User>;
+  userID;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) {
   }
@@ -47,13 +50,12 @@ export class UserInfoComponent implements OnInit {
           this.userForm.setValue(response);
         });
     }
+
   }
+
   navigateToList() {
     this.router.navigate(['/user-list/' + localStorage.getItem('filterMode')]);
   }
 
-  showQuestionaire () {
-
-  }
 }
 

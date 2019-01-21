@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {AppointmentService} from '../service/appointment.service';
 import {Router} from '@angular/router';
 import {Appointment} from '../api/appointment';
@@ -21,12 +21,11 @@ export class AppointmentDoctorListComponent implements OnInit {
   token: String;
   inquiryentries;
   title = 'Appointments & Inquiries';
-  headElementsAppointments = ['Date of Appointment', 'Time', 'Patient', 'Status'];
-  sortHeaders = ['appointmentDate', 'appointmentTime', 'username', 'fixed'];
+  headElementsAppointments = ['Date', 'Time', 'Username', 'First Name', 'Last Name', 'Status'];
+  sortHeaders = ['appointmentDate', 'appointmentTime', 'username', 'name', 'lastName', 'fixed'];
   order = 1;
 
-  constructor(private appointmentService: AppointmentService, private router: Router, private inquiryService: InquiryService) {
-  }
+  constructor(private appointmentService: AppointmentService, private router: Router, private inquiryService: InquiryService) { }
 
   ngOnInit() {
 
@@ -69,13 +68,13 @@ export class AppointmentDoctorListComponent implements OnInit {
   }
 
   sortTable(prop: string) {
-    const property = this.firstLetterToLower(prop);
+  const property = this.firstLetterToLower(prop);
     this.appointments.sort((a, b) => {
       if (typeof a[property] === 'string') {
         return (a[property] === b[property]) ? 0 : a[property] > b[property] ? (1 * this.order) : (-1 * this.order);
       }
       if (typeof a[property] === 'boolean') {
-        return (a[property] === b[property]) ? 0 : a[property] ? (this.order * -1) : (1 * this.order);
+        return (a[property] === b[property]) ? 0 : a[property] ? (this.order * - 1) : (1 * this.order);
       }
       if (typeof a[property] === 'number') {
         return (a[property] === b[property]) ? 0 : a[property] > b[property] ? (this.order * -1) : (1 * this.order);
