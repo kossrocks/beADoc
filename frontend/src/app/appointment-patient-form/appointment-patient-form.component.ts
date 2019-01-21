@@ -5,6 +5,7 @@ import {AppointmentService} from '../service/appointment.service';
 import {InquiryService} from '../service/inquiry.service';
 import {UserService} from '../service/user.service';
 import {forEach} from '@angular/router/src/utils/collection';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-appointment-patient-form',
@@ -16,7 +17,7 @@ export class AppointmentPatientFormComponent implements OnInit {
   inquiryForm;
   users;
 
-  constructor(private router: Router, private inquiryService: InquiryService, private userService: UserService) { }
+  constructor(private router: Router, private inquiryService: InquiryService, private userService: UserService, private toastr: ToastrService) { }
 
   ngOnInit() {
 
@@ -48,7 +49,7 @@ export class AppointmentPatientFormComponent implements OnInit {
     const inquiry = this.inquiryForm.value;
     this.inquiryService.create(inquiry)
       .subscribe((response: any) => {
-        alert('inquiry created');
+        this.toastr.success('The Inquiry was send to your doctor!', 'New Inquiry');
         this.router.navigate(['/appointment-patient-list']);
       });
   }

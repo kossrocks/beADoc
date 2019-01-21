@@ -4,6 +4,7 @@ import {AppointmentService} from '../service/appointment.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../service/user.service';
 import {InquiryService} from '../service/inquiry.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-appointment-doctor-form',
@@ -19,7 +20,7 @@ export class AppointmentDoctorFormComponent implements OnInit {
   id = '';
 
   constructor(private router: Router, private appointmentService: AppointmentService, private userService: UserService,
-              private inquiryService: InquiryService, private route: ActivatedRoute) { }
+              private inquiryService: InquiryService, private route: ActivatedRoute, private toastr: ToastrService) { }
 
 
   ngOnInit() {

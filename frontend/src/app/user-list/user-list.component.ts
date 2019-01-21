@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../api/user';
 import {UserService} from '../service/user.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-list',
@@ -16,11 +17,11 @@ export class UserListComponent implements OnInit {
   title: String;
   headElements = ['Username', 'Name', 'LastName', 'eMail', 'isEmployee', 'isAdmin'];
   searchString: string;
-  searchList = ['name','username','lastName'];
+  searchList = ['name', 'username', 'lastName'];
 
   order = 1;
 
-  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) {
+  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -69,6 +70,7 @@ export class UserListComponent implements OnInit {
     this.userService.delete(user)
       .subscribe(() => {
         this.ngOnInit();
+        this.toastr.success('You sucessfully deleted the User', 'Deletion of User');
       });
 
   }
@@ -82,10 +84,10 @@ export class UserListComponent implements OnInit {
     const property = this.firstLetterToLower(prop);
     this.users.sort((a, b) => {
       if (typeof a[property] == 'string') {
-        return (a[property] === b[property])? 0 : a[property] > b[property] ? (1*this.order) : (-1*this.order);
+        return (a[property] === b[property]) ? 0 : a[property] > b[property] ? (1 * this.order) : (-1 * this.order);
       }
-      if (typeof a[property] == 'boolean'){
-        return (a[property] === b[property])? 0 : a[property]? (this.order *-1) : (1 * this.order);
+      if (typeof a[property] == 'boolean') {
+        return (a[property] === b[property]) ? 0 : a[property] ? (this.order * - 1) : (1 * this.order);
       }
     });
     this.order = this.order * -1;
