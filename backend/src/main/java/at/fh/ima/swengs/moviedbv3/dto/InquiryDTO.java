@@ -1,5 +1,7 @@
 package at.fh.ima.swengs.moviedbv3.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class InquiryDTO {
@@ -19,6 +21,7 @@ public class InquiryDTO {
     private String name;
     private String lastName;
     private Long patientId;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private Date dayOfCreation;
 
   public Long getPatientId() {

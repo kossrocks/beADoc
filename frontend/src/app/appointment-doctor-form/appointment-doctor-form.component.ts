@@ -67,10 +67,15 @@ export class AppointmentDoctorFormComponent implements OnInit {
   createAppointment () {
     const appointment = this.appointmentFormDoctor.value;
 
-    this.appointmentService.create(appointment)
+    const id = this.route.snapshot.paramMap.get('id');
+    const toDelete = this.inquiryService.getById(id);
+    this.inquiryService.delete(toDelete);
+
+    /*this.appointmentService.create(appointment)
       .subscribe((response: any) => {
         this.toastr.success('The Appointment was created!', 'New Appointment');
         this.goBackToList();
-      });
+
+      });*/
   }
 }

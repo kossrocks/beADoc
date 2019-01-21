@@ -25,6 +25,7 @@ export class AppointmentDoctorListComponent implements OnInit {
   headElementsAppointments = ['Date', 'Time', 'Username', 'First Name', 'Last Name', 'Status'];
   sortHeaders = ['appointmentDate', 'appointmentTime', 'username', 'name', 'lastName', 'fixed'];
   order = 1;
+  searchList = ['username', 'name', 'lastName'];
 
   constructor(private appointmentService: AppointmentService, private router: Router, private inquiryService: InquiryService,
               private toastr: ToastrService) { }
@@ -57,9 +58,9 @@ export class AppointmentDoctorListComponent implements OnInit {
 
   }
 
-  deleteAppointment(appointment: Appointment) {
+  deleteAppointment(id) {
 
-    this.appointmentService.delete(appointment)
+    this.appointmentService.delete(id)
       .subscribe(() => {
         this.ngOnInit();
         this.toastr.info('You sucessfully deleted your Appointment', 'Deletion of Appointment');
