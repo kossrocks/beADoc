@@ -6,7 +6,7 @@
     <thead>
     <tr>
       <th *ngFor="let head of headElementsAppointments" scope="col"><a href (click)="sortTable(head)"> {{head}}</a></th>
-      <th colspan="3"><input type="text" name="searchText" [(ngModel)]="searchString" placeholder="Type to search..."></th>
+      <th colspan="1"><input type="text" name="searchText" [(ngModel)]="searchString" placeholder="Type to search..."></th>
     </tr>
     </thead>
     <tbody>
@@ -14,10 +14,14 @@
         <td *ngIf='isEmployee && isAdmin'>{{appointment.appointmentDate}}</td>
         <td *ngIf='isEmployee && isAdmin'>{{appointment.appointmentTime}}</td>
         <td *ngIf='isEmployee && isAdmin'>{{appointment.username}}</td>
+        <td *ngIf='isEmployee && isAdmin'>{{appointment.firstName}}</td>
+        <td *ngIf='isEmployee && isAdmin'>{{appointment.lastName}}</td>
         <td *ngIf='isEmployee && isAdmin'>{{appointment.fixed ? "Fixed" : "Not fixed"}}</td>
         <td *ngIf='isEmployee && !isAdmin'>{{appointment.appointmentDate}}</td>
         <td *ngIf='isEmployee && !isAdmin'>{{appointment.appointmentTime}}</td>
         <td *ngIf='isEmployee && !isAdmin'>{{appointment.username}}</td>
+        <td *ngIf='isEmployee && !isAdmin'>{{appointment.firstName}}</td>
+        <td *ngIf='isEmployee && !isAdmin'>{{appointment.lastName}}</td>
         <td *ngIf='isEmployee && !isAdmin'>{{appointment.fixed ? "Fixed" : "Not fixed"}}</td>
         <td *ngIf='isEmployee && isAdmin' class="td-btn"><button class="btn btn-danger" (click)="deleteAppointment(appointment)">Delete</button></td>
       </tr>

@@ -1,5 +1,7 @@
 package at.fh.ima.swengs.moviedbv3.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class AppointmentEntryDTO {
@@ -8,8 +10,9 @@ public class AppointmentEntryDTO {
     private String username;
     private String name;
     private String lastName;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date appointmentDate;
-    private long appointmentTime;
+    private String appointmentTime;
     private boolean fixed;
     private Long appointmentID;
 
@@ -21,11 +24,11 @@ public class AppointmentEntryDTO {
         this.appointmentDate = appointmentDate;
     }
 
-    public long getAppointmentTime() {
+    public String getAppointmentTime() {
         return appointmentTime;
     }
 
-    public void setAppointmentTime(long appointmentTime) {
+    public void setAppointmentTime(String appointmentTime) {
         this.appointmentTime = appointmentTime;
     }
 

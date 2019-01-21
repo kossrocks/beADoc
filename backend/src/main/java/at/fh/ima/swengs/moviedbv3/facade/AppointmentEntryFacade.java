@@ -5,6 +5,7 @@ import at.fh.ima.swengs.moviedbv3.model.Appointment;
 import at.fh.ima.swengs.moviedbv3.model.AppointmentRepository;
 import at.fh.ima.swengs.moviedbv3.model.User;
 import at.fh.ima.swengs.moviedbv3.model.UserRepository;
+import at.fh.ima.swengs.moviedbv3.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +19,13 @@ public class AppointmentEntryFacade {
 
     @Autowired
     private AppointmentRepository appointmentRepository;
+
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private AppointmentService appointmentService;
+
 
     void mapDtoToEntity(AppointmentEntryDTO dto, Appointment entityApp, User entityUser) {
 
@@ -27,7 +33,7 @@ public class AppointmentEntryFacade {
 
     private void mapEntityToDto(Appointment entityApp, User entityUser, AppointmentEntryDTO dto) {
         dto.setAppointmentDate(entityApp.getAppointmentDate());
-        dto.setAppointmentTime(entityApp.getAppointmentTime());
+        dto.setAppointmentTime(appointmentService.longToString(entityApp.getAppointmentTime()));
         dto.setAppointmentID(entityApp.getId());
         dto.setFixed(entityApp.isFixed());
         dto.setUserId(entityUser.getId());

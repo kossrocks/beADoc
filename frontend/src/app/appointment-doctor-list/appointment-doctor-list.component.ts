@@ -21,7 +21,7 @@ export class AppointmentDoctorListComponent implements OnInit {
   token: String;
   inquiryentries;
   title = 'Appointments & Inquiries';
-  headElementsAppointments = ['Date of Appointment', 'Time', 'Patient', 'Status'];
+  headElementsAppointments = ['Date', 'Time', 'Username', 'First Name', 'Last Name', 'Status'];
   order = 1;
 
   constructor(private appointmentService: AppointmentService, private router: Router, private inquiryService: InquiryService) { }
