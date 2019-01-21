@@ -26,8 +26,8 @@ export class AppointmentService {
     return this.http.get('/api/dto/appointmententries');
   }
 
-  delete(appointment) {
-    return this.http.delete('/api/appointments/' + appointment.id);
+  delete(id) {
+    return this.http.delete('/api/appointments/' + id);
   }
 
   update(appointment: Appointment) {
