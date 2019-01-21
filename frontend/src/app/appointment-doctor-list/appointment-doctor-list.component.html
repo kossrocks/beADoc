@@ -5,7 +5,7 @@
   <table class="col appointments">
     <thead>
     <tr>
-      <th *ngFor="let head of headElementsAppointments" scope="col"><a href (click)="sortTable(head)"> {{head}}</a></th>
+      <th *ngFor="let head of headElementsAppointments; let i = index;" scope="col"><a href (click)="sortTable(sortHeaders[i])"> {{head}}</a></th>
       <th colspan="3"><input type="text" name="searchText" [(ngModel)]="searchString" placeholder="Type to search..."></th>
     </tr>
     </thead>
