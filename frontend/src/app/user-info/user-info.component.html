@@ -1,7 +1,7 @@
 <form [formGroup]="userForm" (ngSubmit)="navigateToList()">
 
   <div class="row">
-    <div class="col-3">
+    <div class="col-sm-9">
       <div class="form-group">
         <h5>Username: &nbsp;</h5>
         <h3>{{userForm.value.username}}</h3>
@@ -39,7 +39,7 @@
     <div class="col">
       <h5>Role: &nbsp;</h5>
       <h3 *ngIf="userForm.value.admin">Admin</h3>
-      <h3 *ngIf="userForm.value.employee">Employee</h3>
+      <h3 *ngIf="userForm.value.employee && !userForm.value.admin">Employee</h3>
       <h3 *ngIf="!userForm.value.admin && !userForm.value.employee">Patient</h3>
     </div>
   </div>
@@ -72,4 +72,6 @@
       </button>
     </div>
   </div>
+
+
 </form>

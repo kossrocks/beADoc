@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {AppointmentService} from '../service/appointment.service';
 import {Appointment} from '../api/appointment';
 import {CalendarService} from '../service/calendar.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-appointment-patient-list',
@@ -20,7 +21,7 @@ export class AppointmentPatientListComponent implements OnInit {
   headElementsAppointments = ['Date of Appointment', 'Time', 'Status', 'Fix Appointment'];
   order = 1;
 
-  constructor(private appointmentService: AppointmentService, private router: Router) { }
+  constructor(private appointmentService: AppointmentService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
 
@@ -58,7 +59,7 @@ export class AppointmentPatientListComponent implements OnInit {
 
         this.appointmentService.update(appointment)
           .subscribe((response) => {
-            alert('appointment fixed');
+            this.toastr.info('You successfully fixed your Appointment', 'Appointment fixed!');
             this.appointmentEntries[index].fixed = appointment.fixed;
           });
       });

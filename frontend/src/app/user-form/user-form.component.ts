@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../service/user.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {ToastrService} from 'ngx-toastr';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class UserFormComponent implements OnInit {
   token: String;
   tokenDecoder: JwtHelperService;
 
-  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) {
+  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -89,7 +90,7 @@ export class UserFormComponent implements OnInit {
     if (user.id) {
       this.userService.update(user)
         .subscribe((response) => {
-          alert('updated successfully');
+          this.toastr.info('Your profile was updated!', 'Update!');
           this.userForm.setValue(response);
           if (this.shouldNavigateToList) {
             this.navigateToList();
@@ -98,7 +99,7 @@ export class UserFormComponent implements OnInit {
     } else {
       this.userService.create(user)
         .subscribe((response: any) => {
-          alert('created successfully');
+          this.toastr.success('You successfully created a new User', 'New User!');
           if (this.shouldNavigateToList) {
             this.navigateToList();
           } else {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {QuestionaireService} from '../service/questionaire.service';
 import {FormControl, FormGroup} from '@angular/forms';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-questionaire',
@@ -12,7 +13,8 @@ export class QuestionaireComponent implements OnInit {
 
   questionaireForm;
 
-  constructor(private route: ActivatedRoute, private router: Router, private questionaireService: QuestionaireService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private questionaireService: QuestionaireService,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
 
@@ -41,11 +43,11 @@ export class QuestionaireComponent implements OnInit {
 
   }
 
-  saveQuestionaire(){
+  saveQuestionaire() {
     const questionaire = this.questionaireForm.value;
     this.questionaireService.update(questionaire)
       .subscribe((response) => {
-        alert('updated successfully');
+        this.toastr.info('You successfully updated your Questionaire', 'Questionaire!');
         this.questionaireForm.setValue(response);
         this.navigateToList();
 

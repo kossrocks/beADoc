@@ -21,12 +21,13 @@ export class MyCalendarComponent implements OnInit {
     {
       title: 'Test Event',
       start: '2019-01-11T12:00:00.000',
-      end: '2019-01-11T13:00:00.000'
+      end: '2019-01-11T13:00:00.000',
+      color: 'green'
     }
   ];
 
   appointments: Array<Appointment>;
-  users:Array<User>;
+  users: Array<User>;
   calendarEntries;
 
   calendarOptions: Options;
@@ -67,24 +68,24 @@ export class MyCalendarComponent implements OnInit {
   }
 
 
-  clickDay(details){
+  clickDay(details) {
     let detailStringList = Object.values(details).toString().split(' ');
     detailStringList = detailStringList.splice(1,3);
-    let dateString = detailStringList[2]+'-'+ this.monthStringToNumber(detailStringList[0]) + '-' + detailStringList[1];
+    let dateString = detailStringList[2] + '-' + this.monthStringToNumber(detailStringList[0]) + '-' + detailStringList[1];
 
-    let viewNameList = ['month','agendaWeek','agendaDay'];
+    let viewNameList = ['month', 'agendaWeek', 'agendaDay'];
 
     let view = this.ucCalendar.fullCalendar('getView');
 
     let viewName = viewNameList[viewNameList.indexOf(view.name) + 1 ];
 
-    this.ucCalendar.fullCalendar('changeView',viewName);
+    this.ucCalendar.fullCalendar('changeView', viewName);
     this.ucCalendar.fullCalendar('gotoDate', dateString);
 
   }
 
-  addData(entries:Array<any>){
-    for(let entry of entries){
+  addData (entries:Array<any>) {
+    for (let entry of entries) {
 
       let startDate: Date = new Date(entry.appointmentDate);
 
@@ -94,13 +95,16 @@ export class MyCalendarComponent implements OnInit {
       startDate.setHours(hour);
       startDate.setMinutes(minute);
 
-      let endDate = new Date(startDate.getTime() + 1000*60*60);
+      let endDate = new Date(startDate.getTime() + 1000 * 60 * 60);
+
+      const colorString: string = entry.fixed ? '#009be6' : '#ff4000';
 
       this.data.push(
         {
           title: entry.name + ' ' + entry.lastName,
           start: startDate.toString(),
-          end: endDate.toString()
+          end: endDate.toString(),
+          color: colorString
         }
       )
     }

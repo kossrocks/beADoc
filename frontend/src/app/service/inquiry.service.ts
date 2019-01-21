@@ -20,17 +20,17 @@ export class InquiryService {
     return this.http.post('/api/dto/inquirys', inquiry);
   }
 
-  delete(inquiry) {
-    return this.http.delete('/api/inquirys/' + inquiry.id);
+  delete(id) {
+    return this.http.delete('/api/inquiries/' + id);
   }
 
 
   getById(id: string) {
-    return this.http.get('/api/dto/inquirys/' + id).pipe(map((res: any) => {
+    return this.http.get('/api/dto/inquirys/' + id)/*.pipe(map((res: any) => {
       if (res.dayOfCreation) {
         res.dayOfCreation = new Date(res.dayOfCreation);
       }
       return res;
-    }));
+    }))*/;
   }
 }
