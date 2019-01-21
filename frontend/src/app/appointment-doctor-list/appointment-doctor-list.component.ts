@@ -24,6 +24,7 @@ export class AppointmentDoctorListComponent implements OnInit {
   headElementsAppointments = ['Date', 'Time', 'Username', 'First Name', 'Last Name', 'Status'];
   sortHeaders = ['appointmentDate', 'appointmentTime', 'username', 'name', 'lastName', 'fixed'];
   order = 1;
+  searchList = ['username', 'name', 'lastName'];
 
   constructor(private appointmentService: AppointmentService, private router: Router, private inquiryService: InquiryService) { }
 
@@ -55,12 +56,23 @@ export class AppointmentDoctorListComponent implements OnInit {
 
   }
 
-  deleteAppointment(appointment: Appointment) {
+  deleteAppointment(id) {
 
-    this.appointmentService.delete(appointment)
-      .subscribe(() => {
-        this.ngOnInit();
-      });
+    let appointment;
+
+    this.appointmentService.getAll().subscribe((apps)=>{
+
+      for(let app of apps){
+        if(app.id == id) appointment = app;
+      }
+
+      alert(JSON.stringify(appointment));
+    });
+
+
+
+
+
   }
 
   goToAppointmentForm(id) {

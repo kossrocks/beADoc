@@ -26,11 +26,11 @@ export class InquiryService {
 
 
   getById(id: string) {
-    return this.http.get('/api/dto/inquirys/' + id).pipe(map((res: any) => {
+    return this.http.get('/api/dto/inquirys/' + id)/*.pipe(map((res: any) => {
       if (res.dayOfCreation) {
         res.dayOfCreation = new Date(res.dayOfCreation);
       }
       return res;
-    }));
+    }))*/;
   }
 }

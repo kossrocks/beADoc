@@ -34,6 +34,8 @@ export class UserListComponent implements OnInit {
           .subscribe((users: any) => {
             this.users = users;
             this.title = 'Employees';
+            this.headElements.pop();
+            this.headElements.pop();
           });
         break;
       }
@@ -42,6 +44,8 @@ export class UserListComponent implements OnInit {
           .subscribe((users: any) => {
             this.users = users;
             this.title = 'Patients';
+            this.headElements.pop();
+            this.headElements.pop();
           });
         break;
       }
