@@ -4,13 +4,13 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../service/user.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
 
+
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss']
 })
 export class UserFormComponent implements OnInit {
-
   userForm;
   shouldNavigateToList: boolean;
   isEmployee: boolean;
@@ -65,6 +65,22 @@ export class UserFormComponent implements OnInit {
     } else if (this.token['authorities'].includes('ROLE_EMPLOYEE')) {
       this.isEmployee = true;
     }
+  }
+
+  generateRandomPass() {
+    const randomstring = Math.random().toString(36).slice(-8);
+    this.copyToClipboard(randomstring);
+    this.userForm.password = randomstring;
+    alert('Generated Password: ' + randomstring + '\n' + 'Also was copied to clipboard Strg+V to insert!');
+  }
+
+  copyToClipboard(item) {
+    document.addEventListener('copy', (e: ClipboardEvent) => {
+      e.clipboardData.setData('text/plain', (item));
+      e.preventDefault();
+      document.removeEventListener('copy', null);
+    });
+    document.execCommand('copy');
   }
 
   saveUser() {
