@@ -12,9 +12,11 @@
       <tr *ngFor="let appointment of appointments">
         <td *ngIf='isEmployee && isAdmin'>{{appointment.appointmentDate}}</td>
         <td *ngIf='isEmployee && isAdmin'>{{appointment.appointmentTime}}</td>
+        <td *ngIf='isEmployee && isAdmin'>{{appointment.username}}</td>
         <td *ngIf='isEmployee && isAdmin'>{{appointment.fixed ? "Fixed" : "Not fixed"}}</td>
         <td *ngIf='isEmployee && !isAdmin'>{{appointment.appointmentDate}}</td>
         <td *ngIf='isEmployee && !isAdmin'>{{appointment.appointmentTime}}</td>
+        <td *ngIf='isEmployee && !isAdmin'>{{appointment.username}}</td>
         <td *ngIf='isEmployee && !isAdmin'>{{appointment.fixed ? "Fixed" : "Not fixed"}}</td>
         <td *ngIf='isEmployee && isAdmin' class="td-btn"><button class="btn btn-danger" (click)="deleteAppointment(appointment)">Delete</button></td>
       </tr>
