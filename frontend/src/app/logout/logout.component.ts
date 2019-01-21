@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../service/user.service';
 import {Router} from '@angular/router';
+import {InquiryService} from '../service/inquiry.service';
+import {Inquiry} from '../api/inquiry';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-logout',
@@ -10,8 +13,15 @@ import {Router} from '@angular/router';
 export class LogoutComponent implements OnInit {
 
   isLoggedIn: boolean;
+  inquiries: Array<Inquiry> = [];
+  numberOfInquiries;
+  token: String;
+  tokenDecoder: JwtHelperService;
+  name: String;
+  isEmployee: boolean;
+  isAdmin: boolean;
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(private router: Router, private userService: UserService, private inquiryService: InquiryService) {
   }
 
   ngOnInit() {
@@ -19,13 +29,29 @@ export class LogoutComponent implements OnInit {
     this.userService.loggedInChange.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
     });
+
+    this.inquiryService.getAll()
+      .subscribe((inquiries: any) => {
+        this.inquiries = inquiries;
+
+      });
+
+    this.getUserRole();
   }
 
   logout() {
     this.userService.logout();
   }
 
-  backhome() {
-    this.router.navigate(['/home/']);
+  getUserRole() {
+    this.tokenDecoder = new JwtHelperService();
+    this.name = localStorage.getItem('username');
+    this.token = this.tokenDecoder.decodeToken(localStorage.getItem('access_token'));
+    if (this.token['authorities'].includes('ROLE_ADMIN')) {
+      this.isAdmin = true;
+      this.isEmployee = true;
+    } else if (this.token['authorities'].includes('ROLE_EMPLOYEE')) {
+      this.isEmployee = true;
+    }
   }
 }

@@ -1,8 +1,8 @@
 <p></p>
 <h1>{{title}}</h1>
 <br>
-<div class="appointments">
-  <table>
+<div class="row">
+  <table class="col appointments">
     <thead>
     <tr>
       <th *ngFor="let head of headElementsAppointments" scope="col"><a href (click)="sortTable(head)"> {{head}}</a></th>
@@ -20,13 +20,12 @@
       </tr>
     </tbody>
   </table>
-</div>
 
 
-<div class="inquiry" *ngFor="let inquiry of inquiryentries">
-  <span class="textInquiry"> Inquiry by <span style="font-weight: bold;">{{inquiry.username}}</span></span>
-  <button class="btn-primary button" type="button" (click)="goToAppointmentForm(inquiry.id)"><span>Create new Appointment</span></button>
-</div>
-
-<div style="margin-top: 400px;">
+  <div class="col">
+    <div class="inquiry" *ngFor="let inquiry of inquiryentries">
+      <span class="textInquiry"> Inquiry by <span style="font-weight: bold;">{{inquiry.username}}</span></span>
+      <button class="btn-primary button" type="button" (click)="goToAppointmentForm(inquiry.id)"><span>Create new Appointment</span></button>
+    </div>
+  </div>
 </div>

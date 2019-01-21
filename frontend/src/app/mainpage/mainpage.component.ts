@@ -18,14 +18,19 @@ export class MainpageComponent implements OnInit {
   isAdmin: boolean;
   isEmployee: boolean;
   users: Array<User>;
-  constructor(private router: Router, private userService: UserService) { }
+
+  constructor (private router: Router, private userService: UserService) { }
+
   ngOnInit() {
+
     this.getUserRole();
+
     this.userService.getAll()
       .subscribe((users: any) => {
         this.users = users;
       });
   }
+
   getUserRole() {
     this.tokenDecoder = new JwtHelperService();
     this.name = localStorage.getItem('username');
@@ -37,6 +42,7 @@ export class MainpageComponent implements OnInit {
       this.isEmployee = true;
     }
   }
+
   getUserId() {
       for (const user of this.users) {
         if (user.username === this.name) {
@@ -44,10 +50,12 @@ export class MainpageComponent implements OnInit {
      }
     }
   }
+
   editUser() {
     this.getUserId()
     this.router.navigate(['/user-form/' + this.id.toString()]);
   }
+
   editQuestionnaire() {
     this.getUserId()
     this.router.navigate(['/questionaires/' + this.id.toString()]);
