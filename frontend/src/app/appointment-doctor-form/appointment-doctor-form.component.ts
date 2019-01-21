@@ -52,9 +52,10 @@ export class AppointmentDoctorFormComponent implements OnInit {
         this.patientOption = patient;
       });
 
-    this.id = this.route.snapshot.paramMap.get('id');
-    if (this.id != '') {
-      this.inquiryService.getById(this.id)
+    const id = this.route.snapshot.paramMap.get('id');
+    this.id = id;
+    if (id) {
+      this.inquiryService.getById(id)
         .subscribe((response) => {
           this.inquiry = response;
         });
