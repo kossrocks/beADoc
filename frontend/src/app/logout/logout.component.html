@@ -1,1 +1,6 @@
-<button type="button" (click)="logout()" *ngIf="isLoggedIn">Logout</button>
+<a href="/appointment-doctor-list" *ngIf="isLoggedIn && isAdmin && isEmployee" class="notification">
+  <img src="assets/img/bellIcon.png" onmouseover="this.src='assets/img/bellIconOnHover.png';" onmouseout="this.src='assets/img/bellIcon.png';">
+  <span class="badge">{{inquiries.length}}</span>
+</a>
+<button type="button" (click)="logout()" *ngIf="isLoggedIn"><img src="assets/img/logoutIcon.png" onmouseover="this.src='assets/img/logoutIconOnHover.png';" onmouseout="this.src='assets/img/logoutIcon.png';"></button>
+

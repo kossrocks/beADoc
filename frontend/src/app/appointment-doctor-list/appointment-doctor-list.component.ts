@@ -21,7 +21,7 @@ export class AppointmentDoctorListComponent implements OnInit {
   token: String;
   inquiryentries;
   title = 'Appointments & Inquiries';
-  headElementsAppointments = ['Date of Appointment', 'Time', 'Status'];
+  headElementsAppointments = ['Date of Appointment', 'Time', 'Patient', 'Status'];
   order = 1;
 
   constructor(private appointmentService: AppointmentService, private router: Router, private inquiryService: InquiryService) { }
@@ -30,7 +30,7 @@ export class AppointmentDoctorListComponent implements OnInit {
 
     this.getRoleAndUsername();
 
-    this.appointmentService.getAll()
+    this.appointmentService.getAllEntries()
       .subscribe((appointments: any) => {
         this.appointments = appointments;
       });
