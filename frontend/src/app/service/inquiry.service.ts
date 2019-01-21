@@ -20,8 +20,8 @@ export class InquiryService {
     return this.http.post('/api/dto/inquirys', inquiry);
   }
 
-  delete(inquiry) {
-    return this.http.delete('/api/inquirys/' + inquiry.id);
+  delete(id) {
+    return this.http.delete('/api/inquiries/' + id);
   }
 
 
