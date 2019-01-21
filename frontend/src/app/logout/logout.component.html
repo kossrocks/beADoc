@@ -1,6 +1,33 @@
-<a href="/appointment-doctor-list" *ngIf="isLoggedIn && isEmployee" class="notification">
-  <img src="assets/img/bellIcon.png" onmouseover="this.src='assets/img/bellIconOnHover.png';" onmouseout="this.src='assets/img/bellIcon.png';">
-  <span class="badge">{{inquiries.length}}</span>
-</a>
-<button type="button" (click)="logout()" *ngIf="isLoggedIn"><img src="assets/img/logoutIcon.png" onmouseover="this.src='assets/img/logoutIconOnHover.png';" onmouseout="this.src='assets/img/logoutIcon.png';"></button>
+
+<!-- Navigation -->
+<nav *ngIf="isLoggedIn" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/home">
+      <img src="assets/img/logo_small.png" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/calendar">Calendar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/appointment-doctor-list">Appointments</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="/appointment-doctor-list" *ngIf="isLoggedIn" class="notification">
+            <img src="assets/img/bellIcon.png" onmouseover="this.src='assets/img/bellIconOnHover.png';" onmouseout="this.src='assets/img/bellIcon.png';">
+            <span class="badge">{{inquiries.length}}</span>
+          </a>
+          <button type="button" (click)="logout()" *ngIf="isLoggedIn"><img src="assets/img/logoutIcon.png" onmouseover="this.src='assets/img/logoutIconOnHover.png';" onmouseout="this.src='assets/img/logoutIcon.png';"></button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container" style="margin-top: 100px"></div>
 
