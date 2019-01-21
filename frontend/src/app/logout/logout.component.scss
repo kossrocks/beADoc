@@ -1,0 +1,54 @@
+button {
+  display: inline-block;
+  height: 35px;
+  width: 100px;
+  padding: 0px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: -20px;
+  margin-left: 10px;
+  border-color: #333333;
+  border-size: 20px;
+}
+
+button img {
+  object-fit: cover;
+  height: 35px;
+  width: 100px;
+  border-radius: 4px;
+}
+
+.notification {
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  border-radius: 4px;
+  height: 50px;
+  width: 50px;
+  padding: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+}
+
+.notification:hover {
+  background: red;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 8px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+
+
+a img {
+  object-fit: cover;
+  height: 50px;
+  width: 50px;
+  border-radius: 4px;
+}

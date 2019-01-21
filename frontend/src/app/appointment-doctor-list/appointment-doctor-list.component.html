@@ -1,9 +1,8 @@
 <p></p>
 <h1>{{title}}</h1>
 <br>
-<br>
-<div class="appointments">
-  <table>
+<div class="row">
+  <table class="col appointments">
     <thead>
     <tr>
       <th *ngFor="let head of headElementsAppointments" scope="col"><a href (click)="sortTable(head)"> {{head}}</a></th>
@@ -13,21 +12,22 @@
       <tr *ngFor="let appointment of appointments">
         <td *ngIf='isEmployee && isAdmin'>{{appointment.appointmentDate}}</td>
         <td *ngIf='isEmployee && isAdmin'>{{appointment.appointmentTime}}</td>
+        <td *ngIf='isEmployee && isAdmin'>{{appointment.username}}</td>
         <td *ngIf='isEmployee && isAdmin'>{{appointment.fixed ? "Fixed" : "Not fixed"}}</td>
         <td *ngIf='isEmployee && !isAdmin'>{{appointment.appointmentDate}}</td>
         <td *ngIf='isEmployee && !isAdmin'>{{appointment.appointmentTime}}</td>
+        <td *ngIf='isEmployee && !isAdmin'>{{appointment.username}}</td>
         <td *ngIf='isEmployee && !isAdmin'>{{appointment.fixed ? "Fixed" : "Not fixed"}}</td>
         <td *ngIf='isEmployee && isAdmin' class="td-btn"><button class="btn btn-danger" (click)="deleteAppointment(appointment)">Delete</button></td>
       </tr>
     </tbody>
   </table>
-</div>
 
 
-<div class="inquiry" *ngFor="let inquiry of inquiryentries">
-  <span class="textInquiry"> Inquiry by <span style="font-weight: bold;">{{inquiry.username}}</span></span>
-  <button class="btn-primary button" type="button" (click)="goToAppointmentForm(inquiry.id)"><span>Create new Appointment</span></button>
-</div>
-
-<div style="margin-top: 400px;">
+  <div class="col">
+    <div class="inquiry" *ngFor="let inquiry of inquiryentries">
+      <span class="textInquiry"> Inquiry by <span style="font-weight: bold;">{{inquiry.username}}</span></span>
+      <button class="btn-primary button" type="button" (click)="goToAppointmentForm(inquiry.id)"><span>Create new Appointment</span></button>
+    </div>
+  </div>
 </div>
