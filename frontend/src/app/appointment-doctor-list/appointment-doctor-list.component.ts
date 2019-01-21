@@ -21,8 +21,10 @@ export class AppointmentDoctorListComponent implements OnInit {
   token: String;
   inquiryentries;
   title = 'Appointments & Inquiries';
-  headElementsAppointments = ['Date of Appointment', 'Time', 'Status'];
+  headElementsAppointments = ['Date', 'Time', 'Username', 'First Name', 'Last Name', 'Status'];
+  sortHeaders = ['appointmentDate', 'appointmentTime', 'username', 'name', 'lastName', 'fixed'];
   order = 1;
+  searchList = ['username', 'name', 'lastName'];
 
   constructor(private appointmentService: AppointmentService, private router: Router, private inquiryService: InquiryService) { }
 
@@ -30,7 +32,7 @@ export class AppointmentDoctorListComponent implements OnInit {
 
     this.getRoleAndUsername();
 
-    this.appointmentService.getAll()
+    this.appointmentService.getAllEntries()
       .subscribe((appointments: any) => {
         this.appointments = appointments;
       });
@@ -54,12 +56,23 @@ export class AppointmentDoctorListComponent implements OnInit {
 
   }
 
-  deleteAppointment(appointment: Appointment) {
+  deleteAppointment(id) {
 
-    this.appointmentService.delete(appointment)
-      .subscribe(() => {
-        this.ngOnInit();
-      });
+    let appointment;
+
+    this.appointmentService.getAll().subscribe((apps)=>{
+
+      for(let app of apps){
+        if(app.id == id) appointment = app;
+      }
+
+      alert(JSON.stringify(appointment));
+    });
+
+
+
+
+
   }
 
   goToAppointmentForm(id) {
@@ -74,6 +87,9 @@ export class AppointmentDoctorListComponent implements OnInit {
       }
       if (typeof a[property] === 'boolean') {
         return (a[property] === b[property]) ? 0 : a[property] ? (this.order * - 1) : (1 * this.order);
+      }
+      if (typeof a[property] === 'number') {
+        return (a[property] === b[property]) ? 0 : a[property] > b[property] ? (this.order * -1) : (1 * this.order);
       }
     });
     this.order = this.order * -1;

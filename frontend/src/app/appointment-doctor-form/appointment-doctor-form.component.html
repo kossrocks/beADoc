@@ -3,7 +3,7 @@
   <div class="col">
     <h3>Pending Inquiries</h3>
     <div *ngIf="inquiry" class="inquiry" style="margin-bottom: 20px;">
-      <span style="font-weight: bold;"> Inquiry by {{inquiry.name}} {{inquiry.lastName}} ({{inquiry.username}}): </span>
+      <span style="font-weight: bold;"> Inquiry by {{inquiry.name}} {{inquiry.lastName}} ({{inquiry.username}}) created {{inquiry.dayOfCreation}}: </span>
       <br>
       <div>
         Day preferences:
@@ -35,24 +35,9 @@
                     formControlName="patient" optionTextField="username"></ngx-select>
       </div>
     </div>
-    <div *ngIf="appointmentFormDoctor.controls.appointmentDate.untouched">
-      <div *ngIf="appointmentFormDoctor.controls.appointmentDate.errors.required">
-        Please choose a date!
-      </div>
-    </div>
-    <div *ngIf="appointmentFormDoctor.controls.appointmentTime.untouched">
-      <div *ngIf="appointmentFormDoctor.controls.appointmentTime.errors.required">
-        Please choose a date!
-      </div>
-    </div>
-    <div *ngIf="appointmentFormDoctor.controls.patient.untouched">
-      <div *ngIf="appointmentFormDoctor.controls.patient.errors.required">
-        Please choose a date!
-      </div>
-    </div>
     <br>
     <div class="btn-group">
-      <button type="submit" class="btn btn-primary" [disabled]="appointmentFormDoctor.invalid">
+      <button type="submit" class="btn btn-primary" [disabled]="appointmentFormDoctor.controls.appointmentDate.untouched || appointmentFormDoctor.controls.appointmentTime.untouched || appointmentFormDoctor.controls.patient.untouched">
         Create Appointment
       </button>
       <button type="submit" (click)="goBackToList()" class="btn btn-primary">

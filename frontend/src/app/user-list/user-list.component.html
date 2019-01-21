@@ -3,7 +3,7 @@
   <table>
     <thead>
     <tr>
-      <th *ngFor="let head of headElements" scope="col"> <a href (click)="sortTable(head)"> {{head}}</a></th>
+      <th *ngFor="let head of headElements" scope="col" > <a href (click)="sortTable(head)"> {{head}}</a></th>
       <th colspan="3"><input type="text" name="searchText" [(ngModel)]="searchString" placeholder="Type to search..."></th>
     </tr>
     </thead>
@@ -13,8 +13,8 @@
       <td>{{user.name}}</td>
       <td>{{user.lastName}}</td>
       <td>{{user.eMail}}</td>
-      <td>{{user.employee}}</td>
-      <td>{{user.admin}}</td>
+      <td *ngIf="title == 'Users'">{{user.employee}}</td>
+      <td *ngIf="title == 'Users'">{{user.admin}}</td>
       <td class="td-btn"><a [routerLink]="'/user-info/' + user.id"><button class="btn btn-success pull-right">Show</button></a></td>
       <td class="td-btn"><a [routerLink]="'/user-form/' + user.id"><button class="btn btn-success pull-right">Edit</button></a></td>
       <td class="td-btn"><button class="btn btn-danger" (click)="deleteUser(user)">Delete</button>
