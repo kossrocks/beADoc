@@ -36,10 +36,9 @@ export class LogoutComponent implements OnInit {
         .subscribe((inquiries: any) => {
           this.inquiries = inquiries;
         });
-      this.getUserRole();
+
     }
-
-
+    this.getUserRole();
   }
 
   logout() {
@@ -50,7 +49,7 @@ export class LogoutComponent implements OnInit {
 
   getUserRole() {
     this.tokenDecoder = new JwtHelperService();
-    this.name = localStorage.getItem('username');
+    //this.name = localStorage.getItem('username');
     this.token = this.tokenDecoder.decodeToken(localStorage.getItem('access_token'));
     if (this.token['authorities'].includes('ROLE_ADMIN')) {
       this.isAdmin = true;
