@@ -30,6 +30,7 @@ public class User {
   private String eMail;
 
   @Temporal(TemporalType.TIMESTAMP)
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private Date dayOfBirth;
 
   @OneToMany(mappedBy = "patient")
@@ -119,14 +120,6 @@ public class User {
     this.medicines = medicines;
   }
 
-  public String geteMail() {
-    return eMail;
-  }
-
-  public void seteMail(String eMail) {
-    this.eMail = eMail;
-  }
-
   public Set<Media> getPictures() {
     return pictures;
   }
@@ -155,11 +148,11 @@ public class User {
     this.lastName = lastName;
   }
 
-  public String getEMail() {
+  public String geteMail() {
     return eMail;
   }
 
-  public void setEMail(String eMail) {
+  public void seteMail(String eMail) {
     this.eMail = eMail;
   }
 

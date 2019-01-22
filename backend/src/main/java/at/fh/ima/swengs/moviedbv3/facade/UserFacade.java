@@ -53,7 +53,7 @@ public class UserFacade {
     } else{
       entity.setPassword(encoder.encode(dto.getPassword())); //HIER ENCRYPTEN
     }
-    entity.setEMail(dto.getEMail());
+    entity.seteMail(dto.geteMail());
     entity.setDayOfBirth(dto.getDayOfBirth());
     entity.setAppointments(appointmentService.getAppointments(dto.getAppointments()));
     entity.setMedicines(medicineService.getMedicines(dto.getMedicines()));
@@ -74,7 +74,7 @@ public class UserFacade {
     dto.setLastName(entity.getLastName());
     dto.setUsername(entity.getUsername());
     //dto.setPassword(entity.getPassword());
-    dto.setEMail(entity.getEMail());
+    dto.seteMail(entity.geteMail());
     dto.setDayOfBirth(entity.getDayOfBirth());
     if (entity.getAppointments() != null) {
       dto.setAppointments(entity.getAppointments().stream().map((a) -> a.getId()).collect(Collectors.toSet()));
