@@ -111,7 +111,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
       tester.setName("Teo");
       tester.setLastName("Stern");
       tester.setPassword(encoder.encode("12345"));
-      tester.setActive(true);
+      tester.setActive(false);
       questionaires.removeAll(questionaires);
       questionaires.add(questionaireRepository.findAll().get(2));
       tester.setQuestionaires(questionaires);
