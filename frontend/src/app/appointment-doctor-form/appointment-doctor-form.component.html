@@ -1,7 +1,7 @@
 <br>
 <div class="row">
   <div class="col">
-    <h3>Pending Inquiries</h3>
+    <h3>Pending Inquiry</h3>
     <div *ngIf="inquiry" class="inquiry" style="margin-bottom: 20px;">
       <span style="font-weight: bold;"> Inquiry by {{inquiry.name}} {{inquiry.lastName}} ({{inquiry.username}}) created on {{inquiry.dayOfCreation}}: </span>
       <br>
@@ -41,7 +41,7 @@
         Create Appointment
       </button>
       <button type="submit" (click)="goBackToList()" class="btn btn-primary">
-        Back to Appointment-list
+        Back to Appointments
       </button>
     </div>
   </form>
