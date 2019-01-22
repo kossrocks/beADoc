@@ -29,6 +29,13 @@ export class LogoutComponent implements OnInit {
     this.isLoggedIn = this.userService.isLoggedIn;
     this.userService.loggedInChange.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
+      if (isLoggedIn) {
+        this.getUserRole();
+        this.inquiryService.getAll()
+          .subscribe((inquiries: any) => {
+            this.inquiries = inquiries;
+          });
+      }
     });
 
     if (this.isLoggedIn) {
@@ -36,9 +43,10 @@ export class LogoutComponent implements OnInit {
         .subscribe((inquiries: any) => {
           this.inquiries = inquiries;
         });
-
+      this.getUserRole();
     }
-    this.getUserRole();
+    ////
+
   }
 
   logout() {

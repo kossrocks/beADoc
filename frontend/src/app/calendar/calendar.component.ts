@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {CalendarComponent} from 'ng-fullcalendar';
 import {Options} from 'fullcalendar';
 import {AppointmentService} from '../service/appointment.service';
@@ -9,6 +9,7 @@ import {CalendarService} from '../service/calendar.service';
 import * as moment from 'moment';
 import {jsonpCallbackContext} from '@angular/common/http/src/module';
 import {forEach} from '@angular/router/src/utils/collection';
+import {ControlValueAccessor} from '@angular/forms';
 
 @Component({
   selector: 'app-calendar',
@@ -28,12 +29,12 @@ export class MyCalendarComponent implements OnInit {
 
   appointments: Array<Appointment>;
   users: Array<User>;
-  calendarEntries;
+  calendarEntries = [];
 
   calendarOptions: Options;
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
 
-  constructor(private calendarService: CalendarService, private appointmentService: AppointmentService) {
+  constructor(private ref: ChangeDetectorRef, private calendarService: CalendarService, private appointmentService: AppointmentService) {
   }
 
 
@@ -55,11 +56,13 @@ export class MyCalendarComponent implements OnInit {
       events: this.data
     };
 
+    this.addData(this.calendarEntries);
     this.calendarService.getAll()
       .subscribe((entries: any) => {
 
         this.calendarEntries = entries;
         this.addData(this.calendarEntries);
+        //location.reload();
 
       });
 
