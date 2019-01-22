@@ -31,4 +31,8 @@ export class LoginComponent implements OnInit {
       });
     localStorage.setItem('username', this.user.username);
   }
+
+  callYourDoctor() {
+    this.toastr.info('Please call your doctor under the number 555 - RealDoc', 'Forgot your password?');
+  }
 }
