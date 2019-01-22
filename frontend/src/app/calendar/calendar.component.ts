@@ -58,7 +58,7 @@ export class MyCalendarComponent implements OnInit {
 
     this.calendarService.getAll()
       .subscribe((entries: any) => {
-
+        this.calendarEntries = entries;
         for (let entry of entries) {
 
           let startDate: Date = new Date(entry.appointmentDate);
