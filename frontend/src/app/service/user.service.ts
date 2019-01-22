@@ -22,8 +22,6 @@ export class UserService {
     this.jwtHelperService = new JwtHelperService();
     const token = localStorage.getItem(this.accessTokenLocalStorageKey);
     if (token) {
-      console.log('Token expiration date: '
-        + this.jwtHelperService.getTokenExpirationDate(token));
       this.isLoggedIn = !this.jwtHelperService.isTokenExpired(token);
     }
     this.loggedInChange.subscribe((value) => {
@@ -39,7 +37,7 @@ export class UserService {
     }).pipe(map((res: any) => {
       const token = res.headers.get('Authorization').replace(/^Bearer /, '');
       localStorage.setItem(this.accessTokenLocalStorageKey, token);
-      console.log(this.jwtHelperService.decodeToken(token));
+      //console.log(this.jwtHelperService.decodeToken(token));
       this.loggedInChange.next(true);
       this.router.navigate(['/home']);
       return res;
