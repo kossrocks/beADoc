@@ -91,7 +91,7 @@ export class MyCalendarComponent implements OnInit {
 
       const hour: number = Math.floor(entry.appointmentTime / 100);
 
-      const minute: number = entry.appointmentTime - (Math.floor(entry.appointmentTime / 100)*100);
+      const minute: number = entry.appointmentTime - (Math.floor(entry.appointmentTime / 100) * 100);
       startDate.setHours(hour);
       startDate.setMinutes(minute);
 
@@ -106,7 +106,7 @@ export class MyCalendarComponent implements OnInit {
           end: endDate.toString(),
           color: colorString
         }
-      )
+      );
     }
   }
 
