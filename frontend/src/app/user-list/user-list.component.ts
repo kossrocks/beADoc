@@ -72,16 +72,6 @@ export class UserListComponent implements OnInit {
     this.getUserRole();
   }
 
-  deleteUser(user: User) {
-
-    this.userService.delete(user)
-      .subscribe(() => {
-        this.ngOnInit();
-        this.toastr.success('You sucessfully deleted the User', 'Deletion of User');
-      });
-
-  }
-
   createUser() {
     this.router.navigate(['/user-form']);
   }

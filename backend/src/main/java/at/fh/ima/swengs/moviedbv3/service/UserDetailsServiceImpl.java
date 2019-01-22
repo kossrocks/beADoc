@@ -89,6 +89,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
       admin.setPassword(encoder.encode("12345"));
       admin.setAdmin(true);
       admin.setEmployee(true);
+      admin.setActive(true);
       questionaires.add(questionaireRepository.findAll().get(0));
       admin.setQuestionaires(questionaires);
       userRepository.save(admin);
@@ -99,6 +100,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
       employee.setLastName("Emsig");
       employee.setPassword(encoder.encode("12345"));
       employee.setEmployee(true);
+      employee.setActive(true);
       questionaires.removeAll(questionaires);
       questionaires.add(questionaireRepository.findAll().get(1));
       employee.setQuestionaires(questionaires);
@@ -109,6 +111,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
       tester.setName("Teo");
       tester.setLastName("Stern");
       tester.setPassword(encoder.encode("12345"));
+      tester.setActive(true);
       questionaires.removeAll(questionaires);
       questionaires.add(questionaireRepository.findAll().get(2));
       tester.setQuestionaires(questionaires);
