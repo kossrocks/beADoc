@@ -21,7 +21,6 @@ export class MainpageComponent implements OnInit {
   constructor (private router: Router, private userService: UserService) { }
 
   ngOnInit() {
-
     this.getUserRole();
 
     this.userService.getAll()
