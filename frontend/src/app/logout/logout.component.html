@@ -16,11 +16,11 @@
         </li>
         </div>
         <li class="nav-item">
-          <a href="/appointment-doctor-list" *ngIf="isEmployee" class="notification">
+          <a href="/appointment-doctor-list" *ngIf="isEmployee" class="notification margin">
             <img src="assets/img/bellIcon.png" onmouseover="this.src='assets/img/bellIconOnHover.png';" onmouseout="this.src='assets/img/bellIcon.png';">
             <span class="badge">{{inquiries.length}}</span>
           </a>
-          <button type="button" (click)="logout()"><img src="assets/img/logoutIcon.png" onmouseover="this.src='assets/img/logoutIconOnHover.png';" onmouseout="this.src='assets/img/logoutIcon.png';"></button>
+          <button type="button" class="margin" (click)="logout()"><img src="assets/img/logoutIcon.png" onmouseover="this.src='assets/img/logoutIconOnHover.png';" onmouseout="this.src='assets/img/logoutIcon.png';"></button>
         </li>
       </ul>
     </div>
