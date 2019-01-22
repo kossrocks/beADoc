@@ -10,7 +10,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let appointment of appointments | filter : searchlist : searchString">
+    <tr *ngFor="let appointment of appointments | filter : searchList : searchString">
       <td *ngIf='isEmployee && isAdmin'>{{appointment.appointmentDate}}</td>
       <td *ngIf='isEmployee && isAdmin'>{{appointment.appointmentTime}}</td>
       <td *ngIf='isEmployee && isAdmin'>{{appointment.username}}</td>
@@ -24,7 +24,7 @@
       <td *ngIf='isEmployee && !isAdmin'>{{appointment.lastName}}</td>
       <td *ngIf='isEmployee && !isAdmin'>{{appointment.fixed ? "Fixed" : "Not fixed"}}</td>
       <td *ngIf='isEmployee && isAdmin' class="td-btn">
-        <button class="btn btn-danger" (click)="deleteAppointment(appointment)">Delete</button>
+        <button class="btn btn-danger" (click)="deleteAppointment(appointment.id)">Delete</button>
       </td>
     </tr>
     </tbody>

@@ -47,8 +47,8 @@ export class QuestionaireComponent implements OnInit {
     const questionaire = this.questionaireForm.value;
     this.questionaireService.update(questionaire)
       .subscribe((response) => {
-        this.toastr.info('You successfully updated your Questionaire', 'Questionaire!');
         this.questionaireForm.setValue(response);
+        this.toastr.info('You successfully updated your Questionaire', 'Questionaire!');
         this.navigateToList();
 
       });

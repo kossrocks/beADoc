@@ -70,11 +70,12 @@ export class AppointmentDoctorFormComponent implements OnInit {
     const appointment = this.appointmentFormDoctor.value;
 
 
-    this.inquiryService.delete(this.id).subscribe(()=>{
+    this.inquiryService.delete(this.id).subscribe(() => {
 
       this.appointmentService.create(appointment)
         .subscribe((response: any) => {
-          alert('created successfully');
+          this.toastr.success('You sucessfully created a new Appointment!', 'Creation of Appointment');
+
           this.goBackToList();
 
         });
