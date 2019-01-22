@@ -1,5 +1,5 @@
 
-<form (ngSubmit)="login()" style="text-align: center">
+<form (ngSubmit)="login()" class="login-page">
 
   <img src="assets/img/logo.PNG" width="600px">
 
@@ -20,8 +20,9 @@
         <label class="login-field-icon fui-lock" for="password"></label>
       </div>
 
-      <button type="submit" class="btn btn-primary btn-large btn-block">login</button>
-      <a class="login-link" href="#">Lost your password?</a>
+      <button type="submit" class="btnn btn-primary btn-large btn-block">login</button>
+      <button class="btn btn-link" (click)="infoMessage()">Lost your password?</button>
+      <p *ngIf="message">Please send an eMail to email@xyz.at and we will reset it!</p>
     </div>
   </div>
 </div>

@@ -92,7 +92,6 @@ export class ActorFormComponent implements OnInit, OnDestroy {
           }
         });
     }
-
   }
 
 

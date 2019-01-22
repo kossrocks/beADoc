@@ -165,4 +165,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
   }
 
+  public String encryptPass(String password){
+    return encoder.encode(password);
+  }
+
 }
