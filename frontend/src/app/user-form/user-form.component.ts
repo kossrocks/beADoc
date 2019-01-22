@@ -30,7 +30,7 @@ export class UserFormComponent implements OnInit {
       'id': new FormControl(),
       'username': new FormControl('', [Validators.required]),
       'password': new FormControl(),
-      'name': new FormControl({disabled: true}, Validators.required),
+      'name': new FormControl(),
       'lastName': new FormControl(),
       'eMail': new FormControl(),
       'appointments': new FormControl(),
@@ -53,6 +53,7 @@ export class UserFormComponent implements OnInit {
           this.userForm.setValue(response);
           if(this.userForm.value.name == this.name){
             this.isOwner = true;
+            alert()
           }
         });
     }

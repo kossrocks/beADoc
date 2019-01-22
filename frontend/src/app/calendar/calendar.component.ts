@@ -56,7 +56,6 @@ export class MyCalendarComponent implements OnInit {
       events: this.data
     };
 
-    this.addData(this.calendarEntries);
     this.calendarService.getAll()
       .subscribe((entries: any) => {
         this.calendarEntries = entries;
@@ -83,8 +82,11 @@ export class MyCalendarComponent implements OnInit {
             }
           );
         }
-        //location.reload();
+
       });
+
+
+
   }
 
 
