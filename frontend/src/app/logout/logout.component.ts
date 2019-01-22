@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../service/user.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {InquiryService} from '../service/inquiry.service';
 import {Inquiry} from '../api/inquiry';
 import {JwtHelperService} from '@auth0/angular-jwt';
@@ -20,10 +20,12 @@ export class LogoutComponent implements OnInit {
   isEmployee: boolean;
   isAdmin: boolean;
 
-  constructor(private router: Router, private userService: UserService, private inquiryService: InquiryService) {
+  constructor(private router: Router, private userService: UserService, private inquiryService: InquiryService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+
+
     this.isLoggedIn = this.userService.isLoggedIn;
     this.userService.loggedInChange.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
@@ -34,9 +36,10 @@ export class LogoutComponent implements OnInit {
         .subscribe((inquiries: any) => {
           this.inquiries = inquiries;
         });
+      this.getUserRole();
     }
 
-    this.getUserRole();
+
   }
 
   logout() {
