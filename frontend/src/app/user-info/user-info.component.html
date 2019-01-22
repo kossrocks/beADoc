@@ -5,10 +5,15 @@
       <div class="col-sm-7" style="text-align: center"><!--left col-->
         <h1>{{userForm.value.username}}</h1>
         <div class="text-center">
-          <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-          <h6>Upload a different photo...</h6>
-          <input type="file" class="text-center center-block file-upload" style="margin-left: 130px;">
-        </div><br>
+          <form [formGroup]="userForm" (ngSubmit)="navigateToList()">
+            <div class="row">
+              <div class="col">
+                <app-profilePicShow name="profilPictures" formControlName="profilPictures"></app-profilePicShow>
+              </div>
+            </div>
+          </form>
+        </div>
+        <br>
         <div>
           <a [routerLink]="'/questionaires/' + userForm.value.id"><button class="btn btn-primary">Show Questionaire</button></a>
         </div>
@@ -18,7 +23,6 @@
         <div class="tab-content">
           <div class="tab-pane active" id="home">
             <form [formGroup]="userForm" (ngSubmit)="navigateToList()">
-
               <div class="form-group">
                 <div class="col-xs-6">
                   <p class="info">First name:</p>
