@@ -21,15 +21,25 @@ export class MainpageComponent implements OnInit {
   constructor (private router: Router, private userService: UserService) { }
 
   ngOnInit() {
-
     this.getUserRole();
 
     this.userService.getAll()
       .subscribe((users: any) => {
         this.users = users;
+        let isActive = true;
+        for (const user of this.users) {
+          if (user.username === this.name) {
+            isActive = user.active;
+          }
+        }
+        if (!isActive) {
+          this.isEmployee = false;
+          this.isAdmin = false;
+          this.userService.logout();
+          alert('Your Account was deactivated please contact the Admin!');
+        }
       });
   }
-
   getUserRole() {
     this.tokenDecoder = new JwtHelperService();
     this.name = localStorage.getItem('username');

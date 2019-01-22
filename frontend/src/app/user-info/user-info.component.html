@@ -48,7 +48,7 @@
               <div class="form-group">
                 <div class="col-xs-6">
                   <p class="info">Day of Birth:</p>
-                  <h3>{{userForm.value.dayOfBirth}}</h3>
+                  <h3>{{userForm.value.dayOfBirth ? userForm.value.dayOfBirth.toISOString().split('T')[0]:''}}</h3>
                 </div>
               </div>
 

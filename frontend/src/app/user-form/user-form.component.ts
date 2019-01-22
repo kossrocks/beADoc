@@ -30,7 +30,7 @@ export class UserFormComponent implements OnInit {
       'id': new FormControl(),
       'username': new FormControl('', [Validators.required]),
       'password': new FormControl(),
-      'name': new FormControl({disabled: true}, Validators.required),
+      'name': new FormControl(),
       'lastName': new FormControl(),
       'eMail': new FormControl(),
       'appointments': new FormControl(),
@@ -53,6 +53,7 @@ export class UserFormComponent implements OnInit {
           this.userForm.setValue(response);
           if(this.userForm.value.name == this.name){
             this.isOwner = true;
+            alert()
           }
         });
     }
@@ -74,8 +75,14 @@ export class UserFormComponent implements OnInit {
   generateRandomPass() {
     const randomstring = Math.random().toString(36).slice(-8);
     this.copyToClipboard(randomstring);
-    this.userForm.password = randomstring;
+    this.userForm.value.password = randomstring;
     alert('Generated Password: ' + randomstring + '\n' + 'Also was copied to clipboard Strg+V to insert!');
+    this.userService.getById(this.userForm.value.id)
+      .subscribe((response) => {
+        response.password = randomstring;
+        this.userForm.setValue(response);
+        this.saveUser();
+      });
   }
 
   copyToClipboard(item) {
