@@ -126,7 +126,7 @@
         Back without saving
       </button>
     </div>
-    <button *ngIf="isAdmin" type="button" (click)="deleteUser()" class="btn btn-danger" style="margin-left: 690px">
+    <button *ngIf="isAdmin && userForm.value.username != name" type="button" (click)="deleteUser()" class="btn btn-danger" style="margin-left: 690px">
       Delete
     </button>
   </div>
