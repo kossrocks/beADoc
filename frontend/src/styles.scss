@@ -10,3 +10,18 @@ h5{
 .info {
   margin-bottom: -5px;
 }
+
+.roundedCorner
+{
+  padding-top: 100px;
+  margin-top: -70px;
+  width: 1000px;
+  height: 600px;
+  border: solid 1px #ffffff;
+  background-color: rgba(216, 225, 237, 0.5);
+  box-shadow: 10px 10px  5px rgba(105, 105, 105, 0.6);
+  -moz-box-shadow: 10px 10px  5px rgba(98, 98, 98, 0.6);
+  -webkit-box-shadow: 10px 10px  5px rgba(98, 98, 98, 0.6);
+  -o-box-shadow: 10px 10px  5px rgba(98, 98, 98, 0.6);
+  border-radius:25px;
+}

@@ -50,12 +50,10 @@ export class UserInfoComponent implements OnInit {
           this.userForm.setValue(response);
         });
     }
-
   }
 
   navigateToList() {
     this.router.navigate(['/user-list/' + localStorage.getItem('filterMode')]);
   }
-
 }
 

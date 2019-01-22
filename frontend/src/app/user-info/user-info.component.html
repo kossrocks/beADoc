@@ -1,73 +1,82 @@
-
-  <div class="container bootstrap snippet">
+<div class="container bootstrap snippet">
+  <div class="roundedCorner">
     <div class="row"></div>
-    <div class="row">
-      <div class="col-sm-7" style="text-align: center"><!--left col-->
-        <h1>{{userForm.value.username}}</h1>
-        <div class="text-center">
-          <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-          <h6>Upload a different photo...</h6>
-          <input type="file" class="text-center center-block file-upload">
-        </div><br>
-        <div>
-          <a [routerLink]="'/questionaires/' + userForm.value.id"><button class="btn btn-primary">Show Questionaire</button></a>
-        </div>
-      </div><!--/col-3-->
+    <form [formGroup]="userForm" (ngSubmit)="navigateToList()">
+      <div class="row">
+        <div class="col-sm-7" style="text-align: center"><!--left col-->
+          <h1>{{userForm.value.username}}</h1>
+          <div class="text-center">
+            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
+                 alt="avatar">
+            <h6>Upload a different photo...</h6>
+            <input type="file" class="text-center center-block file-upload">
+          </div>
+          <br>
+          <div>
+            <a [routerLink]="'/questionaires/' + userForm.value.id">
+              <button class="btn btn-primary">Show Questionaire</button>
+            </a>
+          </div>
+        </div><!--/col-3-->
 
-      <div class="col-sm-3" style="margin-top: 50px;">
-        <div class="tab-content">
-          <div class="tab-pane active" id="home">
-            <form [formGroup]="userForm" (ngSubmit)="navigateToList()">
+        <div class="col-sm-3" style="margin-top: 50px;">
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+
 
               <div class="form-group">
                 <div class="col-xs-6">
                   <p class="info">First name:</p>
-                  <h4>{{userForm.value.name}}</h4>
+                  <h3>{{userForm.value.name}}</h3>
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="col-xs-6">
                   <p class="info">Last name:</p>
-                  <h4>{{userForm.value.lastName}}</h4>
+                  <h3>{{userForm.value.lastName}}</h3>
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="col-xs-6">
                   <p class="info">Gender:</p>
-                  <h4>{{userForm.value.gender}}</h4>
+                  <h3>{{userForm.value.gender}}</h3>
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="col-xs-6">
                   <p class="info">Day of Birth:</p>
-                  <h4>{{userForm.value.dayOfBirth}}</h4>
-                </div>
-              </div>
-
-              <div *ngIf="userForm.value.admin" class="form-group">
-                <div class="col-xs-6">
-                  <p class="info">Role:</p>
-                  <h4 *ngIf="userForm.value.admin">Admin</h4>
-                  <h4 *ngIf="userForm.value.employee && !userForm.value.admin">Employee</h4>
-                  <h4 *ngIf="!userForm.value.admin && !userForm.value.employee">Patient</h4>
+                  <h3>{{userForm.value.dayOfBirth}}</h3>
                 </div>
               </div>
 
               <div class="form-group">
-                <div class="col-xs-12">
-                  <br>
-                  <button type="submit" class="btn btn-primary">
-                    Back
-                  </button>
+                <div class="col-xs-6">
+                  <p class="info">Email:</p>
+                  <h3>{{userForm.value.eMail}}</h3>
                 </div>
               </div>
-            </form>
+
+              <div *ngIf="isAdmin" class="form-group">
+                <div class="col-xs-6">
+                  <p class="info">Role:</p>
+                  <h3 *ngIf="userForm.value.admin">Admin</h3>
+                  <h3 *ngIf="userForm.value.employee && !userForm.value.admin">Employee</h3>
+                  <h3 *ngIf="!userForm.value.admin && !userForm.value.employee">Patient</h3>
+                </div>
+              </div>
+
+
+            </div><!--/tab-pane-->
           </div><!--/tab-pane-->
-        </div><!--/tab-pane-->
-      </div><!--/tab-content-->
-    </div><!--/col-9-->
-  </div><!--/row-->
+        </div><!--/tab-content-->
+      </div><!--/col-9-->
+      <div class="text-right align-bottom" style="margin: 70px">
+        <button type="submit" class="btn btn-primary">Back</button>
+      </div>
+    </form>
+  </div>
+</div><!--/row-->
 
