@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {UserService} from '../service/user.service';
 import {ToastrService} from 'ngx-toastr';
+import {User} from '../api/user';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import {ToastrService} from 'ngx-toastr';
 export class LoginComponent implements OnInit {
 
   user: any;
-
+  users: Array<User>;
   constructor(private userService: UserService, private router: Router, private toastr: ToastrService) {
   }
 
@@ -21,15 +22,29 @@ export class LoginComponent implements OnInit {
       username: '',
       password: ''
     };
+    this.userService.getAll()
+      .subscribe((users: any) => {
+        this.users = users;
+      });
   }
 
   login() {
-    this.userService.login(this.user)
-      .subscribe((res: any) => {
-      }, (error) => {
-        this.toastr.error('Wrong username or password!', 'Ooopsie!');
-      });
-    localStorage.setItem('username', this.user.username);
+    let isActive = true;
+    for (const user of this.users) {
+      if (user.username === this.user.username) {
+        isActive = user.active;
+      }
+    }
+    if (isActive) {
+      this.userService.login(this.user)
+        .subscribe((res: any) => {
+        }, (error) => {
+          this.toastr.error('Wrong username or password!', 'Ooopsie!');
+        });
+      localStorage.setItem('username', this.user.username);
+    } else {
+      alert('Sorry Your Account was deactivated.');
+    }
   }
 
   callYourDoctor() {

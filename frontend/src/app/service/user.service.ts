@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {Subject} from 'rxjs';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {User} from '../api/user';
+import {Alert} from 'selenium-webdriver';
 
 @Injectable({
   providedIn: 'root'
@@ -76,16 +77,14 @@ export class UserService {
     );
   }
 
-  getAllPatientsByUsername () {
+  getAllByName () {
     return this.http.get('/api/users').pipe(
       map((response: any) => {
-        const patients: Array<User> = [];
+        const users: Array<User> = [];
         for (const user of response._embedded.users) {
-          if (!user.admin) {
-            patients.push(user.id.toString().concat(': ' + user.name + ' ' + user.lastName + ' (' + user.username + ')'));
-          }
+            users.push(user.id.toString().concat(': ' + user.name + ' ' + user.lastName + ' (' + user.username + ')'));
         }
-        return patients;
+        return users;
       })
     );
   }

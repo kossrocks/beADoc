@@ -27,9 +27,17 @@ export class MainpageComponent implements OnInit {
     this.userService.getAll()
       .subscribe((users: any) => {
         this.users = users;
+        let isActive = true;
+        for (const user of this.users) {
+          if (user.username === this.name) {
+            isActive = user.active;
+          }
+        }
+        if (!isActive) {
+          alert('AAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH');
+        }
       });
   }
-
   getUserRole() {
     this.tokenDecoder = new JwtHelperService();
     this.name = localStorage.getItem('username');
