@@ -20,6 +20,11 @@ body {
   border-radius: 5px
 }
 
+.login-page {
+  text-align: center;
+  margin-top: -70px;
+}
+
 .app-title {
   text-align: center;
   color: #777;
@@ -49,7 +54,7 @@ input:focus {
   box-shadow: none;
 }
 
-.btn {
+.btnn {
   border: 2px solid transparent;
   background: #3498DB;
   color: #ffffff;
@@ -66,7 +71,7 @@ input:focus {
   margin: 0 auto;
 }
 
-.btn:hover {
+.btnn:hover {
   background-color: #2980B9;
 }
 

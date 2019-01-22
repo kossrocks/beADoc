@@ -12,11 +12,13 @@ import {ToastrService} from 'ngx-toastr';
 export class LoginComponent implements OnInit {
 
   user: any;
+  message: boolean;
 
   constructor(private userService: UserService, private router: Router, private toastr: ToastrService) {
   }
 
   ngOnInit() {
+    this.message = false;
     this.user = {
       username: '',
       password: ''
@@ -30,5 +32,12 @@ export class LoginComponent implements OnInit {
         this.toastr.error('Wrong username or password!', 'Uuupsie!');
       });
     localStorage.setItem('username', this.user.username);
+  }
+  infoMessage() {
+    if (this.message === false) {
+      this.message = true;
+    } else {
+      this.message = false;
+    }
   }
 }
