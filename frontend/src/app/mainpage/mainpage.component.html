@@ -2,7 +2,7 @@
   <h1 class="welcome">Welcome {{name}}</h1>
   <div *ngIf='isEmployee'>
     <h2 *ngIf='isAdmin' style="margin: 40px"> ADMIN PANEL</h2>
-    <p *ngIf='isEmployee && !isAdmin' style="margin: 40px"> EMPLOYEE PANEL</p>
+    <h2 *ngIf='isEmployee && !isAdmin' style="margin: 40px"> EMPLOYEE PANEL</h2>
     <a href="/calendar">
       <button><img src="assets/img/CalendarIcon.png" onmouseover="this.src='assets/img/calendarIconOnHover.png';"
                    onmouseout="this.src='assets/img/CalendarIcon.png';"></button>
@@ -30,7 +30,7 @@
     </button>
   </div>
   <div *ngIf='!isAdmin && !isEmployee'>
-    <p> USER PANEL</p>
+    <h2 style="margin: 40px"> USER PANEL</h2>
     <button type="button" (click)="editQuestionnaire()">
       <img src="assets/img/questionaireIcon.png" onmouseover="this.src='assets/img/questionaireIconOnHover.png';"
            onmouseout="this.src='assets/img/questionaireIcon.png';">

@@ -5,15 +5,16 @@
     <a class="navbar-brand" href="/home" style="width: 200px">
       <img src="assets/img/logo_small.png" style="width: 200px" alt="">
     </a>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
+    <div>
       <ul class="navbar-nav ml-auto">
+        <div class="collapse navbar-collapse">
         <li *ngIf="isEmployee" class="nav-item">
           <a class="nav-link" href="/calendar">Calendar</a>
         </li>
         <li *ngIf="isEmployee" class="nav-item">
           <a class="nav-link" href="/appointment-doctor-list">Appointments</a>
         </li>
-
+        </div>
         <li class="nav-item">
           <a href="/appointment-doctor-list" *ngIf="isEmployee" class="notification">
             <img src="assets/img/bellIcon.png" onmouseover="this.src='assets/img/bellIconOnHover.png';" onmouseout="this.src='assets/img/bellIcon.png';">

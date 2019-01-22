@@ -1,129 +1,139 @@
 <form [formGroup]="userForm" (ngSubmit)="saveUser()">
-  <h2>Profile Picture:</h2>
-  <br>
-  <div class="row">
-    <div class="col">
-      <app-profilePicInput name="profilPictures" formControlName="profilPictures"></app-profilePicInput>
+  <div class="roundedCorner rForm">
+    <h2>Profile Picture:</h2>
+    <br>
+    <div class="row">
+      <div class="col">
+        <app-profilePicInput name="profilPictures" formControlName="profilPictures"></app-profilePicInput>
+      </div>
     </div>
-  </div>
-  <br>
-  <br>
-  <h2>User Settings:</h2>
-  <br>
-  <div class="row">
-    <div class="col-3">
-      <div class="form-group">
-        <label for="username">Username:</label>
-        <input id="username" type="text" name="username" formControlName="username" class="form-control"/>
-        <div *ngIf="userForm.controls.username.invalid && (userForm.controls.username.dirty || userForm.controls.username.touched)"
-           class="alert alert-danger">
-          <div *ngIf="userForm.controls.username.errors.required">
-            Name is required.
+    <br>
+    <br>
+    <h2>User Settings:</h2>
+    <br>
+    <div class="row">
+      <div class="col-3">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input id="username" type="text" name="username" formControlName="username" class="form-control"/>
+          <div
+            *ngIf="userForm.controls.username.invalid && (userForm.controls.username.dirty || userForm.controls.username.touched)"
+            class="alert alert-danger">
+            <div *ngIf="userForm.controls.username.errors.required">
+              Name is required.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input id="password" type="password" name="password" formControlName="password" class="form-control"/>
+          <div
+            *ngIf="userForm.controls.password.invalid && (userForm.controls.password.dirty || userForm.controls.password.touched)"
+            class="alert alert-danger">
+            <div *ngIf="userForm.controls.password.errors.required">
+              Password is required.
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-3">
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input id="password" type="password" name="password" formControlName="password" class="form-control"/>
-        <div *ngIf="userForm.controls.password.invalid && (userForm.controls.password.dirty || userForm.controls.password.touched)"
-             class="alert alert-danger">
-          <div *ngIf="userForm.controls.password.errors.required">
-            Password is required.
-          </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input id="name" type="text" name="name" formControlName="name" class="form-control"/>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="lastName">Lastname:</label>
+          <input id="lastName" type="text" name="lastName" formControlName="lastName" class="form-control"/>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col">
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input id="name" type="text" name="name" formControlName="name" class="form-control"/>
+    <div class="row">
+      <div class="col">
+        <label for="dayOfBirth">Day of birth:</label>
+        <input id="dayOfBirth" type="text" bsDatepicker name="dayOfBirth" formControlName="dayOfBirth"
+               class="form-control"/>
+      </div>
+      <div class="col">
+        <label>Gender:</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" formControlName="gender"
+                 value="Female">
+          <label class="form-check-label" for="exampleRadios1">
+            Female
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gender" id="exampleRadios2" formControlName="gender"
+                 value="Male">
+          <label class="form-check-label" for="exampleRadios2">
+            Male
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gender" id="exampleRadios3" formControlName="gender"
+                 value="Other">
+          <label class="form-check-label" for="exampleRadios3">
+            Other
+          </label>
+        </div>
       </div>
     </div>
-    <div class="col">
-      <div class="form-group">
-        <label for="lastName">Lastname:</label>
-        <input id="lastName" type="text" name="lastName" formControlName="lastName" class="form-control"/>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="eMail">Email:</label>
+          <input id="eMail" type="text" name="eMail" formControlName="eMail" class="form-control"/>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <label for="dayOfBirth">Day of birth:</label>
-      <input id="dayOfBirth" type="text" bsDatepicker name="dayOfBirth" formControlName="dayOfBirth" class="form-control"/>
-    </div>
-    <div class="col">
-      <label>Gender:</label>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" formControlName="gender" value="Female">
-        <label class="form-check-label" for="exampleRadios1">
-          Female
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="gender" id="exampleRadios2" formControlName="gender" value="Male">
-        <label class="form-check-label" for="exampleRadios2">
-          Male
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="gender" id="exampleRadios3" formControlName="gender" value="Other">
-        <label class="form-check-label" for="exampleRadios3">
-          Other
-        </label>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label for="eMail">Email:</label>
-        <input id="eMail" type="text" name="eMail" formControlName="eMail" class="form-control"/>
-      </div>
-    </div>
-  </div>
 
 
-  <div class="row" *ngIf="isEmployee">
-    <div class="col">
-      <br>
-      <h2>Permissions:</h2>
+    <div class="row" *ngIf="isEmployee">
+      <div class="col">
+        <br>
+        <h2>Permissions:</h2>
         <div style="margin-left: 20px">
-        <input class="form-check-input" type="checkbox" name="employee" id="permissionEmployee" formControlName="employee" value="true">
-        <label class="form-check-label" for="permissionEmployee">
-          Employee
-        </label>
+          <input class="form-check-input" type="checkbox" name="employee" id="permissionEmployee"
+                 formControlName="employee" value="true">
+          <label class="form-check-label" for="permissionEmployee">
+            Employee
+          </label>
         </div>
         <div *ngIf="isAdmin" style="margin-left: 20px">
-          <input class="form-check-input" type="checkbox" name="admin" id="permissionAdmin" formControlName="admin" value="false">
+          <input class="form-check-input" type="checkbox" name="admin" id="permissionAdmin" formControlName="admin"
+                 value="false">
           <label class="form-check-label" for="permissionAdmin">
             Admin
           </label>
         </div>
+      </div>
     </div>
-  </div>
-<br>
-  <div class="row">
-    <div class="btn-group">
-      <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">
-        Save
-      </button>
-      <button type="submit" (click)="setShouldNavigateToList()" class="btn btn-primary" [disabled]="userForm.invalid">
-        Save and Back
-      </button>
-      <button type="submit" (click)="navigateToList()" class="btn btn-primary">
-        Back without saving
+    <br>
+    <div class="row">
+      <div class="btn-group" style="float: left">
+        <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">
+          Save
+        </button>
+        <button type="submit" (click)="setShouldNavigateToList()" class="btn btn-primary" [disabled]="userForm.invalid">
+          Save and Back
+        </button>
+        <button type="submit" (click)="navigateToList()" class="btn btn-primary">
+          Back without saving
+        </button>
+      </div>
+      <button *ngIf="isAdmin" type="button" (click)="deleteUser()" class="btn btn-danger" style="margin-left: 480px">
+        Delete
       </button>
     </div>
-    <button *ngIf="isAdmin" type="button" (click)="deleteUser()" class="btn btn-danger" style="margin-left: 690px">
-      Delete
-    </button>
   </div>
 </form>
 
