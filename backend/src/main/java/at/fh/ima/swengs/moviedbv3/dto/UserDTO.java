@@ -3,6 +3,7 @@ package at.fh.ima.swengs.moviedbv3.dto;
 import at.fh.ima.swengs.moviedbv3.model.Gender;
 import at.fh.ima.swengs.moviedbv3.model.Media;
 import at.fh.ima.swengs.moviedbv3.model.Questionaire;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 import java.util.Set;
@@ -15,6 +16,7 @@ public class UserDTO {
   private String username;
   private String password;
   private String eMail;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private Date dayOfBirth;
   private Set<Long> appointments;
   private Set<Long> medicines;
@@ -50,14 +52,6 @@ public class UserDTO {
 
   public void setQuestionaires(Set<Long> questionaires) {
     this.questionaires = questionaires;
-  }
-
-  public String geteMail() {
-    return eMail;
-  }
-
-  public void seteMail(String eMail) {
-    this.eMail = eMail;
   }
 
   public Set<Media> getPictures() {
@@ -116,11 +110,11 @@ public class UserDTO {
     this.password = password;
   }
 
-  public String getEMail() {
+  public String geteMail() {
     return eMail;
   }
 
-  public void setEMail(String eMail) {
+  public void seteMail(String eMail) {
     this.eMail = eMail;
   }
 

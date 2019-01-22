@@ -35,7 +35,6 @@ export class UserInfoComponent implements OnInit {
       'active': new FormControl(),
       'gender': new FormControl(),
       'pictures': new FormControl(),
-      'email': new FormControl(),
       'questionaires': new FormControl(),
       'profilPictures': new FormControl(),
       'inquiries': new FormControl(),
@@ -50,12 +49,10 @@ export class UserInfoComponent implements OnInit {
           this.userForm.setValue(response);
         });
     }
-
   }
 
   navigateToList() {
     this.router.navigate(['/user-list/' + localStorage.getItem('filterMode')]);
   }
-
 }
 

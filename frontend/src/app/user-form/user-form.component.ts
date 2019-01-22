@@ -30,7 +30,7 @@ export class UserFormComponent implements OnInit {
       'id': new FormControl(),
       'username': new FormControl('', [Validators.required]),
       'password': new FormControl(),
-      'name': new FormControl({disabled: true},Validators.required),
+      'name': new FormControl({disabled: true}, Validators.required),
       'lastName': new FormControl(),
       'eMail': new FormControl(),
       'appointments': new FormControl(),
@@ -42,7 +42,6 @@ export class UserFormComponent implements OnInit {
       'gender': new FormControl(),
       'pictures': new FormControl(),
       'profilPictures' : new FormControl(),
-      'email': new FormControl(),
       'questionaires': new FormControl(),
       'inquiries': new FormControl(),
       'userData': new FormControl()
