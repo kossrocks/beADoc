@@ -17,8 +17,8 @@
       <td>{{user.name}}</td>
       <td>{{user.lastName}}</td>
       <td>{{user.eMail}}</td>
-      <td *ngIf="isAdmin">{{user.employee}}</td>
-      <td *ngIf="isAdmin">{{user.admin}}</td>
+      <td *ngIf="isAdmin && title=='Users'">{{user.employee}}</td>
+      <td *ngIf="isAdmin && title=='Users'">{{user.admin}}</td>
       <td class="td-btn"><a [routerLink]="'/user-info/' + user.id"><button class="btn btn-success pull-right yellowButton" onclick="">Show</button></a></td>
       <td class="td-btn"><a [routerLink]="'/user-form/' + user.id"><button class="btn btn-success pull-right">Edit</button></a></td>
     </tr>
