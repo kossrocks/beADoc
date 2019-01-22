@@ -18,6 +18,7 @@ import { defineLocale } from 'ngx-bootstrap/chronos';
 import { deLocale } from 'ngx-bootstrap/locale';
 import {MediainputComponent} from './mediainput/mediainput.component';
 import {ProfilePicInputComponent} from './profilePicInput/profilePicInput.component';
+import {ProfilePicShowComponent} from './profilePicShow/profilePicShow.component';
 import {SafeUrlPipe} from './service/safe-url.pipe';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { AppointmentDoctorListComponent } from './appointment-doctor-list/appointment-doctor-list.component';
@@ -54,6 +55,7 @@ export function tokenGetter() {
     LogoutComponent,
     MediainputComponent,
     ProfilePicInputComponent,
+    ProfilePicShowComponent,
     SafeUrlPipe,
     MainpageComponent,
     AppointmentDoctorListComponent,
