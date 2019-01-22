@@ -27,19 +27,21 @@ export class LogoutComponent implements OnInit {
     this.isLoggedIn = this.userService.isLoggedIn;
     this.userService.loggedInChange.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
-      this.getUserRole();
     });
 
-    this.inquiryService.getAll()
-      .subscribe((inquiries: any) => {
-        this.inquiries = inquiries;
-      });
+    if (this.isLoggedIn) {
+      this.inquiryService.getAll()
+        .subscribe((inquiries: any) => {
+          this.inquiries = inquiries;
+        });
+    }
+
+    this.getUserRole();
   }
 
   logout() {
-    this.isLoggedIn = false;
-    this.isAdmin = false;
     this.isEmployee = false;
+    this.isAdmin = false;
     this.userService.logout();
   }
 
