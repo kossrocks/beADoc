@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.user)
       .subscribe((res: any) => {
       }, (error) => {
-        this.toastr.error('Wrong username or password!', 'Uuupsie!');
+        this.toastr.error('Wrong username or password!', 'Ooopsie!');
       });
     localStorage.setItem('username', this.user.username);
   }
