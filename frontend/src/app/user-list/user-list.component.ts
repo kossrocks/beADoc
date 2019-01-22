@@ -16,7 +16,8 @@ export class UserListComponent implements OnInit {
 
   users: Array<User>;
   title: String;
-  headElements = ['Username', 'Name', 'LastName', 'eMail', 'isEmployee', 'isAdmin'];
+  headElementsAdmin = ['Username', 'Name', 'LastName', 'eMail', 'isEmployee', 'isAdmin'];
+  headElementsEmployee = ['Username', 'Name', 'LastName', 'eMail'];
   searchString: string;
   searchList = ['name', 'username', 'lastName'];
 
