@@ -17,7 +17,7 @@
       <td *ngIf="title == 'Users'">{{user.admin}}</td>
       <td class="td-btn"><a [routerLink]="'/user-info/' + user.id"><button class="btn btn-success pull-right">Show</button></a></td>
       <td class="td-btn"><a [routerLink]="'/user-form/' + user.id"><button class="btn btn-success pull-right">Edit</button></a></td>
-      <td class="td-btn"><button class="btn btn-danger" (click)="deleteUser(user)">Delete</button>
+      <td class="td-btn" *ngIf="isAdmin"><button class="btn btn-danger" (click)="deleteUser(user)">Delete</button>
       </td>
     </tr>
     </tbody>

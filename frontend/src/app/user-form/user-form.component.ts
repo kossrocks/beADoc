@@ -19,6 +19,7 @@ export class UserFormComponent implements OnInit {
   name: String;
   token: String;
   tokenDecoder: JwtHelperService;
+  isOwner: boolean = false;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) {
   }
@@ -28,8 +29,8 @@ export class UserFormComponent implements OnInit {
     this.userForm = new FormGroup({
       'id': new FormControl(),
       'username': new FormControl('', [Validators.required]),
-      'password': new FormControl,
-      'name': new FormControl(),
+      'password': new FormControl(),
+      'name': new FormControl({disabled: true},Validators.required),
       'lastName': new FormControl(),
       'eMail': new FormControl(),
       'appointments': new FormControl(),
@@ -51,6 +52,9 @@ export class UserFormComponent implements OnInit {
       this.userService.getById(id)
         .subscribe((response) => {
           this.userForm.setValue(response);
+          if(this.userForm.value.name == this.name){
+            this.isOwner = true;
+          }
         });
     }
     this.getUserRole();

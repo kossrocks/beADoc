@@ -5,6 +5,7 @@ import {User} from '../api/user';
 import {UserService} from '../service/user.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-user-list',
@@ -21,6 +22,11 @@ export class UserListComponent implements OnInit {
 
   order = 1;
 
+  token: String;
+  tokenDecoder: JwtHelperService;
+  name: String;
+  isEmployee: boolean;
+  isAdmin: boolean;
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) {
   }
 
@@ -63,6 +69,7 @@ export class UserListComponent implements OnInit {
         break;
       }
     }
+    this.getUserRole();
   }
 
   deleteUser(user: User) {
@@ -98,5 +105,17 @@ export class UserListComponent implements OnInit {
   firstLetterToLower(string) {
     return string.slice(0, 1).toLowerCase() + string.slice(1);
   }
+  getUserRole() {
+    this.tokenDecoder = new JwtHelperService();
+    this.name = localStorage.getItem('username');
+    this.token = this.tokenDecoder.decodeToken(localStorage.getItem('access_token'));
+    if (this.token['authorities'].includes('ROLE_ADMIN')) {
+      this.isAdmin = true;
+      this.isEmployee = true;
+    } else if (this.token['authorities'].includes('ROLE_EMPLOYEE')) {
+      this.isEmployee = true;
+    }
+  }
+
 
 }
