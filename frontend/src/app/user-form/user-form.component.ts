@@ -74,8 +74,14 @@ export class UserFormComponent implements OnInit {
   generateRandomPass() {
     const randomstring = Math.random().toString(36).slice(-8);
     this.copyToClipboard(randomstring);
-    this.userForm.password = randomstring;
+    this.userForm.value.password = randomstring;
     alert('Generated Password: ' + randomstring + '\n' + 'Also was copied to clipboard Strg+V to insert!');
+    this.userService.getById(this.userForm.value.id)
+      .subscribe((response) => {
+        response.password = randomstring;
+        this.userForm.setValue(response);
+        this.saveUser();
+      });
   }
 
   copyToClipboard(item) {

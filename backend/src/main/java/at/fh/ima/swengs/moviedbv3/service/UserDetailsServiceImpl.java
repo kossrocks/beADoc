@@ -115,6 +115,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
       employee.setQuestionaires(questionaires);
       userRepository.save(employee);
 
+
       at.fh.ima.swengs.moviedbv3.model.User patient = new at.fh.ima.swengs.moviedbv3.model.User();
       patient.setUsername("patient");
       patient.setName("Teo");
@@ -124,6 +125,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
       patient.setDayOfBirth(new Date(145, 1, 27));
       patient.setGender(Male);
       patient.setActive(true);
+
       questionaires.removeAll(questionaires);
       questionaires.add(questionaireRepository.findAll().get(2));
       patient.setQuestionaires(questionaires);
