@@ -115,6 +115,7 @@ public class UserFacade {
     User entity = new User();
     mapDtoToEntity(dto, entity);
     entity.setQuestionaires(questionaires);
+    entity.setActive(true);
     mapEntityToDto(userService.save(entity), dto);
 
     return dto;
