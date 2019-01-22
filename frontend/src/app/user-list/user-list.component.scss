@@ -28,4 +28,18 @@ tr:nth-child(even){background-color: #f2f2f2}
   background-color: #ffd633;
   border-color: #ffd633;
   text-shadow: 0.3px 0.3px #e6b800;
+
+}
+
+.yellowButton:hover {
+  background-color: #ffc602;
+  border-color: #ffc602;
+  text-shadow: 0.3px 0.3px #e6b800;
+
+}
+
+.yellowButton:active {
+  background-color: #ffd633;
+  border-color: #ffd633;
+  text-shadow: 0.3px 0.3px #e6b800;
 }
