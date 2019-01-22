@@ -35,11 +35,6 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
-        <button class="btn btn-primary" style="margin-top: 30px">
-          Reset
-        </button>
-    </div>
   </div>
 
   <div class="row">
@@ -126,3 +121,9 @@
     </div>
   </div>
 </form>
+
+<div class="col-md-3">
+  <button type="flybye" (click)="generateRandomPass()" class="btn btn-primary " [disabled]="userForm.invalid">
+    Reset
+  </button>
+</div>
