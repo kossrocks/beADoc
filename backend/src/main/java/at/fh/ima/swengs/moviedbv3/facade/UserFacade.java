@@ -48,7 +48,11 @@ public class UserFacade {
     entity.setName(dto.getName());
     entity.setLastName(dto.getLastName());
     entity.setUsername(dto.getUsername());
-    entity.setPassword(encoder.encode(dto.getPassword())); //HIER ENCRYPTEN
+    if(dto.getPassword() == null || dto.getPassword().length() == 0) {
+      entity.setPassword(entity.getPassword());
+    } else{
+      entity.setPassword(encoder.encode(dto.getPassword())); //HIER ENCRYPTEN
+    }
     entity.setEMail(dto.getEMail());
     entity.setDayOfBirth(dto.getDayOfBirth());
     entity.setAppointments(appointmentService.getAppointments(dto.getAppointments()));
@@ -69,7 +73,7 @@ public class UserFacade {
     dto.setName(entity.getName());
     dto.setLastName(entity.getLastName());
     dto.setUsername(entity.getUsername());
-    dto.setPassword(entity.getPassword());
+    //dto.setPassword(entity.getPassword());
     dto.setEMail(entity.getEMail());
     dto.setDayOfBirth(entity.getDayOfBirth());
     if (entity.getAppointments() != null) {
