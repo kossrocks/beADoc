@@ -39,7 +39,7 @@ export class EditGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     // handle any redirects if a user isn't authenticated
     this.getUserRole()
-    if (!this.isEmployee) {
+    if ((this.isEmployee && !this.isAdmin) || !this.isEmployee) {
       const id = next.paramMap.get('id');
       this.userService.getById(id)
         .subscribe((response: any) => {

@@ -63,7 +63,7 @@ const routes: Routes = [
   },
   /////////// EMPLOYEE and ADMIN ONLY ///////////////
   {
-    path: 'user-form', component: UserFormComponent, canActivate: [AuthGuard, EmployeeGuard]
+    path: 'user-form', component: UserFormComponent, canActivate: [AuthGuard, AdminGuard]
   },
   {
     path: 'user-list/:id', component: UserListComponent, canActivate: [AuthGuard, EmployeeGuard]

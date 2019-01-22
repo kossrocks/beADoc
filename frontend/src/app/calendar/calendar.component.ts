@@ -79,14 +79,9 @@ export class MyCalendarComponent implements OnInit {
               start: startDate.toString(),
               end: endDate.toString(),
               color: colorString
-            }
-          );
+            });
         }
-
       });
-
-
-
   }
 
 
