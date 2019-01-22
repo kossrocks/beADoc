@@ -25,6 +25,15 @@ export class AppointmentDoctorFormComponent implements OnInit {
 
   ngOnInit() {
 
+    const id = this.route.snapshot.paramMap.get('id');
+    this.id = id;
+    if (id) {
+      this.inquiryService.getById(id)
+        .subscribe((response) => {
+          this.inquiry = response;
+        });
+    }
+
     this.appointmentFormDoctor = new FormGroup({
       'appointmentDate': new FormControl([Validators.required]),
       'appointmentTime': new FormControl([Validators.required]),
@@ -51,15 +60,6 @@ export class AppointmentDoctorFormComponent implements OnInit {
       .subscribe((patient: any) => {
         this.patientOption = patient;
       });
-
-    const id = this.route.snapshot.paramMap.get('id');
-    this.id = id;
-    if (id) {
-      this.inquiryService.getById(id)
-        .subscribe((response) => {
-          this.inquiry = response;
-        });
-    }
   }
 
   goBackToList() {
@@ -75,9 +75,7 @@ export class AppointmentDoctorFormComponent implements OnInit {
       this.appointmentService.create(appointment)
         .subscribe((response: any) => {
           this.toastr.success('You sucessfully created a new Appointment!', 'Creation of Appointment');
-
           this.goBackToList();
-
         });
     });
 
