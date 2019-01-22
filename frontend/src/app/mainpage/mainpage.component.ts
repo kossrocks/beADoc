@@ -34,7 +34,10 @@ export class MainpageComponent implements OnInit {
           }
         }
         if (!isActive) {
-          alert('AAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH');
+          this.isEmployee = false;
+          this.isAdmin = false;
+          this.userService.logout();
+          alert('Your Account was deactivated please contact the Admin!');
         }
       });
   }
