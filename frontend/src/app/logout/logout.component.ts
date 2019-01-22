@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {InquiryService} from '../service/inquiry.service';
 import {Inquiry} from '../api/inquiry';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-logout',
@@ -20,7 +21,8 @@ export class LogoutComponent implements OnInit {
   isEmployee: boolean;
   isAdmin: boolean;
 
-  constructor(private router: Router, private userService: UserService, private inquiryService: InquiryService) {
+  constructor(private router: Router, private userService: UserService, private inquiryService: InquiryService,
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -34,9 +36,10 @@ export class LogoutComponent implements OnInit {
         .subscribe((inquiries: any) => {
           this.inquiries = inquiries;
         });
+      this.getUserRole();
     }
 
-    this.getUserRole();
+
   }
 
   logout() {
@@ -55,5 +58,9 @@ export class LogoutComponent implements OnInit {
     } else if (this.token['authorities'].includes('ROLE_EMPLOYEE')) {
       this.isEmployee = true;
     }
+  }
+
+  showMessage() {
+    this.toastr.info('The impressum is still in the works! Please come back another time!', 'Impressum');
   }
 }
