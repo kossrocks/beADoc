@@ -14,7 +14,6 @@ export class LogoutComponent implements OnInit {
 
   isLoggedIn: boolean;
   inquiries: Array<Inquiry> = [];
-  numberOfInquiries;
   token: String;
   tokenDecoder: JwtHelperService;
   name: String;

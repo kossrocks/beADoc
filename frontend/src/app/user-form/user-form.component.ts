@@ -5,13 +5,13 @@ import {UserService} from '../service/user.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {ToastrService} from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss']
 })
 export class UserFormComponent implements OnInit {
-
   userForm;
   shouldNavigateToList: boolean;
   isEmployee: boolean;
@@ -19,6 +19,7 @@ export class UserFormComponent implements OnInit {
   name: String;
   token: String;
   tokenDecoder: JwtHelperService;
+  isOwner: boolean = false;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) {
   }
@@ -28,8 +29,8 @@ export class UserFormComponent implements OnInit {
     this.userForm = new FormGroup({
       'id': new FormControl(),
       'username': new FormControl('', [Validators.required]),
-      'password': new FormControl,
-      'name': new FormControl(),
+      'password': new FormControl(),
+      'name': new FormControl({disabled: true},Validators.required),
       'lastName': new FormControl(),
       'eMail': new FormControl(),
       'appointments': new FormControl(),
@@ -51,6 +52,9 @@ export class UserFormComponent implements OnInit {
       this.userService.getById(id)
         .subscribe((response) => {
           this.userForm.setValue(response);
+          if(this.userForm.value.name == this.name){
+            this.isOwner = true;
+          }
         });
     }
     this.getUserRole();
@@ -66,6 +70,22 @@ export class UserFormComponent implements OnInit {
     } else if (this.token['authorities'].includes('ROLE_EMPLOYEE')) {
       this.isEmployee = true;
     }
+  }
+
+  generateRandomPass() {
+    const randomstring = Math.random().toString(36).slice(-8);
+    this.copyToClipboard(randomstring);
+    this.userForm.password = randomstring;
+    alert('Generated Password: ' + randomstring + '\n' + 'Also was copied to clipboard Strg+V to insert!');
+  }
+
+  copyToClipboard(item) {
+    document.addEventListener('copy', (e: ClipboardEvent) => {
+      e.clipboardData.setData('text/plain', (item));
+      e.preventDefault();
+      document.removeEventListener('copy', null);
+    });
+    document.execCommand('copy');
   }
 
   saveUser() {
