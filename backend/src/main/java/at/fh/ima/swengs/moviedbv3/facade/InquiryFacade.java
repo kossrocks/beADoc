@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service()
@@ -67,6 +68,7 @@ public class InquiryFacade {
   public InquiryDTO create(InquiryDTO dto) {
     Inquiry entity = new Inquiry();
     mapDtoToEntity(dto, entity);
+    entity.setDayOfCreation(new Date());
     inquiryService.save(entity);
     return dto;
   }

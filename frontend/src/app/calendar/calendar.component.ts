@@ -56,13 +56,32 @@ export class MyCalendarComponent implements OnInit {
       events: this.data
     };
 
-    this.addData(this.calendarEntries);
     this.calendarService.getAll()
       .subscribe((entries: any) => {
 
-        this.calendarEntries = entries;
-        this.addData(this.calendarEntries);
-        //location.reload();
+        for (let entry of entries) {
+
+          let startDate: Date = new Date(entry.appointmentDate);
+
+          const hour: number = Math.floor(entry.appointmentTime / 100);
+
+          const minute: number = entry.appointmentTime - (Math.floor(entry.appointmentTime / 100) * 100);
+          startDate.setHours(hour);
+          startDate.setMinutes(minute);
+
+          let endDate = new Date(startDate.getTime() + 1000 * 60 * 60);
+
+          const colorString: string = entry.fixed ? '#009be6' : '#ff4000';
+
+          this.data.push(
+            {
+              title: entry.name + ' ' + entry.lastName,
+              start: startDate.toString(),
+              end: endDate.toString(),
+              color: colorString
+            }
+          );
+        }
 
       });
 
