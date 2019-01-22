@@ -37,8 +37,8 @@ Next, you have to get the project into IntelliJ IDEA, for that open IntelliJ
 
 To start the application BeADoc do the following 2 steps:
 
-* __Step 7:__ to start the backend, hit the Run button or Umschalt+F10 (ctrl+R for Mac)
-* __Step 8:__ to start the frontend, go to the terminal in IntelliJ and run ng serve --open --> this should open the
+* __Step 7:__ to start the backend, hit the Run button or Umschalt+F10 (ctrl+R for Mac users)
+* __Step 8:__ to start the frontend, go to the terminal in IntelliJ and run 'ng serve --open' --> this should open the
               application in your webbrowser on http://localhost:4200
              
 With the following accounts you can access the application:
