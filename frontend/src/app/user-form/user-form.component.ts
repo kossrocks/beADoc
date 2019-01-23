@@ -51,9 +51,8 @@ export class UserFormComponent implements OnInit {
       this.userService.getById(id)
         .subscribe((response) => {
           this.userForm.setValue(response);
-          if(this.userForm.value.name == this.name){
+          if (this.userForm.value.username === this.name) {
             this.isOwner = true;
-            alert()
           }
         });
     }
@@ -100,8 +99,8 @@ export class UserFormComponent implements OnInit {
     if (user.id) {
       this.userService.update(user)
         .subscribe((response) => {
-          if(user.active)this.toastr.info('Your profile was updated!', 'Update!');
-          if(!user.active)this.toastr.success('You deleted a User!', 'User deleted!');
+          if (user.active) {this.toastr.info('Your profile was updated!', 'Update!'); }
+          if (!user.active) {this.toastr.success('You successfully deleted a User!', 'User deleted!'); }
           this.userForm.setValue(response);
           if (this.shouldNavigateToList) {
             this.navigateToList();
@@ -120,12 +119,11 @@ export class UserFormComponent implements OnInit {
     }
   }
 
-  deleteUser(){
+  deleteUser() {
     this.userService.getById(this.userForm.value.id)
       .subscribe((response) => {
         response.active = false;
         this.userForm.setValue(response);
-        this.toastr.success('You successfully deleted a User', 'User deleted!');
         this.shouldNavigateToList = true;
         this.saveUser();
       });

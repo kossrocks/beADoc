@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AppointmentService} from '../service/appointment.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
@@ -20,8 +20,7 @@ export class AppointmentDoctorFormComponent implements OnInit {
   id = '';
 
   constructor(private router: Router, private appointmentService: AppointmentService, private userService: UserService,
-              private inquiryService: InquiryService, private route: ActivatedRoute, private toastr: ToastrService) {
-  }
+              private inquiryService: InquiryService, private route: ActivatedRoute, private toastr: ToastrService) { }
 
 
   ngOnInit() {
@@ -60,8 +59,6 @@ export class AppointmentDoctorFormComponent implements OnInit {
         .subscribe((response) => {
           this.inquiry = response;
         });
-
-
     }
   }
 
@@ -69,7 +66,7 @@ export class AppointmentDoctorFormComponent implements OnInit {
     this.router.navigate(['/appointment-doctor-list']);
   }
 
-  createAppointment() {
+  createAppointment () {
     const appointment = this.appointmentFormDoctor.value;
 
     if (this.id) {
@@ -89,7 +86,6 @@ export class AppointmentDoctorFormComponent implements OnInit {
           this.toastr.success('You successfully created a new Appointment!', 'Creation of Appointment');
 
           this.goBackToList();
-
         });
     }
 
