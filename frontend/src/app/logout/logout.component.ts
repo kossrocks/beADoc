@@ -27,6 +27,9 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit() {
     this.isLoggedIn = this.userService.isLoggedIn;
+    this.inquiryService.inquirySizeChange.subscribe(() => {
+      this.inquiries.pop();
+    });
     this.userService.loggedInChange.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
       if (isLoggedIn) {
@@ -45,7 +48,7 @@ export class LogoutComponent implements OnInit {
         });
       this.getUserRole();
     }
-    ////
+
 
   }
 

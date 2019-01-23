@@ -46,6 +46,8 @@ export class MyCalendarComponent implements OnInit {
       nowIndicator: true,
       locale: 'en',
       timeFormat: 'H:mm',
+      fixedWeekCount: false,
+      firstDay: 1,
       minTime: moment.duration("06:00:00"),
       maxTime: moment.duration("21:00:00"),
       header: {
@@ -56,6 +58,10 @@ export class MyCalendarComponent implements OnInit {
       events: this.data
     };
 
+    if(localStorage.getItem('calendarEntries')) {
+      this.addData(JSON.parse(localStorage.getItem('calendarEntries')));
+      localStorage.removeItem('calendarEntries')
+    }
     this.calendarService.getAll()
       .subscribe((entries: any) => {
         this.calendarEntries = entries;

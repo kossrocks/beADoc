@@ -71,7 +71,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
   @Transactional
   public void initUsers() {
     if (questionaireRepository.count() == 0) {
-      List<String> questionaireAnswers = Arrays.asList("Test1", "Test2", "Test3");
+      List<String> questionaireAnswers = Arrays.asList("", "", "");
       List<Questionaire> questionaires = new ArrayList<>();
       questionaireAnswers.forEach(questionaireAnswer -> {
         Questionaire questionaire = new Questionaire();

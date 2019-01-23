@@ -4,11 +4,14 @@ import {Router, RouterLinkActive} from '@angular/router';
 import {Actor} from '../api/actor';
 import {Inquiry} from '../api/inquiry';
 import {map} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InquiryService {
+
+  inquirySizeChange: Subject<boolean> = new Subject<boolean>();
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -24,6 +27,9 @@ export class InquiryService {
     return this.http.delete('/api/inquiries/' + id);
   }
 
+  sizeChange(){
+    this.inquirySizeChange.next(true);
+  }
 
   getById(id: string) {
     return this.http.get('/api/dto/inquirys/' + id)/*.pipe(map((res: any) => {

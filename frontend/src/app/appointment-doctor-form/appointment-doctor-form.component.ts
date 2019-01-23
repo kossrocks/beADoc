@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AppointmentService} from '../service/appointment.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
@@ -20,7 +20,8 @@ export class AppointmentDoctorFormComponent implements OnInit {
   id = '';
 
   constructor(private router: Router, private appointmentService: AppointmentService, private userService: UserService,
-              private inquiryService: InquiryService, private route: ActivatedRoute, private toastr: ToastrService) { }
+              private inquiryService: InquiryService, private route: ActivatedRoute, private toastr: ToastrService) {
+  }
 
 
   ngOnInit() {
@@ -59,6 +60,8 @@ export class AppointmentDoctorFormComponent implements OnInit {
         .subscribe((response) => {
           this.inquiry = response;
         });
+
+
     }
   }
 
@@ -66,21 +69,29 @@ export class AppointmentDoctorFormComponent implements OnInit {
     this.router.navigate(['/appointment-doctor-list']);
   }
 
-  createAppointment () {
+  createAppointment() {
     const appointment = this.appointmentFormDoctor.value;
 
+    if (this.id) {
+      this.inquiryService.delete(this.id).subscribe(() => {
 
-    this.inquiryService.delete(this.id).subscribe(() => {
+        this.appointmentService.create(appointment)
+          .subscribe((response: any) => {
+            this.toastr.success('You successfully created a new Appointment!', 'Creation of Appointment');
+            this.inquiryService.sizeChange();
+            this.goBackToList();
 
+          });
+      });
+    } else {
       this.appointmentService.create(appointment)
         .subscribe((response: any) => {
-          this.toastr.success('You sucessfully created a new Appointment!', 'Creation of Appointment');
+          this.toastr.success('You successfully created a new Appointment!', 'Creation of Appointment');
 
           this.goBackToList();
 
         });
-    });
-
+    }
 
   }
 }
