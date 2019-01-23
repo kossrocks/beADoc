@@ -5,7 +5,9 @@ import at.fh.ima.swengs.moviedbv3.dto.UserDTO;
 import at.fh.ima.swengs.moviedbv3.model.Questionaire;
 import at.fh.ima.swengs.moviedbv3.model.User;
 import at.fh.ima.swengs.moviedbv3.service.*;
+import at.fh.ima.swengs.moviedbv3.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,7 +25,13 @@ public class UserFacade {
   UserService userService;
 
   @Autowired
+  UserDetailsServiceImpl impl;
+
+  @Autowired
   AppointmentService appointmentService;
+
+  @Autowired
+  private BCryptPasswordEncoder encoder;
 
   @Autowired
   MedicineService medicineService;
@@ -40,8 +48,12 @@ public class UserFacade {
     entity.setName(dto.getName());
     entity.setLastName(dto.getLastName());
     entity.setUsername(dto.getUsername());
-    entity.setPassword(dto.getPassword());
-    entity.setEMail(dto.getEMail());
+    if(dto.getPassword() == null || dto.getPassword().length() == 0) {
+      entity.setPassword(entity.getPassword());
+    } else{
+      entity.setPassword(encoder.encode(dto.getPassword())); //HIER ENCRYPTEN
+    }
+    entity.seteMail(dto.geteMail());
     entity.setDayOfBirth(dto.getDayOfBirth());
     entity.setAppointments(appointmentService.getAppointments(dto.getAppointments()));
     entity.setMedicines(medicineService.getMedicines(dto.getMedicines()));
@@ -61,8 +73,8 @@ public class UserFacade {
     dto.setName(entity.getName());
     dto.setLastName(entity.getLastName());
     dto.setUsername(entity.getUsername());
-    dto.setPassword(entity.getPassword());
-    dto.setEMail(entity.getEMail());
+    //dto.setPassword(entity.getPassword());
+    dto.seteMail(entity.geteMail());
     dto.setDayOfBirth(entity.getDayOfBirth());
     if (entity.getAppointments() != null) {
       dto.setAppointments(entity.getAppointments().stream().map((a) -> a.getId()).collect(Collectors.toSet()));
@@ -103,6 +115,7 @@ public class UserFacade {
     User entity = new User();
     mapDtoToEntity(dto, entity);
     entity.setQuestionaires(questionaires);
+    entity.setActive(true);
     mapEntityToDto(userService.save(entity), dto);
 
     return dto;

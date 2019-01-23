@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {Subject} from 'rxjs';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {User} from '../api/user';
+import {Alert} from 'selenium-webdriver';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,6 @@ export class UserService {
     this.jwtHelperService = new JwtHelperService();
     const token = localStorage.getItem(this.accessTokenLocalStorageKey);
     if (token) {
-      console.log('Token expiration date: '
-        + this.jwtHelperService.getTokenExpirationDate(token));
       this.isLoggedIn = !this.jwtHelperService.isTokenExpired(token);
     }
     this.loggedInChange.subscribe((value) => {
@@ -38,7 +37,7 @@ export class UserService {
     }).pipe(map((res: any) => {
       const token = res.headers.get('Authorization').replace(/^Bearer /, '');
       localStorage.setItem(this.accessTokenLocalStorageKey, token);
-      console.log(this.jwtHelperService.decodeToken(token));
+      //console.log(this.jwtHelperService.decodeToken(token));
       this.loggedInChange.next(true);
       this.router.navigate(['/home']);
       return res;
@@ -76,16 +75,14 @@ export class UserService {
     );
   }
 
-  getAllPatientsByUsername () {
+  getAllByName () {
     return this.http.get('/api/users').pipe(
       map((response: any) => {
-        const patients: Array<User> = [];
+        const users: Array<User> = [];
         for (const user of response._embedded.users) {
-          if (!user.admin) {
-            patients.push(user.id.toString().concat(': ' + user.name + ' ' + user.lastName + ' (' + user.username + ')'));
-          }
+            users.push(user.id.toString().concat(': ' + user.name + ' ' + user.lastName + ' (' + user.username + ')'));
         }
-        return patients;
+        return users;
       })
     );
   }

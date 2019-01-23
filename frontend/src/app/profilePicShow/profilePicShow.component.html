@@ -1,0 +1,16 @@
+<div>
+  <table class="table" style="border: 0">
+    <thead>
+    </thead>
+    <tbody class="text-center">
+    <tr *ngFor="let media of medias; let i = index;">
+
+        <img [src]="previews[i] | safeUrl" *ngIf="previews[i]" class="img-fluid" style="height: 300px">
+
+    </tr>
+      <img *ngIf="medias == null || medias.length == 0" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+           class="avatar img-circle img-thumbnail"
+           alt="avatar">
+    </tbody>
+  </table>
+</div>

@@ -5,6 +5,7 @@ import {User} from '../api/user';
 import {UserService} from '../service/user.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-user-list',
@@ -15,12 +16,18 @@ export class UserListComponent implements OnInit {
 
   users: Array<User>;
   title: String;
-  headElements = ['Username', 'Name', 'LastName', 'eMail', 'isEmployee', 'isAdmin'];
+  headElementsAdmin = ['Username', 'Name', 'LastName', 'eMail', 'isEmployee', 'isAdmin'];
+  headElementsEmployee = ['Username', 'Name', 'LastName', 'eMail'];
   searchString: string;
   searchList = ['name', 'username', 'lastName'];
 
   order = 1;
 
+  token: String;
+  tokenDecoder: JwtHelperService;
+  name: String;
+  isEmployee: boolean;
+  isAdmin: boolean;
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) {
   }
 
@@ -35,8 +42,8 @@ export class UserListComponent implements OnInit {
           .subscribe((users: any) => {
             this.users = users;
             this.title = 'Employees';
-            this.headElements.pop();
-            this.headElements.pop();
+            this.headElementsAdmin.pop();
+            this.headElementsAdmin.pop();
           });
         break;
       }
@@ -45,8 +52,8 @@ export class UserListComponent implements OnInit {
           .subscribe((users: any) => {
             this.users = users;
             this.title = 'Patients';
-            this.headElements.pop();
-            this.headElements.pop();
+            this.headElementsAdmin.pop();
+            this.headElementsAdmin.pop();
           });
         break;
       }
@@ -63,16 +70,7 @@ export class UserListComponent implements OnInit {
         break;
       }
     }
-  }
-
-  deleteUser(user: User) {
-
-    this.userService.delete(user)
-      .subscribe(() => {
-        this.ngOnInit();
-        this.toastr.success('You sucessfully deleted the User', 'Deletion of User');
-      });
-
+    this.getUserRole();
   }
 
   createUser() {
@@ -98,5 +96,17 @@ export class UserListComponent implements OnInit {
   firstLetterToLower(string) {
     return string.slice(0, 1).toLowerCase() + string.slice(1);
   }
+  getUserRole() {
+    this.tokenDecoder = new JwtHelperService();
+    this.name = localStorage.getItem('username');
+    this.token = this.tokenDecoder.decodeToken(localStorage.getItem('access_token'));
+    if (this.token['authorities'].includes('ROLE_ADMIN')) {
+      this.isAdmin = true;
+      this.isEmployee = true;
+    } else if (this.token['authorities'].includes('ROLE_EMPLOYEE')) {
+      this.isEmployee = true;
+    }
+  }
+
 
 }

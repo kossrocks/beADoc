@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {CalendarComponent} from 'ng-fullcalendar';
 import {Options} from 'fullcalendar';
 import {AppointmentService} from '../service/appointment.service';
@@ -9,6 +9,7 @@ import {CalendarService} from '../service/calendar.service';
 import * as moment from 'moment';
 import {jsonpCallbackContext} from '@angular/common/http/src/module';
 import {forEach} from '@angular/router/src/utils/collection';
+import {ControlValueAccessor} from '@angular/forms';
 
 @Component({
   selector: 'app-calendar',
@@ -28,12 +29,12 @@ export class MyCalendarComponent implements OnInit {
 
   appointments: Array<Appointment>;
   users: Array<User>;
-  calendarEntries;
+  calendarEntries = [];
 
   calendarOptions: Options;
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
 
-  constructor(private calendarService: CalendarService, private appointmentService: AppointmentService) {
+  constructor(private ref: ChangeDetectorRef, private calendarService: CalendarService, private appointmentService: AppointmentService) {
   }
 
 
@@ -45,6 +46,8 @@ export class MyCalendarComponent implements OnInit {
       nowIndicator: true,
       locale: 'en',
       timeFormat: 'H:mm',
+      fixedWeekCount: false,
+      firstDay: 1,
       minTime: moment.duration("06:00:00"),
       maxTime: moment.duration("21:00:00"),
       header: {
@@ -55,16 +58,36 @@ export class MyCalendarComponent implements OnInit {
       events: this.data
     };
 
+    if(localStorage.getItem('calendarEntries')) {
+      this.addData(JSON.parse(localStorage.getItem('calendarEntries')));
+      localStorage.removeItem('calendarEntries')
+    }
     this.calendarService.getAll()
       .subscribe((entries: any) => {
-
         this.calendarEntries = entries;
-        this.addData(this.calendarEntries);
+        for (let entry of entries) {
 
+          let startDate: Date = new Date(entry.appointmentDate);
+
+          const hour: number = Math.floor(entry.appointmentTime / 100);
+
+          const minute: number = entry.appointmentTime - (Math.floor(entry.appointmentTime / 100) * 100);
+          startDate.setHours(hour);
+          startDate.setMinutes(minute);
+
+          let endDate = new Date(startDate.getTime() + 1000 * 60 * 60);
+
+          const colorString: string = entry.fixed ? '#009be6' : '#ff4000';
+
+          this.data.push(
+            {
+              title: entry.name + ' ' + entry.lastName,
+              start: startDate.toString(),
+              end: endDate.toString(),
+              color: colorString
+            });
+        }
       });
-
-
-
   }
 
 
@@ -91,7 +114,7 @@ export class MyCalendarComponent implements OnInit {
 
       const hour: number = Math.floor(entry.appointmentTime / 100);
 
-      const minute: number = entry.appointmentTime - (Math.floor(entry.appointmentTime / 100)*100);
+      const minute: number = entry.appointmentTime - (Math.floor(entry.appointmentTime / 100) * 100);
       startDate.setHours(hour);
       startDate.setMinutes(minute);
 
@@ -106,7 +129,7 @@ export class MyCalendarComponent implements OnInit {
           end: endDate.toString(),
           color: colorString
         }
-      )
+      );
     }
   }
 

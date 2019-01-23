@@ -5,6 +5,7 @@ import {Appointment} from '../api/appointment';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {InquiryService} from '../service/inquiry.service';
 import {ToastrService} from 'ngx-toastr';
+import {CalendarService} from '../service/calendar.service';
 
 @Component({
   selector: 'app-appointment-doctor-list',
@@ -21,13 +22,14 @@ export class AppointmentDoctorListComponent implements OnInit {
   token: String;
   inquiryentries;
   title = 'Appointments & Inquiries';
-  headElementsAppointments = ['Date', 'Time', 'Username', 'First Name', 'Last Name', 'Status'];
+  headElementsAppointments = ['Appointment', 'Time', 'Username', 'First Name', 'Last Name', 'Status'];
   sortHeaders = ['appointmentDate', 'appointmentTime', 'username', 'name', 'lastName', 'fixed'];
   order = 1;
   searchList = ['username', 'name', 'lastName'];
 
-  constructor(private appointmentService: AppointmentService, private router: Router, private inquiryService: InquiryService,
-              private toastr: ToastrService) { }
+  constructor(private calendarService: CalendarService,private appointmentService: AppointmentService, private router: Router, private inquiryService: InquiryService,
+              private toastr: ToastrService) {
+  }
 
   ngOnInit() {
 
@@ -37,6 +39,8 @@ export class AppointmentDoctorListComponent implements OnInit {
       .subscribe((appointments: any) => {
         this.appointments = appointments;
       });
+
+
   }
 
   getRoleAndUsername() {
@@ -69,7 +73,16 @@ export class AppointmentDoctorListComponent implements OnInit {
   }
 
   goToAppointmentForm(id) {
-    this.router.navigate(['/appointment-doctor-form/' + id]);
+    this.calendarService.getAll()
+      .subscribe((entries:any) => {
+        localStorage.setItem('calendarEntries',JSON.stringify(entries));
+        if (id) {
+          this.router.navigate(['/appointment-doctor-form/' + id]);
+        }else{
+          this.router.navigate(['/appointment-doctor-form/']);
+        }
+      });
+
   }
 
   sortTable(prop: string) {

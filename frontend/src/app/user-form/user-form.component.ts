@@ -5,13 +5,13 @@ import {UserService} from '../service/user.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {ToastrService} from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss']
 })
 export class UserFormComponent implements OnInit {
-
   userForm;
   shouldNavigateToList: boolean;
   isEmployee: boolean;
@@ -19,6 +19,7 @@ export class UserFormComponent implements OnInit {
   name: String;
   token: String;
   tokenDecoder: JwtHelperService;
+  isOwner: boolean = false;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) {
   }
@@ -28,7 +29,7 @@ export class UserFormComponent implements OnInit {
     this.userForm = new FormGroup({
       'id': new FormControl(),
       'username': new FormControl('', [Validators.required]),
-      'password': new FormControl,
+      'password': new FormControl(),
       'name': new FormControl(),
       'lastName': new FormControl(),
       'eMail': new FormControl(),
@@ -41,7 +42,6 @@ export class UserFormComponent implements OnInit {
       'gender': new FormControl(),
       'pictures': new FormControl(),
       'profilPictures' : new FormControl(),
-      'email': new FormControl(),
       'questionaires': new FormControl(),
       'inquiries': new FormControl(),
       'userData': new FormControl()
@@ -51,6 +51,9 @@ export class UserFormComponent implements OnInit {
       this.userService.getById(id)
         .subscribe((response) => {
           this.userForm.setValue(response);
+          if (this.userForm.value.username === this.name) {
+            this.isOwner = true;
+          }
         });
     }
     this.getUserRole();
@@ -68,13 +71,36 @@ export class UserFormComponent implements OnInit {
     }
   }
 
+  generateRandomPass() {
+    const randomstring = Math.random().toString(36).slice(-8);
+    this.copyToClipboard(randomstring);
+    this.userForm.value.password = randomstring;
+    alert('Generated Password: ' + randomstring + '\n' + 'Also was copied to clipboard Strg+V to insert!');
+    this.userService.getById(this.userForm.value.id)
+      .subscribe((response) => {
+        response.password = randomstring;
+        this.userForm.setValue(response);
+        this.saveUser();
+      });
+  }
+
+  copyToClipboard(item) {
+    document.addEventListener('copy', (e: ClipboardEvent) => {
+      e.clipboardData.setData('text/plain', (item));
+      e.preventDefault();
+      document.removeEventListener('copy', null);
+    });
+    document.execCommand('copy');
+  }
+
   saveUser() {
 
     const user = this.userForm.value;
     if (user.id) {
       this.userService.update(user)
         .subscribe((response) => {
-          this.toastr.info('Your profile was updated!', 'Update!');
+          if (user.active) {this.toastr.info('Your profile was updated!', 'Update!'); }
+          if (!user.active) {this.toastr.success('You successfully deleted a User!', 'User deleted!'); }
           this.userForm.setValue(response);
           if (this.shouldNavigateToList) {
             this.navigateToList();
@@ -91,6 +117,16 @@ export class UserFormComponent implements OnInit {
           }
         });
     }
+  }
+
+  deleteUser() {
+    this.userService.getById(this.userForm.value.id)
+      .subscribe((response) => {
+        response.active = false;
+        this.userForm.setValue(response);
+        this.shouldNavigateToList = true;
+        this.saveUser();
+      });
   }
 
   navigateToList() {

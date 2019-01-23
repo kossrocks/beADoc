@@ -2,9 +2,13 @@
 <h1>{{title}}</h1>
   <table>
     <thead>
-    <tr>
-      <th *ngFor="let head of headElements" scope="col" > <a href (click)="sortTable(head)"> {{head}}</a></th>
-      <th colspan="3"><input type="text" name="searchText" [(ngModel)]="searchString" placeholder="Type to search..."></th>
+    <tr  *ngIf="isAdmin">
+      <th *ngFor="let head of headElementsAdmin" scope="col" > <a href (click)="sortTable(head)"> {{head}}</a></th>
+      <th colspan="2"><input type="text" name="searchText" [(ngModel)]="searchString" placeholder="Type to search..."></th>
+    </tr>
+    <tr *ngIf="isEmployee && !isAdmin">
+      <th *ngFor="let head of headElementsEmployee" scope="col" > <a href (click)="sortTable(head)"> {{head}}</a></th>
+      <th colspan="2"><input type="text" name="searchText" [(ngModel)]="searchString" placeholder="Type to search..."></th>
     </tr>
     </thead>
     <tbody>
@@ -13,16 +17,14 @@
       <td>{{user.name}}</td>
       <td>{{user.lastName}}</td>
       <td>{{user.eMail}}</td>
-      <td *ngIf="title == 'Users'">{{user.employee}}</td>
-      <td *ngIf="title == 'Users'">{{user.admin}}</td>
-      <td class="td-btn"><a [routerLink]="'/user-info/' + user.id"><button class="btn btn-success pull-right">Show</button></a></td>
-      <td class="td-btn"><a [routerLink]="'/user-form/' + user.id"><button class="btn btn-success pull-right">Edit</button></a></td>
-      <td class="td-btn"><button class="btn btn-danger" (click)="deleteUser(user)">Delete</button>
-      </td>
+      <td *ngIf="isAdmin && title=='Users'">{{user.employee}}</td>
+      <td *ngIf="isAdmin && title=='Users'">{{user.admin}}</td>
+      <td class="td-btn"><a [routerLink]="'/user-info/' + user.id"><button class="btn btn-success pull-right yellowButton" onclick="">Show</button></a></td>
+      <td class="td-btn" *ngIf="isAdmin"><a [routerLink]="'/user-form/' + user.id"><button class="btn btn-success pull-right">Edit</button></a></td>
     </tr>
     </tbody>
   </table>
 
-<button type="button" (click)="createUser()">
-  Create new
+<button type="button" *ngIf="isAdmin" (click)="createUser()" class="btn btn-primary" style="margin-top: 20px;">
+  Create new User
 </button>

@@ -4,6 +4,7 @@ import {FileItem, FileUploader, ParsedResponseHeaders} from 'ng2-file-upload';
 import {HttpClient} from '@angular/common/http';
 import {UserService} from '../service/user.service';
 import index from '@angular/cli/lib/cli';
+import {ActivatedRoute, Router} from '@angular/router';
 
 export interface IMedia {
   id?: number;
@@ -13,18 +14,18 @@ export interface IMedia {
 }
 //frtontend
 @Component({
-  selector: 'app-mediainput',
-  templateUrl: './mediainput.component.html',
+  selector: 'app-profilePicShow',
+  templateUrl: './profilePicShow.component.html',
   styles: [],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => MediainputComponent),
+      useExisting: forwardRef(() => ProfilePicShowComponent),
       multi: true
     }
   ]
 })
-export class MediainputComponent implements OnInit, ControlValueAccessor {
+export class ProfilePicShowComponent implements OnInit, ControlValueAccessor {
   resourceUrl = '/api/media';
   name: string;
   medias: IMedia[];
@@ -63,7 +64,6 @@ export class MediainputComponent implements OnInit, ControlValueAccessor {
     };
     this.uploader.onCompleteAll = () => {
       this.onChange(this.medias);
-      //this.showMedia(this.medias[0])
     };
   }
 
@@ -77,7 +77,7 @@ export class MediainputComponent implements OnInit, ControlValueAccessor {
     if(this.medias){
       this.medias.forEach((media, index) =>{
         if(media.id && !this.previews[index]){
-          this.http.get(`${this.resourceUrl}/${media.id}`, {responseType: 'blob'}).subscribe((blob: Blob) => {
+          this.http.get(`${this.resourceUrl}/${media.id }`, {responseType: 'blob'}).subscribe((blob: Blob) => {
             const fileURL = URL.createObjectURL(blob);
             this.previews[index] = fileURL;
           });

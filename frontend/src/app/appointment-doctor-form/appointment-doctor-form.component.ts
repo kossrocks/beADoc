@@ -52,9 +52,10 @@ export class AppointmentDoctorFormComponent implements OnInit {
         this.patientOption = patient;
       });
 
-    this.id = this.route.snapshot.paramMap.get('id');
-    if (this.id != '') {
-      this.inquiryService.getById(this.id)
+    const id = this.route.snapshot.paramMap.get('id');
+    this.id = id;
+    if (id) {
+      this.inquiryService.getById(id)
         .subscribe((response) => {
           this.inquiry = response;
         });
@@ -68,18 +69,25 @@ export class AppointmentDoctorFormComponent implements OnInit {
   createAppointment () {
     const appointment = this.appointmentFormDoctor.value;
 
+    if (this.id) {
+      this.inquiryService.delete(this.id).subscribe(() => {
 
-    this.inquiryService.delete(this.id).subscribe(() => {
+        this.appointmentService.create(appointment)
+          .subscribe((response: any) => {
+            this.toastr.success('You successfully created a new Appointment!', 'Creation of Appointment');
+            this.inquiryService.sizeChange();
+            this.goBackToList();
 
+          });
+      });
+    } else {
       this.appointmentService.create(appointment)
         .subscribe((response: any) => {
-          this.toastr.success('You sucessfully created a new Appointment!', 'Creation of Appointment');
+          this.toastr.success('You successfully created a new Appointment!', 'Creation of Appointment');
 
           this.goBackToList();
-
         });
-    });
-
+    }
 
   }
 }

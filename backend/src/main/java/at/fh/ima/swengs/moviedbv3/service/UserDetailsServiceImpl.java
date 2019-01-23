@@ -15,6 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.PostConstruct;
 import java.util.*;
 
+import static at.fh.ima.swengs.moviedbv3.model.Gender.Female;
+import static at.fh.ima.swengs.moviedbv3.model.Gender.Male;
+
 @Service("userDetailsService")   // It has to be annotated with @Service.
 public class UserDetailsServiceImpl implements UserDetailsService {
 
@@ -68,7 +71,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
   @Transactional
   public void initUsers() {
     if (questionaireRepository.count() == 0) {
-      List<String> questionaireAnswers = Arrays.asList("1", "2", "3");
+      List<String> questionaireAnswers = Arrays.asList("", "", "");
       List<Questionaire> questionaires = new ArrayList<>();
       questionaireAnswers.forEach(questionaireAnswer -> {
         Questionaire questionaire = new Questionaire();
@@ -87,8 +90,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
       admin.setName("Paul");
       admin.setLastName("Power");
       admin.setPassword(encoder.encode("12345"));
+      admin.seteMail("admin@beadoc.com");
+      admin.setDayOfBirth(new Date(177, 5, 23));
+      admin.setGender(Male);
       admin.setAdmin(true);
       admin.setEmployee(true);
+      admin.setActive(true);
       questionaires.add(questionaireRepository.findAll().get(0));
       admin.setQuestionaires(questionaires);
       userRepository.save(admin);
@@ -98,21 +105,31 @@ public class UserDetailsServiceImpl implements UserDetailsService {
       employee.setName("Emmi");
       employee.setLastName("Emsig");
       employee.setPassword(encoder.encode("12345"));
+      employee.seteMail("employee@beadoc.com");
+      employee.setDayOfBirth(new Date(185, 11, 2));
+      employee.setGender(Female);
       employee.setEmployee(true);
+      employee.setActive(true);
       questionaires.removeAll(questionaires);
       questionaires.add(questionaireRepository.findAll().get(1));
       employee.setQuestionaires(questionaires);
       userRepository.save(employee);
 
-      at.fh.ima.swengs.moviedbv3.model.User tester = new at.fh.ima.swengs.moviedbv3.model.User();
-      tester.setUsername("tester");
-      tester.setName("Teo");
-      tester.setLastName("Stern");
-      tester.setPassword(encoder.encode("12345"));
+
+      at.fh.ima.swengs.moviedbv3.model.User patient = new at.fh.ima.swengs.moviedbv3.model.User();
+      patient.setUsername("patient");
+      patient.setName("Teo");
+      patient.setLastName("Stern");
+      patient.setPassword(encoder.encode("12345"));
+      patient.seteMail("patient@gmail.com");
+      patient.setDayOfBirth(new Date(145, 1, 27));
+      patient.setGender(Male);
+      patient.setActive(true);
+
       questionaires.removeAll(questionaires);
       questionaires.add(questionaireRepository.findAll().get(2));
-      tester.setQuestionaires(questionaires);
-      userRepository.save(tester);
+      patient.setQuestionaires(questionaires);
+      userRepository.save(patient);
 
 
     }
@@ -129,25 +146,25 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     if (appointmentRepository.count() == 0) {
-      at.fh.ima.swengs.moviedbv3.model.Appointment appointmentFixed = new at.fh.ima.swengs.moviedbv3.model.Appointment(new Date(119, 0, 12, 13, 0), 1300);
+      at.fh.ima.swengs.moviedbv3.model.Appointment appointmentFixed = new at.fh.ima.swengs.moviedbv3.model.Appointment(new Date(119, 0, 12, 13, 0), 1300);//2019.01.12
       appointmentFixed.setFixed(true);
-      appointmentFixed.setPatient(userRepository.findByUsername("tester"));
+      appointmentFixed.setPatient(userRepository.findByUsername("patient"));
       appointmentRepository.save(appointmentFixed);
 
       at.fh.ima.swengs.moviedbv3.model.Appointment appointmentNotFixed = new at.fh.ima.swengs.moviedbv3.model.Appointment(new Date(119, 0, 12, 14, 0), 1400);
       appointmentNotFixed.setFixed(false);
-      appointmentNotFixed.setPatient(userRepository.findByUsername("tester"));
+      appointmentNotFixed.setPatient(userRepository.findByUsername("patient"));
       appointmentRepository.save(appointmentNotFixed);
 
       at.fh.ima.swengs.moviedbv3.model.Appointment appointmentOtherUser = new at.fh.ima.swengs.moviedbv3.model.Appointment(new Date(119, 0, 12, 15, 0), 1500);
       appointmentOtherUser.setFixed(true);
-      appointmentOtherUser.setPatient(userRepository.findByUsername("admin"));
+      appointmentOtherUser.setPatient(userRepository.findByUsername("patient"));
       appointmentRepository.save(appointmentOtherUser);
     }
 
     if (inquiryRepository.count() == 0) {
       at.fh.ima.swengs.moviedbv3.model.Inquiry inquiry = new at.fh.ima.swengs.moviedbv3.model.Inquiry();
-      inquiry.setPatient(userRepository.findByUsername("tester"));
+      inquiry.setPatient(userRepository.findByUsername("patient"));
       inquiry.setSoon(false);
       inquiry.setMonday(true);
       inquiry.setTuesday(false);
@@ -163,6 +180,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     }
 
+  }
+
+  public String encryptPass(String password){
+    return encoder.encode(password);
   }
 
 }

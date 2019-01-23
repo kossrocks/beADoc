@@ -10,10 +10,10 @@
   </thead>
   <tbody>
     <tr *ngFor="let appointment of appointmentEntries; let i = index">
-      <td>{{appointment.appointmentDate}}</td>
-      <td>{{appointment.appointmentTime}}</td>
-      <td>{{appointment.fixed ? "Fixed" : "Not fixed"}}</td>
-      <td><form class="col" *ngIf="!appointment.fixed && usernameCurrent == appointment.username" (ngSubmit)="fixAppointment(appointment.appointmentID, i)"><button class="btn-primary button" type="submit">Fix</button></form></td>
+      <td *ngIf="usernameCurrent == appointment.username">{{appointment.appointmentDate}}</td>
+      <td *ngIf="usernameCurrent == appointment.username">{{appointment.appointmentTime}}</td>
+      <td *ngIf="usernameCurrent == appointment.username">{{appointment.fixed ? "Fixed" : "Not fixed"}}</td>
+      <td *ngIf="usernameCurrent == appointment.username"><form class="col" *ngIf="!appointment.fixed && usernameCurrent == appointment.username" (ngSubmit)="fixAppointment(appointment.appointmentID, i)"><button class="btn-primary button" type="submit">Fix</button></form></td>
     </tr>
   </tbody>
 </table>
