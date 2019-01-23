@@ -24,7 +24,7 @@
       <td *ngIf='isEmployee && !isAdmin'>{{appointment.lastName}}</td>
       <td *ngIf='isEmployee && !isAdmin'>{{appointment.fixed ? "Fixed" : "Not fixed"}}</td>
       <td *ngIf='isEmployee && isAdmin' class="td-btn">
-        <button class="btn btn-danger" (click)="deleteAppointment(appointment.id)">Cancel</button>
+        <button class="btn btn-danger" (click)="deleteAppointment(appointment.appointmentID)">Cancel</button>
       </td>
     </tr>
     </tbody>
