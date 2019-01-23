@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router, RouterLinkActive} from '@angular/router';
-import {Actor} from '../api/actor';
 import {Inquiry} from '../api/inquiry';
 import {map} from 'rxjs/operators';
 import {Subject} from 'rxjs';

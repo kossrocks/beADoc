@@ -14,7 +14,7 @@
             </div>
           </div>
           <br>
-          <div>
+          <div *ngIf="!userForm.value.admin">
             <a [routerLink]="'/questionaires/' + userForm.value.id">
               <button class="btn btn-primary">Show Questionaire</button>
             </a>

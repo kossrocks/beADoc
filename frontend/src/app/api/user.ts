@@ -1,6 +1,3 @@
-import {Appointment} from './appointment';
-import {Medicine} from './medicine';
-
 export interface User {
   id?: number;
   name?: string;

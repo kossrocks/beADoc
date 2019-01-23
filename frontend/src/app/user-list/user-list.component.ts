@@ -16,7 +16,7 @@ export class UserListComponent implements OnInit {
 
   users: Array<User>;
   title: String;
-  headElementsAdmin = ['Username', 'Name', 'LastName', 'eMail', 'isEmployee', 'isAdmin'];
+  headElementsAdmin = ['Username', 'Name', 'LastName', 'eMail', 'Employee', 'Admin'];
   headElementsEmployee = ['Username', 'Name', 'LastName', 'eMail'];
   searchString: string;
   searchList = ['name', 'username', 'lastName'];
@@ -80,6 +80,7 @@ export class UserListComponent implements OnInit {
   sortTable(prop: string) {
 
     const property = this.firstLetterToLower(prop);
+    //alert(JSON.stringify(this.users[0]))
     this.users.sort((a, b) => {
       if (typeof a[property] == 'string') {
         return (a[property] === b[property]) ? 0 : a[property] > b[property] ? (1 * this.order) : (-1 * this.order);

@@ -1,11 +1,9 @@
 package at.fh.ima.swengs.moviedbv3.controller;
 
-import at.fh.ima.swengs.moviedbv3.dto.ActorDTO;
 import at.fh.ima.swengs.moviedbv3.dto.CalendarEntryDTO;
 import at.fh.ima.swengs.moviedbv3.facade.CalendarEntryFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

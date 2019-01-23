@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../service/user.service';
 import {User} from '../api/user';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-user-info',
@@ -13,7 +14,7 @@ export class UserInfoComponent implements OnInit {
 
   userForm;
   users: Array<User>;
-  userID;
+  isAdmin;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) {
   }
@@ -47,6 +48,7 @@ export class UserInfoComponent implements OnInit {
       this.userService.getById(id)
         .subscribe((response) => {
           this.userForm.setValue(response);
+          if(new JwtHelperService().decodeToken(localStorage.getItem('access_token'))['authorities'].includes('ROLE_ADMIN')) this.isAdmin = true;
         });
     }
   }

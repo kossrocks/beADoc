@@ -2,7 +2,7 @@
 <h1>{{title}}</h1>
 <br>
 <div class="row">
-  <table class="col appointments">
+  <table class="col appointments" style="margin-bottom: 50px">
     <thead>
     <tr>
       <th *ngFor="let head of headElementsAppointments; let i = index;" scope="col"><a href (click)="sortTable(sortHeaders[i])">{{head}}</a></th>

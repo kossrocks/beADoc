@@ -28,9 +28,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
   private UserRepository userRepository;
 
   @Autowired
-  private MovieRepository movieRepository;
-
-  @Autowired
   private AppointmentRepository appointmentRepository;
 
   @Autowired
@@ -87,11 +84,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
       at.fh.ima.swengs.moviedbv3.model.User admin = new at.fh.ima.swengs.moviedbv3.model.User();
       admin.setUsername("admin");
-      admin.setName("Paul");
-      admin.setLastName("Power");
+      admin.setName("Good");
+      admin.setLastName("Boy");
       admin.setPassword(encoder.encode("12345"));
-      admin.seteMail("admin@beadoc.com");
-      admin.setDayOfBirth(new Date(177, 5, 23));
+      admin.seteMail("admin@beadog.com");
+      admin.setDayOfBirth(new Date(113, 3, 3));
       admin.setGender(Male);
       admin.setAdmin(true);
       admin.setEmployee(true);
@@ -106,7 +103,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
       employee.setLastName("Emsig");
       employee.setPassword(encoder.encode("12345"));
       employee.seteMail("employee@beadoc.com");
-      employee.setDayOfBirth(new Date(185, 11, 2));
+      employee.setDayOfBirth(new Date(85, 11, 2));
       employee.setGender(Female);
       employee.setEmployee(true);
       employee.setActive(true);
@@ -122,7 +119,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
       patient.setLastName("Stern");
       patient.setPassword(encoder.encode("12345"));
       patient.seteMail("patient@gmail.com");
-      patient.setDayOfBirth(new Date(145, 1, 27));
+      patient.setDayOfBirth(new Date(45, 1, 27));
       patient.setGender(Male);
       patient.setActive(true);
 
@@ -134,18 +131,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     }
 
-    if (movieRepository.count() == 0) {
-      List<String> movieNames = Arrays.asList("Tangled", "The Princess and the Frog", "Beauty and the Beast", "Monsters, Inc.", "Aladdin", "Pocahontas", "Hercules", "A Bug's Life");
-      List<Movie> movies = new ArrayList<>();
-      movieNames.forEach(movieName -> {
-        Movie movie = new Movie();
-        movie.setTitle(movieName);
-        movies.add(movie);
-      });
-      movieRepository.saveAll(movies);
-    }
-
-    if (appointmentRepository.count() == 0) {
+   if (appointmentRepository.count() == 0) {
       at.fh.ima.swengs.moviedbv3.model.Appointment appointmentFixed = new at.fh.ima.swengs.moviedbv3.model.Appointment(new Date(119, 0, 12, 13, 0), 1300);//2019.01.12
       appointmentFixed.setFixed(true);
       appointmentFixed.setPatient(userRepository.findByUsername("patient"));
