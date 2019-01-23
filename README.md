@@ -43,9 +43,9 @@ To start the application BeADoc do the following 2 steps:
              
 With the following accounts you can access the application:
 
-Admin: username: admin, password: 12345
-Employee: username: employee, password: 12345
-Tester: username: tester, password: 12345
+Admin: username: admin, password: 12345  
+Employee: username: employee, password: 12345  
+Patient: username: patient, password: 12345  
 
 ## Have fun with BeADoc!!!!
 
