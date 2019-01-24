@@ -35,7 +35,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3" *ngIf="id">
         <button type="input" (click)="generateRandomPass()" class="btn btn-primary " [disabled]="userForm.invalid">
           Reset
         </button>
@@ -133,7 +133,7 @@
           Back without saving
         </button>
       </div>
-      <button *ngIf="isAdmin && !isOwner" type="button" (click)="deleteUser()" class="btn btn-danger" style="margin-left: 480px">
+      <button *ngIf="isAdmin && !isOwner && id" type="button" (click)="deleteUser()" class="btn btn-danger" style="margin-left: 480px">
         Delete
       </button>
       <div style="height: 50px"></div>

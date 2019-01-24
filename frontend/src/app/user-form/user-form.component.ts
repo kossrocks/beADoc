@@ -20,6 +20,7 @@ export class UserFormComponent implements OnInit {
   token: String;
   tokenDecoder: JwtHelperService;
   isOwner: boolean = false;
+  id = '';
 
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) {
   }
@@ -47,6 +48,7 @@ export class UserFormComponent implements OnInit {
       'userData': new FormControl()
     });
     const id = this.route.snapshot.paramMap.get('id');
+    this.id = id;
     if (id) {
       this.userService.getById(id)
         .subscribe((response) => {

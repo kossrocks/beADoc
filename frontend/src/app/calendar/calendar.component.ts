@@ -59,7 +59,8 @@ export class MyCalendarComponent implements OnInit {
     };
 
     if(localStorage.getItem('calendarEntries')) {
-      this.addData(JSON.parse(localStorage.getItem('calendarEntries')));
+      this.calendarEntries = JSON.parse(localStorage.getItem('calendarEntries'));
+      this.addData(this.calendarEntries);
       localStorage.removeItem('calendarEntries')
     }
     this.calendarService.getAll()
