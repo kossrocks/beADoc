@@ -5,7 +5,7 @@ import { Pipe, PipeTransform, Injectable } from '@angular/core';
 })
 @Injectable()
 export class FilterPipe implements PipeTransform {
-  transform(items: any[], fields: string[], value: string): any[] {
+  transform(items: any[], fields: string[], value: string): any[] { //search the table for specific entries
     if (!items) {
       return [];
     }
@@ -22,13 +22,13 @@ export class FilterPipe implements PipeTransform {
 
       list = this.merge_array(list, fieldList);
     }
-    return items.filter(entry =>
+    return items.filter(entry => //return entries and prevent unwanted sorting
       list.includes(entry)
     );
 
 
   }
-  merge_array(array1, array2) {
+  merge_array(array1, array2) { //merge two arrays and remove duplicates
 
     let arr = array1.concat(array2);
 

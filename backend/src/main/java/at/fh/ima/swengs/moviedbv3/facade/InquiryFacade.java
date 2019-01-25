@@ -32,6 +32,7 @@ public class InquiryFacade {
   @Autowired
   private UserService userService;
 
+  //User entity should not be changed by a changing inquiry
   void mapDtoToEntity(InquiryDTO dto, Inquiry entityInq) {
     entityInq.setId(dto.getId());
     entityInq.setSoon(dto.isSoon());
@@ -47,6 +48,7 @@ public class InquiryFacade {
     entityInq.setDayOfCreation(dto.getDayOfCreation());
   }
 
+  //user entity is needed to correctly fill inquiryDTO
   private void mapEntityToDto(Inquiry entityInq, User entityUser, InquiryDTO dto) {
     dto.setId(entityInq.getId());
     dto.setUserId(entityUser.getId());
@@ -76,10 +78,10 @@ public class InquiryFacade {
   public List<InquiryDTO> getAll() {
     List<Inquiry> listEntityApp = inquiryRepository.findAll();
     List<InquiryDTO> dtos = new ArrayList<>();
-    for (Inquiry appointment : listEntityApp) {
+    for (Inquiry inquiry : listEntityApp) {
       InquiryDTO dto = new InquiryDTO();
-      User user = userRepository.findById(appointment.getPatient().getId()).get();
-      mapEntityToDto(appointment, user, dto);
+      User user = userRepository.findById(inquiry.getPatient().getId()).get(); //find the User that created the inquiry
+      mapEntityToDto(inquiry, user, dto);
       dtos.add(dto);
     }
 

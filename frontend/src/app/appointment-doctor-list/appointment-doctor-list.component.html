@@ -10,13 +10,13 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let appointment of appointments | filter : searchList : searchString" style="height: 80px">
+    <tr *ngFor="let appointment of appointments | filter : searchList : searchString" style="height: 80px"><!-- using the filter pipe on the list of appointments -->
       <td *ngIf='isEmployee && isAdmin'>{{appointment.appointmentDate}}</td>
       <td *ngIf='isEmployee && isAdmin'>{{appointment.appointmentTime}}</td>
       <td *ngIf='isEmployee && isAdmin'>{{appointment.username}}</td>
       <td *ngIf='isEmployee && isAdmin'>{{appointment.name}}</td>
       <td *ngIf='isEmployee && isAdmin'>{{appointment.lastName}}</td>
-      <td *ngIf='isEmployee && isAdmin'>{{appointment.fixed ? "Fixed" : "Not fixed"}}</td>
+      <td *ngIf='isEmployee && isAdmin'>{{appointment.fixed ? "Fixed" : "Not fixed"}}</td><!-- in case the admin should see different data than the normal user -->
       <td *ngIf='isEmployee && !isAdmin'>{{appointment.appointmentDate}}</td>
       <td *ngIf='isEmployee && !isAdmin'>{{appointment.appointmentTime}}</td>
       <td *ngIf='isEmployee && !isAdmin'>{{appointment.username}}</td>

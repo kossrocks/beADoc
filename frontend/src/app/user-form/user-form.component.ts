@@ -54,7 +54,7 @@ export class UserFormComponent implements OnInit {
         .subscribe((response) => {
           this.userForm.setValue(response);
           if (this.userForm.value.username === this.name) {
-            this.isOwner = true;
+            this.isOwner = true; //looks if the current user is the owner of the form
           }
         });
     }
@@ -73,7 +73,7 @@ export class UserFormComponent implements OnInit {
     }
   }
 
-  generateRandomPass() {
+  generateRandomPass() { //generation of a random password and setting the password of the user to the new password
     const randomstring = Math.random().toString(36).slice(-8);
     this.copyToClipboard(randomstring);
     this.userForm.value.password = randomstring;
@@ -121,7 +121,7 @@ export class UserFormComponent implements OnInit {
     }
   }
 
-  deleteUser() {
+  deleteUser() {//deactivates user
     this.userService.getById(this.userForm.value.id)
       .subscribe((response) => {
         response.active = false;

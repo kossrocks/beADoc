@@ -58,12 +58,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     throw new UsernameNotFoundException("Username: " + username + " not found");
   }
 
+  //in thos application there are 3 Roles
   private String roleDistinguish(at.fh.ima.swengs.moviedbv3.model.User user) {
     if (user.isAdmin()) return "ROLE_ADMIN";
     else if (user.isEmployee() && !user.isAdmin()) return "ROLE_EMPLOYEE";
     else return "ROLE_USER";
   }
 
+  // create Testdata for each entity (except medicine and media)
   @PostConstruct()
   @Transactional
   public void initUsers() {
@@ -166,10 +168,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     }
 
-  }
-
-  public String encryptPass(String password){
-    return encoder.encode(password);
   }
 
 }

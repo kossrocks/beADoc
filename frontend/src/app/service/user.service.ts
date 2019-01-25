@@ -116,7 +116,7 @@ export class UserService {
   }
 
   delete(user) {
-    return this.http.delete('/api/users/' + user.id);
+    return this.http.delete('/api/users/' + user.id); //users are not deleted in the database, therefore delete is not used
   }
 
   update(user: User) {

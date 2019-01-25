@@ -42,22 +42,23 @@ public class User {
   @OneToMany(mappedBy = "patient")
   private Set<Inquiry> inquiries;
 
+  //not used, can be used for example uploading medicine pictures
   @ManyToMany
   @JoinTable(name =
-    "movies_pictures"
+    "users_pictures"
     ,
     joinColumns = @JoinColumn(name =
-      "movie_id"),
+      "user_id"),
     inverseJoinColumns = @JoinColumn(name =
       "pictures_id"))
   private Set<Media> pictures = new HashSet<>();
 
   @ManyToMany
   @JoinTable(name =
-          "movies_profilpictures"
+          "users_profilpictures"
           ,
           joinColumns = @JoinColumn(name =
-                  "movie_id"),
+                  "user_id"),
           inverseJoinColumns = @JoinColumn(name =
                   "profilpictures_id"))
   private Set<Media> profilPictures = new HashSet<>();

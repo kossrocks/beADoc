@@ -23,9 +23,9 @@ export class AppointmentDoctorListComponent implements OnInit {
   inquiryentries;
   title = 'Appointments & Inquiries';
   headElementsAppointments = ['Appointment', 'Time', 'Username', 'First Name', 'Last Name', 'Status'];
-  sortHeaders = ['appointmentDate', 'appointmentTime', 'username', 'name', 'lastName', 'fixed'];
-  order = 1;
-  searchList = ['username', 'name', 'lastName'];
+  sortHeaders = ['appointmentDate', 'appointmentTime', 'username', 'name', 'lastName', 'fixed']; //defines which property belongs to which header
+  order = 1; // defines if sorting is descending or ascending
+  searchList = ['username', 'name', 'lastName']; //defines which properties of the appointments should be filtered
 
   constructor(private calendarService: CalendarService,private appointmentService: AppointmentService, private router: Router, private inquiryService: InquiryService,
               private toastr: ToastrService) {
@@ -43,7 +43,7 @@ export class AppointmentDoctorListComponent implements OnInit {
 
   }
 
-  getRoleAndUsername() {
+  getRoleAndUsername() { // looks which role the logged in user has
     this.tokenDecoder = new JwtHelperService();
     this.username = localStorage.getItem('username');
     this.token = this.tokenDecoder.decodeToken(localStorage.getItem('access_token'));
@@ -77,15 +77,15 @@ export class AppointmentDoctorListComponent implements OnInit {
       .subscribe((entries:any) => {
         localStorage.setItem('calendarEntries',JSON.stringify(entries));
         if (id) {
-          this.router.navigate(['/appointment-doctor-form/' + id]);
+          this.router.navigate(['/appointment-doctor-form/' + id]); //create an appointment that belongs to an inquiry
         }else{
-          this.router.navigate(['/appointment-doctor-form/']);
+          this.router.navigate(['/appointment-doctor-form/']); // create an appointment that doesn't belong to an inquiry
         }
       });
 
   }
 
-  sortTable(prop: string) {
+  sortTable(prop: string) { //function to sort the table. prop: after which property the table should be sorted
     const property = this.firstLetterToLower(prop);
     this.appointments.sort((a, b) => {
       if (typeof a[property] === 'string') {
@@ -100,7 +100,7 @@ export class AppointmentDoctorListComponent implements OnInit {
     });
     this.order = this.order * -1;
 
-    return false; // do not reload
+    return false; // prevents the page from reloading
   }
 
   firstLetterToLower(string) {

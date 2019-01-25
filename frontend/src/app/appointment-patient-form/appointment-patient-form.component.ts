@@ -44,8 +44,6 @@ export class AppointmentPatientFormComponent implements OnInit {
 
 
   askForAppointment() {
-   /* const id = this.users.filter((u) => u.username === localStorage.getItem('username'))[0].id;
-    this.inquiryForm.patchValue({patientId: id});*/
     const inquiry = this.inquiryForm.value;
     this.inquiryService.create(inquiry)
       .subscribe((response: any) => {

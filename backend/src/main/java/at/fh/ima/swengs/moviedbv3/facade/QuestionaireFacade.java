@@ -55,7 +55,7 @@ public class QuestionaireFacade {
     mapEntityToDto(questionaireService.save(entity), dto);
     return dto;
   }
-
+  //not used in this application, but in future uses it could be possible that dummy questionnaires should be created
   public QuestionaireDTO create(QuestionaireDTO dto) {
     Questionaire entity = new Questionaire();
     mapDtoToEntity(dto, entity);

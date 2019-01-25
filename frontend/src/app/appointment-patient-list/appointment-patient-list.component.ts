@@ -19,6 +19,7 @@ export class AppointmentPatientListComponent implements OnInit {
   appointmentEntries;
   title = 'Appointments';
   headElementsAppointments = ['Date of Appointment', 'Time', 'Status', 'Fix Appointment'];
+  sortList = ['appointmentDate','appointmentTime', 'fixed'];
   order = 1;
 
   constructor(private appointmentService: AppointmentService, private router: Router, private toastr: ToastrService) { }
@@ -57,19 +58,19 @@ export class AppointmentPatientListComponent implements OnInit {
 
         appointment.fixed = !appointment.fixed;
 
-        this.appointmentService.update(appointment)
+        this.appointmentService.update(appointment) //updating of the database
           .subscribe((response) => {
             this.toastr.info('You successfully fixed your Appointment', 'Appointment fixed!');
-            this.appointmentEntries[index].fixed = appointment.fixed;
+            this.appointmentEntries[index].fixed = appointment.fixed; //updating of the view
           });
       });
 
 
   }
 
-  sortTable(prop: string) {
+  sortTable(prop: string) { //function to sort the table. prop: after which property the table should be sorted
     const property = this.firstLetterToLower(prop);
-    this.appointments.sort((a, b) => {
+    this.appointmentEntries.sort((a, b) => {
       if (typeof a[property] === 'string') {
         return (a[property] === b[property]) ? 0 : a[property] > b[property] ? (1 * this.order) : (-1 * this.order);
       }
@@ -79,7 +80,7 @@ export class AppointmentPatientListComponent implements OnInit {
     });
     this.order = this.order * -1;
 
-    return false; // do not reload
+    return false; // prevents the page from reloading
   }
 
   firstLetterToLower(string) {

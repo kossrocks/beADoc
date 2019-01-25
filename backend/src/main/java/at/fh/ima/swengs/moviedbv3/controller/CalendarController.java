@@ -16,6 +16,7 @@ public class CalendarController {
   @Autowired
   private CalendarEntryFacade calendarEntryFacade;
 
+  //read only
   @GetMapping("/dto/calendarentries")
   List<CalendarEntryDTO> getCalendarEntries() {
     return calendarEntryFacade.getAll();

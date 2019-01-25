@@ -12,7 +12,7 @@ export interface IMedia {
   contentType?: string;
   size?: number;
 }
-//frtontend
+//frontend
 @Component({
   selector: 'app-profilePicInput',
   templateUrl: './profilePicInput.component.html',

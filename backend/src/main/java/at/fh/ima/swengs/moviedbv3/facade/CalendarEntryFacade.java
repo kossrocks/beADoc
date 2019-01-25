@@ -25,10 +25,12 @@ public class CalendarEntryFacade {
   @Autowired
   private UserRepository userRepository;
 
+  //not needed, because the calendar is read only
   void mapDtoToEntity(CalendarEntryDTO dto, Appointment entityApp, User entityUser) {
 
   }
 
+  //calendarDTO needs information of user entity and appointment entity
   private void mapEntityToDto(Appointment entityApp, User entityUser, CalendarEntryDTO dto) {
     dto.setAppointmentDate(entityApp.getAppointmentDate());
     dto.setAppointmentTime(entityApp.getAppointmentTime());

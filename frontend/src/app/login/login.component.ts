@@ -22,6 +22,9 @@ export class LoginComponent implements OnInit {
       username: '',
       password: ''
     };
+    //remove data of localStorage
+    localStorage.removeItem('username');
+    localStorage.removeItem('filterMode');
   }
 
   login() {

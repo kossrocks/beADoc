@@ -26,7 +26,7 @@ public class AppointmentEntryFacade {
     @Autowired
     private AppointmentService appointmentService;
 
-
+    //not needed, because the calendar is read only
     void mapDtoToEntity(AppointmentEntryDTO dto, Appointment entityApp, User entityUser) {
 
     }

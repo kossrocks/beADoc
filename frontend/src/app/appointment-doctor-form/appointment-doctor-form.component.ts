@@ -31,9 +31,10 @@ export class AppointmentDoctorFormComponent implements OnInit {
       'patient': new FormControl([Validators.required]),
     });
 
-    let x = 7;
+    //defines options for appointmentTimes
+    let x = 7; //first possible Time to choose from: when the consultation hours start
 
-    while (x < 21) {
+    while (x < 21) { //when the consultation hours end: last time to choose f.e. 20:45
 
       const string1: string = x.toString() + ':00';
       const string2: string = x.toString() + ':15';
@@ -46,7 +47,7 @@ export class AppointmentDoctorFormComponent implements OnInit {
 
       x += 1;
     }
-
+    //###############################################
     this.userService.getAll()
       .subscribe((patient: any) => {
         this.patientOption = patient;
@@ -69,13 +70,13 @@ export class AppointmentDoctorFormComponent implements OnInit {
   createAppointment () {
     const appointment = this.appointmentFormDoctor.value;
 
-    if (this.id) {
-      this.inquiryService.delete(this.id).subscribe(() => {
+    if (this.id) { //if appointment belongs to an inquiry or not
+      this.inquiryService.delete(this.id).subscribe(() => { // if it belongs to an inquiry, the inquiry should be deleted
 
         this.appointmentService.create(appointment)
           .subscribe((response: any) => {
             this.toastr.success('You successfully created a new Appointment!', 'Creation of Appointment');
-            this.inquiryService.sizeChange();
+            this.inquiryService.sizeChange(); //tell the notification button, that the size of inquiries changed
             this.goBackToList();
 
           });

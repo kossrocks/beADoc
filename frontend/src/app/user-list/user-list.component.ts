@@ -36,7 +36,7 @@ export class UserListComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     const urlString = this.route.snapshot.url.toString();
     localStorage.setItem('filterMode', urlString.split(',')[1]);
-    switch (id) {
+    switch (id) { //shows different list, depending on the id(employee, patients or users)
       case 'employees': {
         this.userService.getAllEmployees()
           .subscribe((users: any) => {
@@ -80,7 +80,6 @@ export class UserListComponent implements OnInit {
   sortTable(prop: string) {
 
     const property = this.firstLetterToLower(prop);
-    //alert(JSON.stringify(this.users[0]))
     this.users.sort((a, b) => {
       if (typeof a[property] == 'string') {
         return (a[property] === b[property]) ? 0 : a[property] > b[property] ? (1 * this.order) : (-1 * this.order);

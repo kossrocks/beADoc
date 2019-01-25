@@ -23,7 +23,7 @@ public class InquiryService {
 
     public Set<Inquiry> getInquirys(Set<Long> dtos){
         Set<Inquiry> entities = new HashSet<>();
-        if(entities == null || !entities.isEmpty()) dtos.forEach((dto)->entities.add(inquiryRepository.findById(dto).get()));
+        dtos.forEach((dto)->entities.add(inquiryRepository.findById(dto).get()));
         return entities;
     }
 }

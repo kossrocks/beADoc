@@ -17,6 +17,7 @@ public class AppointmentEntryController {
     @Autowired
     private AppointmentEntryFacade appointmentEntryFacade;
 
+    //read only
     @GetMapping("/dto/appointmententries")
     List<AppointmentEntryDTO> getAppointmentEntries() {
         return appointmentEntryFacade.getAll();

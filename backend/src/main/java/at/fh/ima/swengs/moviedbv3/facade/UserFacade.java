@@ -48,6 +48,7 @@ public class UserFacade {
     entity.setName(dto.getName());
     entity.setLastName(dto.getLastName());
     entity.setUsername(dto.getUsername());
+    //if the frontend sends an empty password, nothing should change in the backend
     if(dto.getPassword() == null || dto.getPassword().length() == 0) {
       entity.setPassword(entity.getPassword());
     } else{
@@ -63,7 +64,6 @@ public class UserFacade {
     entity.setGender(dto.getGender());
     entity.setPictures(dto.getPictures());
     entity.setProfilPictures(dto.getProfilPictures());
-    //entity.setQuestionaires(questionaireService.getQuestionaires(dto.getQuestionaires()));
     entity.setInquiries(inquiryService.getInquirys(dto.getInquiries()));
 
   }
@@ -73,7 +73,6 @@ public class UserFacade {
     dto.setName(entity.getName());
     dto.setLastName(entity.getLastName());
     dto.setUsername(entity.getUsername());
-    //dto.setPassword(entity.getPassword());
     dto.seteMail(entity.geteMail());
     dto.setDayOfBirth(entity.getDayOfBirth());
     if (entity.getAppointments() != null) {
@@ -106,6 +105,7 @@ public class UserFacade {
   }
 
   public UserDTO create(UserDTO dto) {
+    //whenever a user is created, a questionaire that belongs to the user is created
     Questionaire questionaireEntity = new Questionaire();
     questionaireService.save(questionaireEntity);
 

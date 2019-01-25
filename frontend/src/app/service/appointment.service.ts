@@ -21,7 +21,7 @@ export class AppointmentService {
       })
     );
   }
-
+  // appointmentEntries provide more data than appointments
   getAllEntries() {
     return this.http.get('/api/dto/appointmententries');
   }

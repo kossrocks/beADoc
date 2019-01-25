@@ -13,7 +13,7 @@ import java.util.Set;
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 public class Medicine {
-
+// NOT USED IN THIS PROJECT, can be implemented later
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

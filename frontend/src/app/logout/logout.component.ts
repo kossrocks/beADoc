@@ -25,11 +25,12 @@ export class LogoutComponent implements OnInit {
               private toastr: ToastrService) {
   }
 
-  ngOnInit() {
+  ngOnInit() { //redundant code is to make sure that the right navBar is shown at every possible time, due to asynchronous code execution
     this.isLoggedIn = this.userService.isLoggedIn;
     this.inquiryService.inquirySizeChange.subscribe(() => {
-      this.inquiries.pop();
+      this.inquiries.pop(); //faster updating of notification number
     });
+
     this.userService.loggedInChange.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
       if (isLoggedIn) {
@@ -48,8 +49,6 @@ export class LogoutComponent implements OnInit {
         });
       this.getUserRole();
     }
-
-
   }
 
   logout() {
@@ -58,9 +57,8 @@ export class LogoutComponent implements OnInit {
     this.userService.logout();
   }
 
-  getUserRole() {
+  getUserRole() {//get the role of the currently logged in user
     this.tokenDecoder = new JwtHelperService();
-    //this.name = localStorage.getItem('username');
     this.token = this.tokenDecoder.decodeToken(localStorage.getItem('access_token'));
     if (this.token['authorities'].includes('ROLE_ADMIN')) {
       this.isAdmin = true;

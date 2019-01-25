@@ -10,7 +10,7 @@ import {Subject} from 'rxjs';
 })
 export class InquiryService {
 
-  inquirySizeChange: Subject<boolean> = new Subject<boolean>();
+  inquirySizeChange: Subject<boolean> = new Subject<boolean>(); //states if the size of the inquiries changed
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -31,11 +31,6 @@ export class InquiryService {
   }
 
   getById(id: string) {
-    return this.http.get('/api/dto/inquirys/' + id)/*.pipe(map((res: any) => {
-      if (res.dayOfCreation) {
-        res.dayOfCreation = new Date(res.dayOfCreation);
-      }
-      return res;
-    }))*/;
+    return this.http.get('/api/dto/inquirys/' + id)
   }
 }

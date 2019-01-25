@@ -18,6 +18,8 @@ public class Questionaire {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
+  //only dummy Questions, can be adjusted depending on the client. It is also possible to adjust the number of questions
+
   private String answer1;
   private String answer2;
   private String answer3;

@@ -24,7 +24,7 @@ public class AppointmentService {
       if(entities == null || !entities.isEmpty()) dtos.forEach((dto)->entities.add(appointmentRepository.findById(dto).get()));
       return entities;
     }
-
+    //needed, because the appointmentTime in frontend and backend are different: 1200(back), 12:00(front)
     public long stringToLong(String timeString){
       return Long.parseLong(timeString.replaceAll(":",""));
     }

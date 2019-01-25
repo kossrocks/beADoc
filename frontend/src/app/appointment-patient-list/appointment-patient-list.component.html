@@ -5,7 +5,7 @@
 <table>
   <thead>
   <tr>
-    <th *ngFor="let head of headElementsAppointments" scope="col"><a href (click)="sortTable(head)"> {{head}}</a></th>
+    <th *ngFor="let head of headElementsAppointments; let i = index" scope="col"><a href (click)="sortTable(sortList[i])"> {{head}}</a></th>
   </tr>
   </thead>
   <tbody>

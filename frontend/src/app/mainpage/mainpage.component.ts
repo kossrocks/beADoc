@@ -40,7 +40,7 @@ export class MainpageComponent implements OnInit {
         }
       });
   }
-  getUserRole() {
+  getUserRole() { // get the role of the currently logged in user
     this.tokenDecoder = new JwtHelperService();
     this.name = localStorage.getItem('username');
     this.token = this.tokenDecoder.decodeToken(localStorage.getItem('access_token'));
@@ -52,7 +52,7 @@ export class MainpageComponent implements OnInit {
     }
   }
 
-  getUserId() {
+  getUserId() { // get the id of the currently logged in user
       for (const user of this.users) {
         if (user.username === this.name) {
         this.id = user.id;
